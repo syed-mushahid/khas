@@ -50,3 +50,33 @@ Route::get('/admin/users_list', [manageUsers::class,'UsersList'])->name('admin/u
 Route::get('/sales_list', function () {
     return view('AdminViews.Sales.salesList');
 });
+Route::get('/removed_product', function () {
+    return view('AdminViews.Product.removed_product');
+});
+Route::get('/products_list', function () {
+    return view('AdminViews.Product.products_list');
+});
+Route::get('/boost_products', function () {
+    return view('AdminViews.Product.Ads.boost_products');
+});
+Route::get('/current_ads', function () {
+    return view('AdminViews.Product.Ads.current_ads');
+});
+Route::get('/add_category', function () {
+    return view('AdminViews.Product.manage_categories.add_category');
+});
+Route::get('/category_list', function () {
+    return view('AdminViews.Product.manage_categories.category_list');
+});
+Route::get('/add_brands', function () {
+    return view('AdminViews.Product.manage_brands.add_brands');
+});
+Route::get('/brands_list', function () {
+    return view('AdminViews.Product.manage_brands.brands_list');
+});
+Route::get('/add_inspection', function () {
+    return view('AdminViews.Product.manage_inspection.add_inspection');
+});
+Route::get('/inspection_report', function () {
+    return view('AdminViews.Product.manage_inspection.inspection_report');
+});

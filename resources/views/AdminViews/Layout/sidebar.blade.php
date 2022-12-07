@@ -63,7 +63,7 @@
               <ul id="ads" class="nav-content collapse" data-bs-parent="#ads-parent">
                
                 <li>
-                  <a href="{{url('boot_products')}}">
+                  <a href="{{url('boost_products')}}">
                     <i class="bi bi-megaphone-fill"></i><span>Boost Product</span>
                   </a>
                 </li>
