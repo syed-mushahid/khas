@@ -21,6 +21,9 @@ use App\Http\Controllers\AdminControllers\manageUsers;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/banned_users', function () {
+    return view('AdminViews.ManageUsers.bannedUsers');
+});
 
 Route::controller(Registration::class)->group(function(){
 
