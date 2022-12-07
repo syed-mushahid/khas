@@ -43,3 +43,7 @@ Route::get('/admin/login', [Login::class,'index'])->name('admin/login');
 Route::get('/admin/add_user', [manageUsers::class,'addUser'])->name('admin/addUser');
 Route::get('/admin/users_list', [manageUsers::class,'UsersList'])->name('admin/usersList');
 });
+
+Route::get('/sales_list', function () {
+    return view('AdminViews.Sales.salesList');
+});
