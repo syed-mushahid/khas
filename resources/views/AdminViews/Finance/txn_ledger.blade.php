@@ -1,5 +1,5 @@
 @extends('AdminViews.Layout.layout')
-@section('title','Products list')
+@section('title','Txn Ledger')
 @section('style')
 <style>
 
@@ -18,17 +18,17 @@
       
         
       <div class="card-body">
-            <h5 class="card-title">Products List</h5>
+            <h5 class="card-title">TXN Ledger</h5>
           
             <!-- Default Table -->
             <table class="table">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Title</th>
-                  <th scope="col">Price</th>
-                  <th scope="col">Brand</th>
-                  <th scope="col">Seller Name</th>
+                  <th scope="col">Sender</th>
+                  <th scope="col">Receiver</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Date</th>
                   <th scope="col">Actions</th>
                 </tr>
               </thead>

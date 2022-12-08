@@ -80,3 +80,27 @@ Route::get('/add_inspection', function () {
 Route::get('/inspection_report', function () {
     return view('AdminViews.Product.manage_inspection.inspection_report');
 });
+Route::get('/product_report', function () {
+    return view('AdminViews.Product.product_report');
+});
+Route::get('/txn_ledger', function () {
+    return view('AdminViews.Finance.txn_ledger');
+});
+Route::get('/wallets', function () {
+    return view('AdminViews.Finance.wallets');
+});
+Route::get('/withdraw_requests', function () {
+    return view('AdminViews.Finance.withdraw_requests');
+});
+Route::get('/withdraw_history', function () {
+    return view('AdminViews.Finance.withdraw_history');
+});
+Route::get('/pending_refunds', function () {
+    return view('AdminViews.Finance.pending_refunds');
+});
+Route::get('/approved_refunds', function () {
+    return view('AdminViews.Finance.approved_refunds');
+});
+Route::get('/deposits', function () {
+    return view('AdminViews.Finance.deposits');
+});
