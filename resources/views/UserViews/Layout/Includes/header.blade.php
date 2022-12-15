@@ -4,7 +4,7 @@
         <div class="topbar bg-khas-secondery">
             <div class="container">
                 <div class="row align-items-center">
-                   
+
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="topbar-left">
                             <ul class="useful-links">
@@ -17,7 +17,7 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="topbar-right d-flex justify-content-end align-items-center">
                             <div class="user ">
-                                <i class="fa-regular fa-user"></i>
+                                <i class="bi bi-person"></i>
                                 Hello
                             </div>
                             <ul class="user-login m-0">
@@ -49,7 +49,7 @@
                         <!-- Start Main Menu Search -->
                         <div class="main-menu-search">
                             <!-- navbar search start -->
-                            <div class="navbar-search search-style-5">
+                            <div id="navbar-search" class="navbar-search search-style-5">
                                 <div class="search-select">
                                     <div class="select-position">
                                         <select id="select1">
@@ -58,15 +58,15 @@
                                             <option value="2">One Plus</option>
                                             <option value="3">Nokia</option>
                                             <option value="4">Oppo</option>
-                                         
+
                                         </select>
                                     </div>
                                 </div>
                                 <div class="search-input">
-                                    <input type="text" placeholder="Search">
+                                    <input type="text" id="search" placeholder="Search">
                                 </div>
                                 <div class="search-btn">
-                                    <button class="btn btn-khas-primary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                    <button id="nav-search-btn" class=" btn btn-khas-primary"><i class="bi bi-search"></i></button>
                                 </div>
                             </div>
                             <!-- navbar search Ends -->
@@ -75,25 +75,25 @@
                     </div>
                     <div class="col-lg-4 col-md-4 col-5 d-flex justify-content-between">
                         <div class="middle-right-area col-12">
-                           
+
                             <div class="navbar-cart col-12 d-flex justify-content-between">
                                 <div class="wishlist">
                                     <a href="javascript:void(0)">
-                                        <i class="fa-regular fa-heart"></i>
+                                        <i class="bi bi-suit-heart"></i>
                                         <span class="total-items bg-khas-secondery">0</span>
                                     </a>
                                 </div>
                                 <div class="cart-items">
                                     <a href="javascript:void(0)" class="main-btn">
-                                        <i class="fa-regular fa-cart-shopping"></i>
+                                        <i class="bi bi-cart3"></i>
                                         <span class="total-items bg-khas-secondery">2</span>
                                     </a>
-                                  
+
                                     <!-- Shopping Item -->
                                     <div class="shopping-item">
                                         <div class="dropdown-cart-header">
                                             <span>2 Items</span>
-                                            <a href="#">View Cart</a>
+                                            <a href="{{url('/cart')}}">View Cart</a>
                                         </div>
                                         <ul class="shopping-list">
                                             <li>
@@ -129,7 +129,7 @@
                                                 <span class="total-amount">$134.00</span>
                                             </div>
                                             <div class="button">
-                                                <a href="#" class="btn animate">Checkout</a>
+                                                <a href="{{url('/checkout')}}" class="btn btn-khas-primary">Checkout</a>
                                             </div>
                                         </div>
                                     </div>
@@ -140,7 +140,7 @@
                                     <a href="javascript:void(0)">
                                        <img class="rounded-circle" src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg" alt="Profile Image" width="40px" height="40px" srcset="">
                                     </a>
-                                   
+
                                         <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                           Mr Jhon
                                         </button>
@@ -163,7 +163,7 @@
             <div class="row align-items-center">
                 <div class="col-12">
                     <div class="nav-inner">
-                        
+
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg">
                             <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
@@ -176,7 +176,7 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="index.html" class="active" aria-label="Toggle navigation"><i class="fa-regular fa-house"></i>&nbsp; Home</a>
+                                        <a href="index.html" class="active" aria-label="Toggle navigation"><i class="bi bi-house-heart"></i>&nbsp; Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
@@ -188,7 +188,7 @@
                                             <li class="nav-item"><a href="#">Samaung</a></li>
                                             <li class="nav-item"><a href="#">Nokia</a></li>
                                             <li class="nav-item"><a href="#">Infinix</a></li>
-                                          
+
                                         </ul>
                                     </li>
 
@@ -281,7 +281,7 @@
                                             <li class="nav-item"><a href="#">IOS</a></li>
                                             <li class="nav-item"><a href="#">Windows</a></li>
                                             <li class="nav-item"><a href="#">Others</a></li>
-                                           
+
                                         </ul>
                                     </li>
 
@@ -292,15 +292,15 @@
                                 </ul>
 
                             </div> <!-- navbar collapse -->
-                       
-                   
+
+
                         </nav>
                         <!-- End Navbar -->
                     </div>
                 </div>
-               
+
             </div>
         </div>
         <!-- End Header Bottom -->
     </header>
-  
+

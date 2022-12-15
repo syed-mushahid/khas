@@ -21,30 +21,35 @@ use App\Http\Controllers\AdminControllers\manageUsers;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/user', function () {
+    return view('UserViews.Home.home');
+});
+Route::get('/profile', function () {
+    return view('UserViews.Profile.profile');
+});
 Route::get('/banned_users', function () {
     return view('AdminViews.ManageUsers.bannedUsers');
 });
 
-Route::controller(Registration::class)->group(function(){
+Route::controller(Registration::class)->group(function () {
 
-Route::get('/login','login');
-Route::get('/signup','signup');
-Route::get('/forgot-password','forgot_password');
-Route::get('/email-verification','email_verification');
-
+    Route::get('/login', 'login');
+    Route::get('/signup', 'signup');
+    Route::get('/forgot-password', 'forgot_password');
+    Route::get('/email-verification', 'email_verification');
 });
 
-Route::controller(Purchase::class)->group(function(){
+Route::controller(Purchase::class)->group(function () {
 
-Route::get('/cart','cart');
-Route::get('/checkout','checkout');
+    Route::get('/cart', 'cart');
+    Route::get('/checkout', 'checkout');
 
 
-////////Admin Routes///////////
-Route::get('/admin_dashboard', [Dashboard::class,'index'])->name('admin_dashboard');
-Route::get('/admin/login', [Login::class,'index'])->name('admin/login');
-Route::get('/admin/add_user', [manageUsers::class,'addUser'])->name('admin/addUser');
-Route::get('/admin/users_list', [manageUsers::class,'UsersList'])->name('admin/usersList');
+    ////////Admin Routes///////////
+    Route::get('/admin_dashboard', [Dashboard::class, 'index'])->name('admin_dashboard');
+    Route::get('/admin/login', [Login::class, 'index'])->name('admin/login');
+    Route::get('/admin/add_user', [manageUsers::class, 'addUser'])->name('admin/addUser');
+    Route::get('/admin/users_list', [manageUsers::class, 'UsersList'])->name('admin/usersList');
 });
 
 Route::get('/sales_list', function () {
