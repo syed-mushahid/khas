@@ -1,5 +1,5 @@
 @extends('AdminViews.Layout.layout')
-@section('title','Sales list')
+@section('title','Charges And Discounts')
 @section('style')
 <style>
 

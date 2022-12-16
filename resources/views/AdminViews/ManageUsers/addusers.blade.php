@@ -59,7 +59,7 @@
                   <div class="row mb-3">
                     
                      <div class="col-sm-12 text-center">
-                        <button type="submit" class="btn btn-khas-primary">Submit Form</button>
+                        <button type="submit" class="btn btn-khas-primary">Add</button>
                      </div>
                   </div>
                </form>
