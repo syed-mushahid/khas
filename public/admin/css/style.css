@@ -1,8 +1,6 @@
-:root {
-    scroll-behavior: smooth;
-    --primary: #01b84a;
-    --secondery: #012970;
-}
+@import url("../../theme.css");
+
+
 .form-control:focus {
     box-shadow: none;
 }

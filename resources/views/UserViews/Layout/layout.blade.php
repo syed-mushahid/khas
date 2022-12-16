@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    
+
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
 <link rel="stylesheet" href="{{asset('css/extend-bootstrap.min.css')}}">
-<link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css"> 
+<link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
+
+ <!-- Icon File -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
 
 <link rel="stylesheet" href="{{asset('css/khas.css')}}">
 @yield('style')
 </head>
 <body>
-    
+
     @include('UserViews/Layout/Includes/header')
 
-        <main class="container-fluid">
+        <main class="container-fluid bg-light ">
 
     @yield('content')
 
@@ -33,7 +36,7 @@
       <h5>Khas</h5>
     </div>
     </div>
-      
+
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
