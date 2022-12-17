@@ -8,7 +8,6 @@
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
 <link rel="stylesheet" href="{{asset('css/extend-bootstrap.min.css')}}">
-<link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
 
  <!-- Icon File -->
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
@@ -20,7 +19,7 @@
 
     @include('UserViews/Layout/Includes/header')
 
-        <main class="container-fluid bg-light ">
+        <main class="container-fluid ">
 
     @yield('content')
 

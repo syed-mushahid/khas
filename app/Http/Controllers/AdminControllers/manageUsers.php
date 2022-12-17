@@ -9,15 +9,15 @@ class manageUsers extends Controller
 {
     public function  addUser()
     {
-        return view('AdminViews.manageUsers.addUsers');
+        return view('AdminViews.ManageUsers.addusers');
     }
-    
+
     public function usersList(){
-        return view('AdminViews.manageUsers.userList');
+        return view('AdminViews.ManageUsers.userList');
 
     }
     public function banedUsers(){
-        return view('AdminViews.manageUsers.banedUsers');
+        return view('AdminViews.ManageUsers.banedUsers');
 
     }
 }

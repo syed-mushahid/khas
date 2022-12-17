@@ -21,12 +21,17 @@ use App\Http\Controllers\AdminControllers\manageUsers;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/user', function () {
+    return view('UserViews/Home/home');
+});
+Route::get('/product-details', function () {
+    return view('UserViews/Product/product-details');
+});
 Route::get('/banned_users', function () {
     return view('AdminViews.ManageUsers.bannedUsers');
 });
 
 Route::controller(Registration::class)->group(function(){
-
 Route::get('/login','login');
 Route::get('/signup','signup');
 Route::get('/forgot-password','forgot_password');
