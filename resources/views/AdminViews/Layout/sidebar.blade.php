@@ -36,10 +36,14 @@
               <i class="bi bi-pie-chart-fill"></i><span>Report</span>
             </a>
           </li>
-        
-   
+
+
         </ul>
       </li><!-- End Components Nav -->
+
+
+
+      {{-- Products Menue Starts --}}
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#products" data-bs-toggle="collapse" href="#">
           <i class="bi bi-box-seam-fill"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -61,7 +65,7 @@
                 <i class="bi bi-badge-ad-fill"></i><span>Ads</span><i class="bi bi-chevron-down ms-auto"></i>
               </a>
               <ul id="ads" class="nav-content collapse" data-bs-parent="#ads-parent">
-               
+
                 <li>
                   <a href="{{url('boost_products')}}">
                     <i class="bi bi-megaphone-fill"></i><span>Boost Product</span>
@@ -72,17 +76,17 @@
                     <i class="bi bi-list-task"></i><span>Current Ads</span>
                   </a>
                 </li>
-         
+
               </ul>
             </li>
-           
-       
+
+
             <li class="nav-item sub-menu-dropdown" id="category-parent">
               <a class="nav-link collapsed" data-bs-target="#category" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-tag-fill"></i><span>Categories</span><i class="bi bi-chevron-down ms-auto"></i>
               </a>
               <ul id="category" class="nav-content collapse" data-bs-parent="#category-parent">
-               
+
                 <li>
                   <a href="{{url('add_category')}}">
                     <i class="bi bi-file-plus-fill"></i><span>Add Category</span>
@@ -93,7 +97,7 @@
                     <i class="bi bi-list-task"></i><span>Category List</span>
                   </a>
                 </li>
-         
+
               </ul>
             </li>
             <li class="nav-item sub-menu-dropdown" id="brands-parent">
@@ -101,7 +105,7 @@
                 <i class="bi bi-shop-window"></i><span>Brands</span><i class="bi bi-chevron-down ms-auto"></i>
               </a>
               <ul id="brands" class="nav-content collapse" data-bs-parent="#brands-parent">
-               
+
                 <li>
                   <a href="{{url('add_brands')}}">
                     <i class="bi bi-bag-plus-fill"></i><span>Add Brands</span>
@@ -112,7 +116,7 @@
                     <i class="bi bi-list-task"></i><span>Brands List</span>
                   </a>
                 </li>
-         
+
               </ul>
             </li>
             <li class="nav-item sub-menu-dropdown" id="inspection-parent">
@@ -120,7 +124,7 @@
                 <i class="bi bi-shop-window"></i><span>Inspection</span><i class="bi bi-chevron-down ms-auto"></i>
               </a>
               <ul id="inspection" class="nav-content collapse" data-bs-parent="#inspection-parent">
-               
+
                 <li>
                   <a href="{{url('add_inspection')}}">
                     <i class="bi bi-shield-check"></i><span>Add inspection</span>
@@ -131,7 +135,7 @@
                     <i class="bi bi-shield-fill-check"></i><span>Inspection Report</span>
                   </a>
                 </li>
-         
+
               </ul>
             </li>
 
@@ -140,17 +144,17 @@
               <i class="bi bi-pie-chart-fill"></i><span>Products Report</span>
             </a>
           </li>
-        
+
         </ul>
       </li><!-- End Products Nav -->
 {{-- Start Sales Nav --}}
- 
+
 <li class="nav-item" id="sales-parent">
   <a class="nav-link collapsed" data-bs-target="#sales" data-bs-toggle="collapse" href="#">
     <i class="bi bi-cart-fill"></i><span>Sales</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="sales" class="nav-content collapse" data-bs-parent="#sales-parent">
-   
+
     <li>
       <a href="{{url('pending_sales')}}">
         <i class="bi bi-cart"></i><span>Pending Sales</span>
@@ -176,7 +180,7 @@
 </li>
 
 {{-- End Sales Nav --}}
-    
+
 {{-- Finance Menu Start --}}
 
 <li class="nav-item" id="finanace-parent">
@@ -184,7 +188,7 @@
     <i class="bi bi-bank2"></i><span>Finance</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="finanace" class="nav-content collapse" data-bs-parent="#finanace-parent">
-   
+
     <li>
       <a href="{{url('txn_ledger')}}">
         <i class="bi bi-file-earmark-ruled-fill"></i><span>TXN Ledger</span>
@@ -238,6 +242,142 @@
 
 
 
+{{-- Hr Menu Starts --}}
+
+<li class="nav-item">
+  <a class="nav-link collapsed" data-bs-target="#HrManagment" data-bs-toggle="collapse" href="#">
+    <i class="bi bi-person-gear"></i><span>HR Managment</span><i class="bi bi-chevron-down ms-auto"></i>
+  </a>
+  <ul id="HrManagment" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+    <li>
+      <li class="nav-item sub-menu-dropdown" id="employees-parent">
+        <a class="nav-link collapsed" data-bs-target="#manageEmployees" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-people"></i><span>Manage Employees</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="manageEmployees" class="nav-content collapse" data-bs-parent="#employees-parent">
+
+          <li>
+            <a href="{{url('add_employee')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Add Employee</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('employee_list')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Employee List</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('add_designation')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Add Designation</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('designation_list')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Designation List</span>
+            </a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li class="nav-item sub-menu-dropdown" id="attendance-parent">
+        <a class="nav-link collapsed" data-bs-target="#manageAttendance" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-table"></i><span>Attendance</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="manageAttendance" class="nav-content collapse" data-bs-parent="#attendance-parent">
+
+          <li>
+            <a href="{{url('add_attendance')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Add Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('manage_attendance')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Manage Attendance</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('absents')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Absents</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('on_leave')}}">
+              <i class="bi bi-arrow-return-right"></i><span>On Leave</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('issue_leave')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Issue Leave</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('event_holidays')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Event Holidays</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('attendance_report')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Report</span>
+            </a>
+          </li>
+          <li>
+
+        </ul>
+      </li>
+      <li class="nav-item sub-menu-dropdown" id="salary-parent">
+        <a class="nav-link collapsed" data-bs-target="#managesalary" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-cash-stack"></i><span>Salary</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="managesalary" class="nav-content collapse" data-bs-parent="#salary-parent">
+
+          <li>
+            <a href="{{url('salary_settings')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Salary Settings</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('salary_list')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Salary List</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('benifits_and_deductions')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Benifits And Deductions</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('generate_payroll')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Generate Payroll</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('pay_salary')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Pay Salary</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('salary_history')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Salary History</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{url('salary_report')}}">
+              <i class="bi bi-arrow-return-right"></i><span>Report</span>
+            </a>
+          </li>
+          <li>
+
+        </ul>
+      </li>
+
+  </ul>
+</li>
+
+{{-- Hr Menu Ends --}}
+
+
+
 
 {{-- Return Menu Start --}}
 
@@ -266,7 +406,7 @@
         <i class="bi bi-pie-chart-fill"></i><span>Report</span>
       </a>
     </li>
- 
+
   </ul>
 </li>
 
@@ -293,7 +433,7 @@
       <a href="{{url('assign_roles')}}">
         <i class="bi bi-person-plus-fill"></i><span>Assign Roles</span>
       </a>
-    </li> 
+    </li>
   </ul>
 </li>
 
