@@ -27,6 +27,24 @@ Route::get('/user', function () {
 Route::get('/product-details', function () {
     return view('UserViews/Product/product-details');
 });
+Route::get('/profile', function () {
+    return view('UserViews/Profile/profile');
+});
+Route::get('/wishlist', function () {
+    return view('UserViews/Profile/wishlist');
+});
+Route::get('/settings', function () {
+    return view('UserViews/Profile/settings');
+});
+Route::get('/manage-products', function () {
+    return view('UserViews/Product/manage-products');
+});
+Route::get('/purchases', function () {
+    return view('UserViews/Purchase/purchases');
+});
+Route::get('/sales', function () {
+    return view('UserViews/Sales/sales');
+});
 Route::get('/banned_users', function () {
     return view('AdminViews.ManageUsers.bannedUsers');
 });

@@ -69,7 +69,7 @@ background: rgba(0, 0, 0, 0.351) }
             </div>
             <div class="col-md-6 mt-1">
                <div class="d-flex align-items-center">
-                  <h3><a href="#">I Phone 14 Pro</a></h3>
+                  <h3><a href="{{url('/product-details')}}">I Phone 14 Pro</a></h3>
                   <small style="padding:2px;font-size:10px" class="border text-muted ms-2 rounded">Ad</small>
                </div>
                <div class="d-flex flex-row">
@@ -91,7 +91,7 @@ background: rgba(0, 0, 0, 0.351) }
                   {{-- <span class="strike-text">$20.99</span> --}}
                </div>
                <div class="d-flex flex-column mt-4"><button class="btn btn-khas-primary btn-sm"
-                  type="button">Details</button><button class="btn btn-outline-khas-primary btn-sm mt-2"
+                  type="button"><a style="color: white" href  = "{{url('/product-details')}}">Details</a></button><button class="btn btn-outline-khas-primary btn-sm mt-2"
                   type="button">Add to favorites</button></div>
             </div>
          </div>
@@ -101,7 +101,7 @@ background: rgba(0, 0, 0, 0.351) }
             </div>
             <div class="col-md-6 mt-1">
                <div class="d-flex align-items-center">
-                  <h3><a href="#">I Phone 14 Pro</a></h3>
+                  <h3><a href="{{url('/product-details')}}">I Phone 14 Pro</a></h3>
                   <small style="padding:2px;font-size:10px" class="border text-muted ms-2 rounded">Ad</small>
                </div>
                <div class="d-flex flex-row">
@@ -123,7 +123,7 @@ background: rgba(0, 0, 0, 0.351) }
                   {{-- <span class="strike-text">$20.99</span> --}}
                </div>
                <div class="d-flex flex-column mt-4"><button class="btn btn-khas-primary btn-sm"
-                  type="button">Details</button><button class="btn btn-outline-khas-primary btn-sm mt-2"
+                  type="button"><a style="color: white" href  = "{{url('/product-details')}}">Details</a></button><button class="btn btn-outline-khas-primary btn-sm mt-2"
                   type="button">Add to favorites</button></div>
             </div>
          </div>
@@ -133,7 +133,7 @@ background: rgba(0, 0, 0, 0.351) }
             </div>
             <div class="col-md-6 mt-1">
                <div class="d-flex align-items-center">
-                  <h3><a href="#">I Phone 14 Pro</a></h3>
+                  <h3><a href="{{url('/product-details')}}">I Phone 14 Pro</a></h3>
                   <small style="padding:2px;font-size:10px" class="border text-muted ms-2 rounded">Ad</small>
                </div>
                <div class="d-flex flex-row">
@@ -155,7 +155,7 @@ background: rgba(0, 0, 0, 0.351) }
                   {{-- <span class="strike-text">$20.99</span> --}}
                </div>
                <div class="d-flex flex-column mt-4"><button class="btn btn-khas-primary btn-sm"
-                  type="button">Details</button><button class="btn btn-outline-khas-primary btn-sm mt-2"
+                  type="button"><a style="color: white" href  = "{{url('/product-details')}}">Details</a></button><button class="btn btn-outline-khas-primary btn-sm mt-2"
                   type="button">Add to favorites</button></div>
             </div>
          </div>
@@ -165,7 +165,7 @@ background: rgba(0, 0, 0, 0.351) }
             </div>
             <div class="col-md-6 mt-1">
                <div class="d-flex align-items-center">
-                  <h3><a href="#">I Phone 14 Pro</a></h3>
+                  <h3><a href="{{url('/product-details')}}">I Phone 14 Pro</a></h3>
                   <small style="padding:2px;font-size:10px" class="border text-muted ms-2 rounded">Ad</small>
                </div>
                <div class="d-flex flex-row">
@@ -187,7 +187,7 @@ background: rgba(0, 0, 0, 0.351) }
                   {{-- <span class="strike-text">$20.99</span> --}}
                </div>
                <div class="d-flex flex-column mt-4"><button class="btn btn-khas-primary btn-sm"
-                  type="button">Details</button><button class="btn btn-outline-khas-primary btn-sm mt-2"
+                  type="button"><a style="color: white" href  = "{{url('/product-details')}}">Details</a></button><button class="btn btn-outline-khas-primary btn-sm mt-2"
                   type="button">Add to favorites</button></div>
             </div>
          </div>
@@ -197,7 +197,7 @@ background: rgba(0, 0, 0, 0.351) }
             </div>
             <div class="col-md-6 mt-1">
                <div class="d-flex align-items-center">
-                  <h3><a href="#">I Phone 14 Pro</a></h3>
+                  <h3><a href="{{url('/product-details')}}">I Phone 14 Pro</a></h3>
                   <small style="padding:2px;font-size:10px" class="border text-muted ms-2 rounded">Ad</small>
                </div>
                <div class="d-flex flex-row">
@@ -219,7 +219,7 @@ background: rgba(0, 0, 0, 0.351) }
                   {{-- <span class="strike-text">$20.99</span> --}}
                </div>
                <div class="d-flex flex-column mt-4"><button class="btn btn-khas-primary btn-sm"
-                  type="button">Details</button><button class="btn btn-outline-khas-primary btn-sm mt-2"
+                  type="button"><a style="color: white" href  = "{{url('/product-details')}}">Details</a></button><button class="btn btn-outline-khas-primary btn-sm mt-2"
                   type="button">Add to favorites</button>
                </div>
             </div>
@@ -230,7 +230,7 @@ background: rgba(0, 0, 0, 0.351) }
             </div>
             <div class="col-md-6 mt-1">
                <div class="d-flex align-items-center">
-                  <h3><a href="#">I Phone 14 Pro</a></h3>
+                  <h3><a href="{{url('/product-details')}}">I Phone 14 Pro</a></h3>
                   <small style="padding:2px;font-size:10px" class="border text-muted ms-2 rounded">Ad</small>
                </div>
                <div class="d-flex flex-row">
@@ -252,7 +252,7 @@ background: rgba(0, 0, 0, 0.351) }
                   {{-- <span class="strike-text">$20.99</span> --}}
                </div>
                <div class="d-flex flex-column mt-4"><button class="btn btn-khas-primary btn-sm"
-                  type="button">Details</button><button class="btn btn-outline-khas-primary btn-sm mt-2"
+                  type="button"><a style="color: white" href  = "{{url('/product-details')}}">Details</a></button><button class="btn btn-outline-khas-primary btn-sm mt-2"
                   type="button">Add to favorites</button></div>
             </div>
          </div>

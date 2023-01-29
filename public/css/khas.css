@@ -1393,6 +1393,9 @@ table > tbody > tr > td {
     .footer-social-icons li span {
         display: none;
     }
+    .manage-product-btns{
+        text-align: center !important;
+    }
 }
 
 
@@ -1404,4 +1407,9 @@ table > tbody > tr > td {
 .strike-text {
   color: rgb(235, 235, 5);
   text-decoration: line-through;
+}
+
+
+.sidebar-menue-heading{
+    background-color: rgb(227, 227, 227);
 }
