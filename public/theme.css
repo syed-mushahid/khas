@@ -1,6 +1,9 @@
 :root {
     scroll-behavior: smooth;
-    --primary: rgb(114, 0, 185);
-    --secondary: #081828;
+    --primary: #f76631;
+    --secondary:  #7200b9;
     --secondery-black: #212529;
+}
+body{
+    /* background-color: rgb(241 241 241 / 15%) !important; */
 }

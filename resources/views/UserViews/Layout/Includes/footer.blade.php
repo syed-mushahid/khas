@@ -117,3 +117,9 @@
     </div>
     <!-- End Footer Bottom -->
 </footer>
+<?php session()->forget('global_status');
+session()->forget('global_error');
+session()->forget('error');
+session()->forget('status');
+
+?>

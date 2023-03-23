@@ -31,11 +31,11 @@
               <i class="bi bi-person-fill-lock"></i><span>Banned Users</span>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="#">
               <i class="bi bi-pie-chart-fill"></i><span>Report</span>
             </a>
-          </li>
+          </li> --}}
 
 
         </ul>
@@ -130,20 +130,20 @@
                     <i class="bi bi-shield-check"></i><span>Add inspection</span>
                   </a>
                 </li>
-                <li>
+                {{-- <li>
                   <a href="{{url('inspection_report')}}">
                     <i class="bi bi-shield-fill-check"></i><span>Inspection Report</span>
                   </a>
-                </li>
+                </li> --}}
 
               </ul>
             </li>
 
-          <li>
+          {{-- <li>
             <a href="{{url('product_report')}}">
               <i class="bi bi-pie-chart-fill"></i><span>Products Report</span>
             </a>
-          </li>
+          </li> --}}
 
         </ul>
       </li><!-- End Products Nav -->
@@ -170,11 +170,11 @@
         <i class="bi bi-cart-check-fill"></i><span>Completed Sales</span>
       </a>
     </li>
-    <li>
+    {{-- <li>
       <a href="{{url('sales_report')}}">
         <i class="bi bi-pie-chart-fill"></i><span>Sales Report</span>
       </a>
-    </li>
+    </li> --}}
 
   </ul>
 </li>
@@ -229,11 +229,11 @@
         <i class="bi bi-cash-coin"></i><span>Deposits</span>
       </a>
     </li>
-    <li>
+    {{-- <li>
       <a href="{{url('finance_report')}}">
         <i class="bi bi-pie-chart-fill"></i><span>Reports</span>
       </a>
-    </li>
+    </li> --}}
 
   </ul>
 </li>
@@ -316,11 +316,11 @@
               <i class="bi bi-arrow-return-right"></i><span>Event Holidays</span>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="{{url('attendance_report')}}">
               <i class="bi bi-arrow-return-right"></i><span>Report</span>
             </a>
-          </li>
+          </li> --}}
           <li>
 
         </ul>
@@ -362,9 +362,9 @@
             </a>
           </li>
           <li>
-            <a href="{{url('salary_report')}}">
+            {{-- <a href="{{url('salary_report')}}">
               <i class="bi bi-arrow-return-right"></i><span>Report</span>
-            </a>
+            </a> --}}
           </li>
           <li>
 
@@ -401,11 +401,11 @@
         <i class="bi bi-check-square-fill"></i><span>Completed Return</span>
       </a>
     </li>
-    <li>
+    {{-- <li>
       <a href="{{url('returns_report')}}">
         <i class="bi bi-pie-chart-fill"></i><span>Report</span>
       </a>
-    </li>
+    </li> --}}
 
   </ul>
 </li>

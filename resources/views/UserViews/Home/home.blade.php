@@ -62,8 +62,8 @@ background: rgba(0, 0, 0, 0.351) }
    <div class="container">
       <div class="row justify-content-center">
          @include('UserViews.Layout.Includes.sidebar')
-         <div class="col-md-9">
-         <div class="row mb-3 p-2 bg-white border rounded">
+         <div class="col-md-9 ">
+         <div class="row mb-3  p-4 shadow-lg bg-white rounded">
             <div class="col-md-3 mt-1"><img role="button" class="img-fluid img-responsive rounded product-image"
                src="https://imageio.forbes.com/specials-images/imageserve/6321aca5df0a9fa9eee9950b/0x0.jpg?format=jpg&crop=1456,970,x63,y104,safe&width=1200">
             </div>
@@ -95,7 +95,7 @@ background: rgba(0, 0, 0, 0.351) }
                   type="button">Add to favorites</button></div>
             </div>
          </div>
-         <div class="row mb-3 p-2 bg-white border rounded">
+         <div class="row mb-3 p-4 shadow-lg bg-white rounded">
             <div class="col-md-3 mt-1"><img role="button" class="img-fluid img-responsive rounded product-image"
                src="https://imageio.forbes.com/specials-images/imageserve/6321aca5df0a9fa9eee9950b/0x0.jpg?format=jpg&crop=1456,970,x63,y104,safe&width=1200">
             </div>
@@ -127,7 +127,7 @@ background: rgba(0, 0, 0, 0.351) }
                   type="button">Add to favorites</button></div>
             </div>
          </div>
-         <div class="row mb-3 p-2 bg-white border rounded">
+         <div class="row mb-3 p-4 shadow-lg bg-white rounded">
             <div class="col-md-3 mt-1"><img role="button" class="img-fluid img-responsive rounded product-image"
                src="https://imageio.forbes.com/specials-images/imageserve/6321aca5df0a9fa9eee9950b/0x0.jpg?format=jpg&crop=1456,970,x63,y104,safe&width=1200">
             </div>
@@ -159,7 +159,7 @@ background: rgba(0, 0, 0, 0.351) }
                   type="button">Add to favorites</button></div>
             </div>
          </div>
-         <div class="row mb-3 p-2 bg-white border rounded">
+         <div class="row mb-3 p-4 shadow-lg bg-white rounded">
             <div class="col-md-3 mt-1"><img role="button" class="img-fluid img-responsive rounded product-image"
                src="https://imageio.forbes.com/specials-images/imageserve/6321aca5df0a9fa9eee9950b/0x0.jpg?format=jpg&crop=1456,970,x63,y104,safe&width=1200">
             </div>
@@ -191,7 +191,7 @@ background: rgba(0, 0, 0, 0.351) }
                   type="button">Add to favorites</button></div>
             </div>
          </div>
-         <div class="row mb-3 p-2 bg-white border rounded">
+         <div class="row mb-3 p-4 shadow-lg bg-white rounded">
             <div class="col-md-3 mt-1"><img role="button" class="img-fluid img-responsive rounded product-image"
                src="https://imageio.forbes.com/specials-images/imageserve/6321aca5df0a9fa9eee9950b/0x0.jpg?format=jpg&crop=1456,970,x63,y104,safe&width=1200">
             </div>
@@ -224,7 +224,7 @@ background: rgba(0, 0, 0, 0.351) }
                </div>
             </div>
          </div>
-         <div class="row mb-3 p-2 bg-white border rounded">
+         <div class="row mb-3 p-4 shadow-lg bg-white rounded">
             <div class="col-md-3 mt-1"><img role="button" class="img-fluid img-responsive rounded product-image"
                src="https://imageio.forbes.com/specials-images/imageserve/6321aca5df0a9fa9eee9950b/0x0.jpg?format=jpg&crop=1456,970,x63,y104,safe&width=1200">
             </div>

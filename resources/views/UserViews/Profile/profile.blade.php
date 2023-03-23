@@ -21,9 +21,9 @@
 @endsection
 @section('content')
 <section class="section pt-4 pb-4 ">
-   <div class="container border rounded my-4 ">
+   <div class="container  rounded my-4 ">
       <div class="row">
-         <aside class=" col-lg-3 py-4 col-md-4 border-end">
+         <aside class=" col-lg-3 py-4 col-md-4 bg-white shadow rounded-3">
             <div class="">
                <div class="d-flex  flex-wrap justify-content-center">
 -
@@ -51,11 +51,12 @@
                 </div>
                </div>
 
-               <div class="text-center  mt-2"><button type="button" class="btn btn-outline-primary"><i class="bi bi-chat fs-sm me-2"></i>Send Message</button></div>
+               {{-- <div class="text-center  mt-2"><button type="button" class="btn btn-outline-primary"><i class="bi bi-chat fs-sm me-2"></i>Send Message</button></div> --}}
             </div>
          </aside>
-         <div class="col-lg-9 col-md-8  mt-4 ">
-            <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between mb-lg-4 mb-3 pb-md-1">
+         <div class="col-lg-9 col-md-8  ">
+           <div class="col-12 ">
+            <div class="d-flex  flex-md-row flex-column align-items-md-center justify-content-md-between mb-lg-4 mb-3 pb-md-1">
                <!-- Nav tabs-->
                <div class="mb-md-0 mb-4 pb-1" style="overflow-x: auto;">
                   <ul class="nav nav-tabs nav-fill flex-nowrap text-nowrap mb-0" role="tablist">
@@ -73,6 +74,50 @@
                <div class="tab-pane fade active show" id="avilable" role="tabpanel">
                   <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3">
                      <!-- Product-->
+                     <div class="col mb-3 ">
+                        <article class="card h-100 border-0 bg-white shadow rounded-3">
+                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
+                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
+                                <span class="btn btn-success btn-sm position-absolute shadow" style="top: 10px; right: 10px;">New</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <h4 class="w-100 text-center">RS 20,000</h4>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between my-3">
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                </div>
+                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
+                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
+                            </div>
+                        </article>
+                    </div>
+                     <div class="col mb-3">
+                        <article class="card h-100 border-0 shadow">
+                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
+                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
+                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
+                            </div>
+                            <div class="card-body">
+                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <h4 class="w-100 text-center">RS 20,000</h4>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="d-flex justify-content-between my-3">
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                </div>
+                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
+                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
+                            </div>
+                        </article>
+                    </div>
                      <div class="col mb-3">
                         <article class="card h-100 border-0 shadow">
                             <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
@@ -87,8 +132,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -109,30 +154,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-success btn-sm position-absolute shadow" style="top: 10px; right: 10px;">New</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -153,8 +176,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -175,30 +198,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -229,8 +230,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -251,8 +252,8 @@
                          </div>
                          <div class="card-footer">
                              <div class="d-flex justify-content-between my-3">
-                                 <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                 <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                 <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                 <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                              </div>
                              <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                              <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -273,8 +274,8 @@
                       </div>
                       <div class="card-footer">
                           <div class="d-flex justify-content-between my-3">
-                              <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                              <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                              <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                              <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                           </div>
                           <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                           <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -303,8 +304,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -325,8 +326,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -347,8 +348,8 @@
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
                                 <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
                                 <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
@@ -360,9 +361,9 @@
                <!-- reviews-->
                <div class="tab-pane fade" id="reviews" role="tabpanel">
 
-                  <div class=" border-bottom py-5">
+                  <div class=" border-bottom py-2">
                      <div class="container " id="reviews">
-                       <div class="row pb-3">
+                       <div class="row pb-3 shadow-lg rounded-4 p-4">
                          <div class="col-lg-4 col-md-5">
                            <h2 class="h3 mb-4">45 Reviews</h2>
                            <div class="star-rating me-2"><i class="bi bi-star-fill fs-sm text-accent me-1"></i><i class="bi bi-star-fill fs-sm text-accent me-1"></i><i class="bi bi-star-fill fs-sm text-accent me-1"></i><i class="bi bi-star-half fs-sm text-accent me-1"></i><i class="bi bi-star fs-sm text-muted me-1"></i></div><span class="d-inline-block align-middle">4.5 Overall rating</span>
@@ -426,7 +427,7 @@
                              </div>
                            </div>
                            <!-- Review-->
-                           <div class="col-12 pb-4 mb-4 border-bottom">
+                           <div class="col-12 shadow-lg rounded-4 p-4 mb-4 border-bottom">
                              <div class="d-flex mb-3">
                                <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="https://t3.ftcdn.net/jpg/02/36/48/86/360_F_236488644_opXVvD367vGJTM2I7xTlsHB58DVbmtxR.jpg" width="50" height="50" alt="Luqman Waheed">
                                  <div class="ps-3">
@@ -442,7 +443,7 @@
 
 
                            </div>
-                           <div class="col-12 pb-4 mb-4 border-bottom">
+                           <div class="col-12 pb-4 shadow-lg rounded-4 p-4 mb-4 border-bottom">
                              <div class="d-flex mb-3">
                                <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="https://t3.ftcdn.net/jpg/02/36/48/86/360_F_236488644_opXVvD367vGJTM2I7xTlsHB58DVbmtxR.jpg" width="50" height="50" alt="Luqman Waheed">
                                  <div class="ps-3">
@@ -458,7 +459,7 @@
 
 
                            </div>
-                           <div class="col-12 pb-4 mb-4 border-bottom">
+                           <div class="col-12 pb-4 shadow-lg rounded-4 p-4 mb-4 border-bottom">
                              <div class="d-flex mb-3">
                                <div class="d-flex align-items-center me-4 pe-2"><img class="rounded-circle" src="https://t3.ftcdn.net/jpg/02/36/48/86/360_F_236488644_opXVvD367vGJTM2I7xTlsHB58DVbmtxR.jpg" width="50" height="50" alt="Luqman Waheed">
                                  <div class="ps-3">
@@ -483,6 +484,7 @@
                    </div>
                </div>
             </div>
+           </div>
          </div>
       </div>
    </div>

@@ -8,14 +8,14 @@
       <div class="row justify-content-center ">
 
          <div class="container pb-5 mb-2 mb-md-4">
-            <div class="row border rounded">
+            <div class="row rounded">
               <!-- Sidebar-->
             @include('UserViews/Profile/Components/sidebar')
 
-            <section class="col-lg-8 pt-3 px-4 pb-4 mb-3">
+            <section class="col-lg-9  px-4 pb-4 mb-3">
 
                   <!-- Title-->
-                  <div class="d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
+                  <div class="d-sm-flex flex-wrap justify-content-between bg-white shadow rounded-3 px-3 py-2 align-items-center border-bottom">
                     <h2 class="h3 py-2 me-2 text-center text-sm-start">My Purchases<span class="badge bg-primary text-white text-center ms-2">4</span></h2>
                     <div class="py-2">
                       <div class="d-flex flex-nowrap align-items-center pb-3">
@@ -32,15 +32,15 @@
                     </div>
                   </div>
 
-                  <div class="row mx-n2 pt-2">
+                  <div class="row mx-n2 p-1 mt-4">
                     <div class="col-sm-6 px-2 mb-4">
-                      <div class="bg-white shadow border h-100 rounded-3 p-4 text-center">
+                      <div class="bg-white  bg-white shadow rounded-3 h-100 rounded-3 p-4 text-center">
                         <h3>Total Purchase</h3>
                         <p class="h2 mb-2">4</p>
                       </div>
                     </div>
                     <div class="col-sm-6 px-2 mb-4">
-                      <div class="bg-white shadow border h-100 rounded-3 p-4 text-center">
+                      <div class="bg-white  bg-white shadow rounded-3 h-100 rounded-3 p-4 text-center">
                         <h3>Total Spend</h3>
                         <p class="h2 mb-2">Rs 10,343</p>
                       </div>
@@ -49,7 +49,7 @@
 
 
 
-                  <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+                  <div class="d-sm-flex justify-content-between bg-white  p-4 mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                     <div class="d-block d-sm-flex align-items-start text-center text-sm-start"><a class="d-block flex-shrink-0 mx-auto me-sm-4" href="{{url('product-details')}}" style="width: 7rem;"><img width="100%"src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Product"></a>
                       <div class="pt-2">
                         <h3 class="product-title fs-base mb-2"><a href="{{url('product-details')}}">Realme 3 Pro 6 GB</a></h3>
@@ -64,7 +64,7 @@
                       <button class="btn btn-outline-danger btn-sm w-50 my-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-megaphone me-2"></i>File Dispute</button>
                     </div>
                   </div>
-                  <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+                  <div class="d-sm-flex justify-content-between bg-white  p-4 mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                     <div class="d-block d-sm-flex align-items-start text-center text-sm-start"><a class="d-block flex-shrink-0 mx-auto me-sm-4" href="{{url('product-details')}}" style="width: 7rem;"><img width="100%"src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Product"></a>
                       <div class="pt-2">
                         <h3 class="product-title fs-base mb-2"><a href="{{url('product-details')}}">Realme 3 Pro 6 GB</a></h3>
@@ -79,7 +79,7 @@
                       <button class="btn btn-outline-danger btn-sm w-50 my-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-megaphone me-2"></i>File Dispute</button>
                     </div>
                   </div>
-                  <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+                  <div class="d-sm-flex justify-content-between bg-white  p-4 mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                     <div class="d-block d-sm-flex align-items-start text-center text-sm-start"><a class="d-block flex-shrink-0 mx-auto me-sm-4" href="{{url('product-details')}}" style="width: 7rem;"><img width="100%"src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Product"></a>
                       <div class="pt-2">
                         <h3 class="product-title fs-base mb-2"><a href="{{url('product-details')}}">Realme 3 Pro 6 GB</a></h3>
@@ -94,7 +94,7 @@
                       <button class="btn btn-outline-danger btn-sm w-50 my-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-megaphone me-2"></i>File Dispute</button>
                     </div>
                   </div>
-                  <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
+                  <div class="d-sm-flex justify-content-between bg-white  p-4 mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">
                     <div class="d-block d-sm-flex align-items-start text-center text-sm-start"><a class="d-block flex-shrink-0 mx-auto me-sm-4" href="{{url('product-details')}}" style="width: 7rem;"><img width="100%"src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Product"></a>
                       <div class="pt-2">
                         <h3 class="product-title fs-base mb-2"><a href="{{url('product-details')}}">Realme 3 Pro 6 GB</a></h3>

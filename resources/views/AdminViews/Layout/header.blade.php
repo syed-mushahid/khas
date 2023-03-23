@@ -4,7 +4,8 @@
     <div class="d-flex align-items-center justify-content-between">
       <i class="bi me-2 bi-list toggle-sidebar-btn"></i>
       <a href="{{route('admin_dashboard')}}" class="logo d-flex align-items-center">
-        <img src="{{asset('images/khas-logo-rec.png')}}" alt="">
+        <h1><span class="text-secendory">K</span><span class="text-primary">HAS</span></h1>
+
       </a>
     </div><!-- End Logo -->
 

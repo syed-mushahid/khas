@@ -8,14 +8,14 @@
       <div class="row justify-content-center ">
 
          <div class="container pb-5 mb-2 mb-md-4">
-            <div class="row border rounded">
+            <div class="row ">
               <!-- Sidebar-->
             @include('UserViews/Profile/Components/sidebar')
 
-            <section class="col-lg-8 pt-3 px-4 pb-4 mb-3">
+            <section class="col-lg-9  px-4 pb-4 mb-3">
 
                   <!-- Title-->
-                  <div class="d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
+                  <div class="d-sm-flex flex-wrap justify-content-between bg-white shadow rounded-3 px-3 py-2 align-items-center border-bottom">
                     <h2 class="h3 py-2 me-2 text-center text-sm-start">My Sales<span class="badge bg-primary text-white text-center ms-2">4</span></h2>
                     <div class="py-2">
                       <div class="d-flex flex-nowrap align-items-center pb-3">
@@ -32,7 +32,7 @@
                     </div>
                   </div>
 
-                  <div class="row mx-n2 pt-2">
+                  <div class="row mx-n2 pt-2 mt-4">
                     <div class="col-sm-6 px-2 mb-4">
                       <div class="bg-white shadow border h-100 rounded-3 p-4 text-center">
                         <h3>Total Sales</h3>

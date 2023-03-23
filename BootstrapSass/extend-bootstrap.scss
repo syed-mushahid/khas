@@ -1,8 +1,8 @@
+$primary:#f76631;
+$secondery: #7200b9;
 @import "../vendor/twbs/bootstrap/scss/_functions";
 @import "../vendor/twbs/bootstrap/scss/_variables";
 
-$success:#01b84a;
-$custom-theme-colors: ("khas-primary": #7200b9,"khas-secondery": rgb(45, 149, 239),);
+$custom-theme-colors: ("khas-primary": #f76631,"khas-secondery": #7200b9,);
 $theme-colors: map-merge($custom-theme-colors, $theme-colors);
-
 @import "../vendor/twbs/bootstrap/scss/bootstrap";

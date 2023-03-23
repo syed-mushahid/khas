@@ -1,4 +1,19 @@
 
+    @if (session('global_status'))
+<div class="alert m-0  rounded-0  alert-success alert-dismissible fade show" role="alert">
+    {{ session('global_status') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+@if (session('global_error'))
+<div class="alert m-0  rounded-0 alert-danger alert-dismissible fade show" role="alert">
+    {{ session('global_error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+@endif
+
+
     <header class="header navbar-area">
         <!-- Start Topbar -->
         <div class="topbar bg-khas-secondery">
@@ -8,26 +23,48 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="topbar-left">
                             <ul class="useful-links">
-                                <li><a href="{{url('/')}}">Home</a></li>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
+                                <li><a class="text-white" href="{{url('/')}}">Home</a></li>
+                                <li><a class="text-white" href="#">About Us</a></li>
+                                <li><a class="text-white" href="contact.html">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="topbar-right d-flex justify-content-end align-items-center">
-                            <div class="user ">
-                                <i class="bi bi-person"></i>
-                                Hello
-                            </div>
+
+                            @if (auth()->check())
+                            <div class="dropdown">
+                                <div class="header-profile">
+                                    <a href="javascript:void(0)">
+                                       <img class="rounded-circle" src="{{ !empty(Auth::user()->photo) ? asset('storage/profile_photos/' . Auth::user()->photo) : asset('storage/profile_photos/default_profile_photo.jpg') }}"  alt="Profile Image" width="30px" height="30px" srcset="">
+                                    </a>
+
+                                        <button class="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{ Auth::user()->first_name }}
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                          <li><a class="dropdown-item" href="{{url('dashboard')}}">Dashboard</a></li>
+                                          <li><a class="dropdown-item" href="{{url('profile')}}">Profile</a></li>
+                                          <li><a class="dropdown-item" href="{{url('profile_settings')}}">Settings</a></li>
+                                          <li><a class="dropdown-item" href="{{url('logout')}}">Logout</a></li>
+                                        </ul>
+                                      </div>
+                                </div>
+
+
+                            @else
                             <ul class="user-login m-0">
                                 <li>
-                                    <a href="{{url('login')}}">Sign In</a>
+                                    <a class="text-white" href="{{url('login')}}">Sign In</a>
                                 </li>
                                 <li>
-                                    <a href="{{url('signup')}}">Register</a>
+                                    <a class="text-white" href="{{url('signup')}}">Register</a>
                                 </li>
                             </ul>
+                        @endif
+
+
+
                         </div>
                     </div>
                 </div>
@@ -41,11 +78,12 @@
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
                         <a class="navbar-brand" href="/">
-                            <img src="{{asset('images/khas-logo-rec.png')}}" alt="Logo">
+                            <h1><span class="text-secendory">K</span><span class="text-primary">HAS</span></h1>
+                            {{-- <img src="{{asset('images/khas-logo-rec.png')}}" alt="Logo"> --}}
                         </a>
                         <!-- End Header Logo -->
                     </div>
-                    <div class="col-lg-5 col-md-5 d-xs-none">
+                    <div class="col-lg-5 col-md-5">
                         <!-- Start Main Menu Search -->
                         <div class="main-menu-search">
                             <!-- navbar search start -->
@@ -73,84 +111,26 @@
                         </div>
                         <!-- End Main Menu Search -->
                     </div>
-                    <div class="col-lg-4 col-md-4 col-5 d-flex justify-content-between">
+                    <div class="col-lg-4 col-md-4 col-5">
                         <div class="middle-right-area col-12">
 
-                            <div class="navbar-cart col-12 d-flex justify-content-between">
+                            <div class="navbar-cart col-12 d-flex justify-content-end">
                                 <div class="wishlist">
-                                    <a href="javascript:void(0)">
+                                    <a href="{{url('wishlist')}}">
                                         <i class="bi bi-suit-heart"></i>
                                         <span class="total-items bg-khas-secondery">0</span>
                                     </a>
                                 </div>
                                 <div class="cart-items">
-                                    <a href="javascript:void(0)" class="main-btn">
+                                    <a href="{{url('/cart')}}" class="main-btn">
                                         <i class="bi bi-cart3"></i>
                                         <span class="total-items bg-khas-secondery">2</span>
                                     </a>
 
-                                    <!-- Shopping Item -->
-                                    <div class="shopping-item">
-                                        <div class="dropdown-cart-header">
-                                            <span>2 Items</span>
-                                            <a href="{{url('/cart')}}">View Cart</a>
-                                        </div>
-                                        <ul class="shopping-list">
-                                            <li>
-                                                <a href="javascript:void(0)" class="remove" title="Remove this item"><i
-                                                        class="lni lni-close"></i></a>
-                                                <div class="cart-img-head">
-                                                    <a class="cart-img" href="#"><img
-                                                            src="assets/images/header/cart-items/item1.jpg" alt="#"></a>
-                                                </div>
 
-                                                <div class="content">
-                                                    <h4><a href="#">
-                                                            Apple Watch Series 6</a></h4>
-                                                    <p class="quantity">1x - <span class="amount">$99.00</span></p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" class="remove" title="Remove this item"><i
-                                                        class="lni lni-close"></i></a>
-                                                <div class="cart-img-head">
-                                                    <a class="cart-img" href="#"><img
-                                                            src="assets/images/header/cart-items/item2.jpg" alt="#"></a>
-                                                </div>
-                                                <div class="content">
-                                                    <h4><a href="#">Wi-Fi Smart Camera</a></h4>
-                                                    <p class="quantity">1x - <span class="amount">$35.00</span></p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        <div class="bottom">
-                                            <div class="total">
-                                                <span>Total</span>
-                                                <span class="total-amount">$134.00</span>
-                                            </div>
-                                            <div class="button">
-                                                <a href="{{url('/checkout')}}" class="btn btn-khas-primary">Checkout</a>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <!--/ End Shopping Item -->
                                 </div>
-                                <div class="dropdown">
-                                <div class="header-profile">
-                                    <a href="javascript:void(0)">
-                                       <img class="rounded-circle" src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg" alt="Profile Image" width="40px" height="40px" srcset="">
-                                    </a>
 
-                                        <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                          Mr Jhon
-                                        </button>
-                                        <ul class="dropdown-menu">
-                                          <li><a class="dropdown-item" href="#">Profile</a></li>
-                                          <li><a class="dropdown-item" href="#">Settings</a></li>
-                                          <li><a class="dropdown-item" href="#">Logout</a></li>
-                                        </ul>
-                                      </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -176,7 +156,7 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="{{url("/")}}" class="active" aria-label="Toggle navigation"><i class="bi bi-house-heart"></i>&nbsp; Home</a>
+                                        <a href="{{url("/dashboard")}}" class="active" aria-label="Toggle navigation"><i class="bi bi-house-heart"></i>&nbsp; Home</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"

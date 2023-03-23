@@ -8,8 +8,8 @@
 @endsection
 
 @section('content')
-  
-    
+
+
   <main id="main" class="main">
 
 
@@ -44,7 +44,7 @@
             <div class="col-xxl-4 col-md-4">
               <div class="card info-card revenue-card">
 
-               
+
 
                 <div class="card-body">
                   <h5 class="card-title">Revenue <span>| Today</span></h5>
@@ -54,7 +54,7 @@
                       <i class="bi bi-currency-dollar"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>$3,264</h6>
+                      <h6>30,264</h6>
                       <span class="text-success small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">increase</span>
 
                     </div>
@@ -69,7 +69,7 @@
 
               <div class="card info-card customers-card">
 
-               
+
 
                 <div class="card-body">
                   <h5 class="card-title">Customers <span>| Today</span></h5>
@@ -89,7 +89,9 @@
               </div>
 
             </div><!-- End Customers Card -->
-
+            <div>
+              <canvas id="myChart"></canvas>
+            </div>
       </div>
     </section>
 
@@ -97,7 +99,28 @@
 @endsection
 
 @section('script')
+<script>
+  const ctx = document.getElementById('myChart');
 
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
 <script>
 
 </script>

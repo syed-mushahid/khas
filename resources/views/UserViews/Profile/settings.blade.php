@@ -1,406 +1,160 @@
+<?php
+   $Cityarray = array ( 0 => 'Islamabad', 1 => 'Ahmed Nager', 2 => 'Ahmadpur East', 3 => 'Ali Khan', 4 => 'Alipur', 5 => 'Arifwala', 6 => 'Attock', 7 => 'Bhera', 8 => 'Bhalwal', 9 => 'Bahawalnagar', 10 => 'Bahawalpur', 11 => 'Bhakkar', 12 => 'Burewala', 13 => 'Chillianwala', 14 => 'Chakwal', 15 => 'Chichawatni', 16 => 'Chiniot', 17 => 'Chishtian', 18 => 'Daska', 19 => 'Darya Khan', 20 => 'Dera Ghazi', 21 => 'Dhaular', 22 => 'Dina', 23 => 'Dinga', 24 => 'Dipalpur', 25 => 'Faisalabad', 26 => 'Fateh Jhang', 27 => 'Ghakhar Mandi', 28 => 'Gojra', 29 => 'Gujranwala', 30 => 'Gujrat', 31 => 'Gujar Khan', 32 => 'Hafizabad', 33 => 'Haroonabad', 34 => 'Hasilpur', 35 => 'Haveli', 36 => 'Lakha', 37 => 'Jalalpur', 38 => 'Jattan', 39 => 'Jampur', 40 => 'Jaranwala', 41 => 'Jhang', 42 => 'Jhelum', 43 => 'Kalabagh', 44 => 'Karor Lal', 45 => 'Kasur', 46 => 'Kamalia', 47 => 'Kamoke', 48 => 'Khanewal', 49 => 'Khanpur', 50 => 'Kharian', 51 => 'Khushab', 52 => 'Kot Adu', 53 => 'Jauharabad', 54 => 'Lahore', 55 => 'Lalamusa', 56 => 'Layyah', 57 => 'Liaquat Pur', 58 => 'Lodhran', 59 => 'Malakwal', 60 => 'Mamoori', 61 => 'Mailsi', 62 => 'Mandi Bahauddin', 63 => 'mian Channu', 64 => 'Mianwali', 65 => 'Multan', 66 => 'Murree', 67 => 'Muridke', 68 => 'Mianwali Bangla', 69 => 'Muzaffargarh', 70 => 'Narowal', 71 => 'Okara', 72 => 'Renala Khurd', 73 => 'Pakpattan', 74 => 'Pattoki', 75 => 'Pir Mahal', 76 => 'Qaimpur', 77 => 'Qila Didar', 78 => 'Rabwah', 79 => 'Raiwind', 80 => 'Rajanpur', 81 => 'Rahim Yar', 82 => 'Rawalpindi', 83 => 'Sadiqabad', 84 => 'Safdarabad', 85 => 'Sahiwal', 86 => 'Sangla Hill', 87 => 'Sarai Alamgir', 88 => 'Sargodha', 89 => 'Shakargarh', 90 => 'Sheikhupura', 91 => 'Sialkot', 92 => 'Sohawa', 93 => 'Soianwala', 94 => 'Siranwali', 95 => 'Talagang', 96 => 'Taxila', 97 => 'Toba Tek', 98 => 'Vehari', 99 => 'Wah Cantonment', 100 => 'Wazirabad', 101 => 'Badin', 102 => 'Bhirkan', 103 => 'Rajo Khanani', 104 => 'Chak', 105 => 'Dadu', 106 => 'Digri', 107 => 'Diplo', 108 => 'Dokri', 109 => 'Ghotki', 110 => 'Haala', 111 => 'Hyderabad', 112 => 'Islamkot', 113 => 'Jacobabad', 114 => 'Jamshoro', 115 => 'Jungshahi', 116 => 'Kandhkot', 117 => 'Kandiaro', 118 => 'Karachi', 119 => 'Kashmore', 120 => 'Keti Bandar', 121 => 'Khairpur', 122 => 'Kotri', 123 => 'Larkana', 124 => 'Matiari', 125 => 'Mehar', 126 => 'Mirpur Khas', 127 => 'Mithani', 128 => 'Mithi', 129 => 'Mehrabpur', 130 => 'Moro', 131 => 'Nagarparkar', 132 => 'Naudero', 133 => 'Naushahro Feroze', 134 => 'Naushara', 135 => 'Nawabshah', 136 => 'Nazimabad', 137 => 'Qambar', 138 => 'Qasimabad', 139 => 'Ranipur', 140 => 'Ratodero', 141 => 'Rohri', 142 => 'Sakrand', 143 => 'Sanghar', 144 => 'Shahbandar', 145 => 'Shahdadkot', 146 => 'Shahdadpur', 147 => 'Shahpur Chakar', 148 => 'Shikarpaur', 149 => 'Sukkur', 150 => 'Tangwani', 151 => 'Tando Adam', 152 => 'Tando Allahyar', 153 => 'Tando Muhammad', 154 => 'Thatta', 155 => 'Umerkot', 156 => 'Warah', 157 => 'Abbottabad', 158 => 'Adezai', 159 => 'Alpuri', 160 => 'Akora Khattak', 161 => 'Ayubia', 162 => 'Banda Daud', 163 => 'Bannu', 164 => 'Batkhela', 165 => 'Battagram', 166 => 'Birote', 167 => 'Chakdara', 168 => 'Charsadda', 169 => 'Chitral', 170 => 'Daggar', 171 => 'Dargai', 172 => 'Darya Khan', 173 => 'dera Ismail', 174 => 'Doaba', 175 => 'Dir', 176 => 'Drosh', 177 => 'Hangu', 178 => 'Haripur', 179 => 'Karak', 180 => 'Kohat', 181 => 'Kulachi', 182 => 'Lakki Marwat', 183 => 'Latamber', 184 => 'Madyan', 185 => 'Mansehra', 186 => 'Mardan', 187 => 'Mastuj', 188 => 'Mingora', 189 => 'Nowshera', 190 => 'Paharpur', 191 => 'Pabbi', 192 => 'Peshawar', 193 => 'Saidu Sharif', 194 => 'Shorkot', 195 => 'Shewa Adda', 196 => 'Swabi', 197 => 'Swat', 198 => 'Tangi', 199 => 'Tank', 200 => 'Thall', 201 => 'Timergara', 202 => 'Tordher', 203 => 'Awaran', 204 => 'Barkhan', 205 => 'Chagai', 206 => 'Dera Bugti', 207 => 'Gwadar', 208 => 'Harnai', 209 => 'Jafarabad', 210 => 'Jhal Magsi', 211 => 'Kacchi', 212 => 'Kalat', 213 => 'Kech', 214 => 'Kharan', 215 => 'Khuzdar', 216 => 'Killa Abdullah', 217 => 'Killa Saifullah', 218 => 'Kohlu', 219 => 'Lasbela', 220 => 'Lehri', 221 => 'Loralai', 222 => 'Mastung', 223 => 'Musakhel', 224 => 'Nasirabad', 225 => 'Nushki', 226 => 'Panjgur', 227 => 'Pishin valley', 228 => 'Quetta', 229 => 'Sherani', 230 => 'Sibi', 231 => 'Sohbatpur', 232 => 'Washuk', 233 => 'Zhob', 234 => 'Ziarat', );
+
+   ?>
 @extends('UserViews/Layout.layout')
-@section('title',' ')
+@section('title','Profile Settings')
 @section('style')
 @endsection
 @section('content')
 <section class="checkout-wrapper section col-12 pt-4 pb-4 ">
    <div class="container">
       <div class="row justify-content-center ">
-
          <div class="container pb-5 mb-2 mb-md-4">
-            <div class="row border rounded">
-              <!-- Sidebar-->
-            @include('UserViews/Profile/Components/sidebar')
-              <!-- Content  -->
-              <section class="col-lg-8 px-4 pb-4 mb-3">
-
-
-                <div class="pt-3 d-sm-flex flex-wrap justify-content-between align-items-center border-bottom">
-                    <h2 class="h3 py-2 me-2 text-center text-sm-start">Settings</h2>
-
+            <div class="row">
+               <!-- Sidebar-->
+               @include('UserViews/Profile/Components/sidebar')
+               <!-- Content  -->
+               <section class="col-lg-9  px-4 pb-4 mb-3">
+                  <div class="pt-3 d-sm-flex flex-wrap bg-white shadow rounded-3 px-3 py-2 justify-content-between align-items-center border-bottom">
+                     <h2 class="h3 py-2 me-2 text-center text-sm-start">Settings</h2>
                   </div>
+                  <div class="mt-5">
+                     <!-- Tabs-->
+                     <ul class="nav nav-tabs nav-justified" role="tablist">
+                        <li class="nav-item" role="presentation"><a class="nav-link px-0 active" href="#profile" data-bs-toggle="tab"  role="tab" aria-selected="true" >
+                           <i class="bi bi-person opacity-60 me-2"></i>Profile
+                           </a>
+                        </li>
+                        <li class="nav-item" role="presentation"><a class="nav-link px-0 " href="#Address" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">
+                           <i class="bi bi-geo-alt opacity-60 me-2"></i>Address
+                           </a>
+                        </li>
+                        <li class="nav-item" role="presentation"><a class="nav-link px-0" href="#payment" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">
+                           <i class="bi bi-credit-card opacity-60 me-2"></i>Payment Methods
+                           </a>
+                        </li>
+                     </ul>
+                     <!-- Tab content-->
+                     <div class="tab-content">
+                        <!-- Profile-->
+                        <div class="tab-pane fade active show" id="profile" role="tabpanel">
+                          <form method="POST" action="{{ route('profile_settings.update', $user->id) }}" enctype="multipart/form-data">
+                            @csrf
 
-                <div class="mt-2">
-
-                  <!-- Tabs-->
-                  <ul class="nav nav-tabs nav-justified" role="tablist">
-                    <li class="nav-item" role="presentation"><a class="nav-link px-0 active" href="#profile" data-bs-toggle="tab"  role="tab" aria-selected="true" >
-                        <i class="bi bi-person opacity-60 me-2"></i>Profile
-                    </a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link px-0 " href="#Address" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">
-                       <i class="bi bi-geo-alt opacity-60 me-2"></i>Address
-                    </a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link px-0" href="#payment" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">
-                       <i class="bi bi-credit-card opacity-60 me-2"></i>Payment Methods
-                    </a></li>
-                  </ul>
-                  <!-- Tab content-->
-                  <div class="tab-content">
-                    <!-- Profile-->
-                    <div class="tab-pane fade active show" id="profile" role="tabpanel">
-                      <div class=" rounded-3 p-4 mb-4">
-                        <div class="d-flex align-items-center"><img class="rounded" src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg" width="90" alt="Createx Studio">
-                          <div class="ps-3">
-                            <form>
-                                <label for="file-input" class="btn btn-dark btn-shadow btn-sm mb-2">
-                                    <i class="bi bi-upload text-light"></i> Change Profile
-                                </label><span id="file-selected"></span>
-                                <div class="p mb-0 fs-ms text-muted">Recomended Size 1:1</div>
-                                <input id="file-input" onchange="fileSelected()" type="file" hidden accept=".jpg,.png">
-                              </form>
-
-
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row gx-4 gy-3">
-                        <div class="col-sm-6">
-                          <label class="form-label" for="first-name">First Name</label>
-                          <input class="form-control" type="text" id="first-name" value="John">
-                        </div>
-                        <div class="col-sm-6">
-                          <label class="form-label" for="last-name">Last Name</label>
-                          <input class="form-control" type="text" id="last-name" value="Doe">
-                        </div>
-                        <div class="col-sm-6">
-                          <label class="form-label" for="email">Email address</label>
-                          <input class="form-control" type="text" id="email" value="contact@example.com" >
-                        </div>
-                        <div class="col-sm-6">
-                          <label class="form-label" for="username">Username</label>
-                          <input class="form-control" type="text" id="username" readonly disabled value="mushahid12">
-                        </div>
-                        <div class="col-sm-6">
-                            <label class="form-label" for="phone">Phone No</label>
-                            <input class="form-control" type="text" id="phone" value="contact@example.com" >
-                          </div>
-
-
-
-                        <div class="col-12">
-                          <hr class="mt-2 mb-4">
-                          <div class="d-sm-flex justify-content-between align-items-center">
-
-                            <button class="btn btn-primary mt-3 mt-sm-0" type="button">Save changes</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- Address-->
-                    <div class="tab-pane fade mt-4" id="Address" role="tabpanel">
-                    <div class="row">
-
-
-                        <div class="col-sm-6">
-                            <label class="form-label" for="select-cities">City</label>
-                            <select class="form-select" id="select-cities">
-                                <option value="" disabled selected>Select The City</option>
-                                <option value="Islamabad">Islamabad</option>
-                                <option value="" disabled>Punjab Cities</option>
-                                <option value="Ahmed Nager Chatha">Ahmed Nager Chatha</option>
-                                <option value="Ahmadpur East">Ahmadpur East</option>
-                                <option value="Ali Khan Abad">Ali Khan Abad</option>
-                                <option value="Alipur">Alipur</option>
-                                <option value="Arifwala">Arifwala</option>
-                                <option value="Attock">Attock</option>
-                                <option value="Bhera">Bhera</option>
-                                <option value="Bhalwal">Bhalwal</option>
-                                <option value="Bahawalnagar">Bahawalnagar</option>
-                                <option value="Bahawalpur">Bahawalpur</option>
-                                <option value="Bhakkar">Bhakkar</option>
-                                <option value="Burewala">Burewala</option>
-                                <option value="Chillianwala">Chillianwala</option>
-                                <option value="Chakwal">Chakwal</option>
-                                <option value="Chichawatni">Chichawatni</option>
-                                <option value="Chiniot">Chiniot</option>
-                                <option value="Chishtian">Chishtian</option>
-                                <option value="Daska">Daska</option>
-                                <option value="Darya Khan">Darya Khan</option>
-                                <option value="Dera Ghazi Khan">Dera Ghazi Khan</option>
-                                <option value="Dhaular">Dhaular</option>
-                                <option value="Dina">Dina</option>
-                                <option value="Dinga">Dinga</option>
-                                <option value="Dipalpur">Dipalpur</option>
-                                <option value="Faisalabad">Faisalabad</option>
-                                <option value="Ferozewala">Ferozewala</option>
-                                <option value="Fateh Jhang">Fateh Jang</option>
-                                <option value="Ghakhar Mandi">Ghakhar Mandi</option>
-                                <option value="Gojra">Gojra</option>
-                                <option value="Gujranwala">Gujranwala</option>
-                                <option value="Gujrat">Gujrat</option>
-                                <option value="Gujar Khan">Gujar Khan</option>
-                                <option value="Hafizabad">Hafizabad</option>
-                                <option value="Haroonabad">Haroonabad</option>
-                                <option value="Hasilpur">Hasilpur</option>
-                                <option value="Haveli Lakha">Haveli Lakha</option>
-                                <option value="Jatoi">Jatoi</option>
-                                <option value="Jalalpur">Jalalpur</option>
-                                <option value="Jattan">Jattan</option>
-                                <option value="Jampur">Jampur</option>
-                                <option value="Jaranwala">Jaranwala</option>
-                                <option value="Jhang">Jhang</option>
-                                <option value="Jhelum">Jhelum</option>
-                                <option value="Kalabagh">Kalabagh</option>
-                                <option value="Karor Lal Esan">Karor Lal Esan</option>
-                                <option value="Kasur">Kasur</option>
-                                <option value="Kamalia">Kamalia</option>
-                                <option value="Kamoke">Kamoke</option>
-                                <option value="Khanewal">Khanewal</option>
-                                <option value="Khanpur">Khanpur</option>
-                                <option value="Kharian">Kharian</option>
-                                <option value="Khushab">Khushab</option>
-                                <option value="Kot Addu">Kot Addu</option>
-                                <option value="Jauharabad">Jauharabad</option>
-                                <option value="Lahore">Lahore</option>
-                                <option value="Lalamusa">Lalamusa</option>
-                                <option value="Layyah">Layyah</option>
-                                <option value="Liaquat Pur">Liaquat Pur</option>
-                                <option value="Lodhran">Lodhran</option>
-                                <option value="Malakwal">Malakwal</option>
-                                <option value="Mamoori">Mamoori</option>
-                                <option value="Mailsi">Mailsi</option>
-                                <option value="Mandi Bahauddin">Mandi Bahauddin</option>
-                                <option value="Mian Channu">Mian Channu</option>
-                                <option value="Mianwali">Mianwali</option>
-                                <option value="Multan">Multan</option>
-                                <option value="Murree">Murree</option>
-                                <option value="Muridke">Muridke</option>
-                                <option value="Mianwali Bangla">Mianwali Bangla</option>
-                                <option value="Muzaffargarh">Muzaffargarh</option>
-                                <option value="Narowal">Narowal</option>
-                                <option value="Nankana Sahib">Nankana Sahib</option>
-                                <option value="Okara">Okara</option>
-                                <option value="Renala Khurd">Renala Khurd</option>
-                                <option value="Pakpattan">Pakpattan</option>
-                                <option value="Pattoki">Pattoki</option>
-                                <option value="Pir Mahal">Pir Mahal</option>
-                                <option value="Qaimpur">Qaimpur</option>
-                                <option value="Qila Didar Singh">Qila Didar Singh</option>
-                                <option value="Rabwah">Rabwah</option>
-                                <option value="Raiwind">Raiwind</option>
-                                <option value="Rajanpur">Rajanpur</option>
-                                <option value="Rahim Yar Khan">Rahim Yar Khan</option>
-                                <option value="Rawalpindi">Rawalpindi</option>
-                                <option value="Sadiqabad">Sadiqabad</option>
-                                <option value="Safdarabad">Safdarabad</option>
-                                <option value="Sahiwal">Sahiwal</option>
-                                <option value="Sangla Hill">Sangla Hill</option>
-                                <option value="Sarai Alamgir">Sarai Alamgir</option>
-                                <option value="Sargodha">Sargodha</option>
-                                <option value="Shakargarh">Shakargarh</option>
-                                <option value="Sheikhupura">Sheikhupura</option>
-                                <option value="Sialkot">Sialkot</option>
-                                <option value="Sohawa">Sohawa</option>
-                                <option value="Soianwala">Soianwala</option>
-                                <option value="Siranwali">Siranwali</option>
-                                <option value="Talagang">Talagang</option>
-                                <option value="Taxila">Taxila</option>
-                                <option value="Toba Tek Singh">Toba Tek Singh</option>
-                                <option value="Vehari">Vehari</option>
-                                <option value="Wah Cantonment">Wah Cantonment</option>
-                                <option value="Wazirabad">Wazirabad</option>
-                                <option value="" disabled>Sindh Cities</option>
-                                <option value="Badin">Badin</option>
-                                <option value="Bhirkan">Bhirkan</option>
-                                <option value="Rajo Khanani">Rajo Khanani</option>
-                                <option value="Chak">Chak</option>
-                                <option value="Dadu">Dadu</option>
-                                <option value="Digri">Digri</option>
-                                <option value="Diplo">Diplo</option>
-                                <option value="Dokri">Dokri</option>
-                                <option value="Ghotki">Ghotki</option>
-                                <option value="Haala">Haala</option>
-                                <option value="Hyderabad">Hyderabad</option>
-                                <option value="Islamkot">Islamkot</option>
-                                <option value="Jacobabad">Jacobabad</option>
-                                <option value="Jamshoro">Jamshoro</option>
-                                <option value="Jungshahi">Jungshahi</option>
-                                <option value="Kandhkot">Kandhkot</option>
-                                <option value="Kandiaro">Kandiaro</option>
-                                <option value="Karachi">Karachi</option>
-                                <option value="Kashmore">Kashmore</option>
-                                <option value="Keti Bandar">Keti Bandar</option>
-                                <option value="Khairpur">Khairpur</option>
-                                <option value="Kotri">Kotri</option>
-                                <option value="Larkana">Larkana</option>
-                                <option value="Matiari">Matiari</option>
-                                <option value="Mehar">Mehar</option>
-                                <option value="Mirpur Khas">Mirpur Khas</option>
-                                <option value="Mithani">Mithani</option>
-                                <option value="Mithi">Mithi</option>
-                                <option value="Mehrabpur">Mehrabpur</option>
-                                <option value="Moro">Moro</option>
-                                <option value="Nagarparkar">Nagarparkar</option>
-                                <option value="Naudero">Naudero</option>
-                                <option value="Naushahro Feroze">Naushahro Feroze</option>
-                                <option value="Naushara">Naushara</option>
-                                <option value="Nawabshah">Nawabshah</option>
-                                <option value="Nazimabad">Nazimabad</option>
-                                <option value="Qambar">Qambar</option>
-                                <option value="Qasimabad">Qasimabad</option>
-                                <option value="Ranipur">Ranipur</option>
-                                <option value="Ratodero">Ratodero</option>
-                                <option value="Rohri">Rohri</option>
-                                <option value="Sakrand">Sakrand</option>
-                                <option value="Sanghar">Sanghar</option>
-                                <option value="Shahbandar">Shahbandar</option>
-                                <option value="Shahdadkot">Shahdadkot</option>
-                                <option value="Shahdadpur">Shahdadpur</option>
-                                <option value="Shahpur Chakar">Shahpur Chakar</option>
-                                <option value="Shikarpaur">Shikarpaur</option>
-                                <option value="Sukkur">Sukkur</option>
-                                <option value="Tangwani">Tangwani</option>
-                                <option value="Tando Adam Khan">Tando Adam Khan</option>
-                                <option value="Tando Allahyar">Tando Allahyar</option>
-                                <option value="Tando Muhammad Khan">Tando Muhammad Khan</option>
-                                <option value="Thatta">Thatta</option>
-                                <option value="Umerkot">Umerkot</option>
-                                <option value="Warah">Warah</option>
-                                <option value="" disabled>Khyber Cities</option>
-                                <option value="Abbottabad">Abbottabad</option>
-                                <option value="Adezai">Adezai</option>
-                                <option value="Alpuri">Alpuri</option>
-                                <option value="Akora Khattak">Akora Khattak</option>
-                                <option value="Ayubia">Ayubia</option>
-                                <option value="Banda Daud Shah">Banda Daud Shah</option>
-                                <option value="Bannu">Bannu</option>
-                                <option value="Batkhela">Batkhela</option>
-                                <option value="Battagram">Battagram</option>
-                                <option value="Birote">Birote</option>
-                                <option value="Chakdara">Chakdara</option>
-                                <option value="Charsadda">Charsadda</option>
-                                <option value="Chitral">Chitral</option>
-                                <option value="Daggar">Daggar</option>
-                                <option value="Dargai">Dargai</option>
-                                <option value="Darya Khan">Darya Khan</option>
-                                <option value="Dera Ismail Khan">Dera Ismail Khan</option>
-                                <option value="Doaba">Doaba</option>
-                                <option value="Dir">Dir</option>
-                                <option value="Drosh">Drosh</option>
-                                <option value="Hangu">Hangu</option>
-                                <option value="Haripur">Haripur</option>
-                                <option value="Karak">Karak</option>
-                                <option value="Kohat">Kohat</option>
-                                <option value="Kulachi">Kulachi</option>
-                                <option value="Lakki Marwat">Lakki Marwat</option>
-                                <option value="Latamber">Latamber</option>
-                                <option value="Madyan">Madyan</option>
-                                <option value="Mansehra">Mansehra</option>
-                                <option value="Mardan">Mardan</option>
-                                <option value="Mastuj">Mastuj</option>
-                                <option value="Mingora">Mingora</option>
-                                <option value="Nowshera">Nowshera</option>
-                                <option value="Paharpur">Paharpur</option>
-                                <option value="Pabbi">Pabbi</option>
-                                <option value="Peshawar">Peshawar</option>
-                                <option value="Saidu Sharif">Saidu Sharif</option>
-                                <option value="Shorkot">Shorkot</option>
-                                <option value="Shewa Adda">Shewa Adda</option>
-                                <option value="Swabi">Swabi</option>
-                                <option value="Swat">Swat</option>
-                                <option value="Tangi">Tangi</option>
-                                <option value="Tank">Tank</option>
-                                <option value="Thall">Thall</option>
-                                <option value="Timergara">Timergara</option>
-                                <option value="Tordher">Tordher</option>
-                                <option value="" disabled>Balochistan Cities</option>
-                                <option value="Awaran">Awaran</option>
-                                <option value="Barkhan">Barkhan</option>
-                                <option value="Chagai">Chagai</option>
-                                <option value="Dera Bugti">Dera Bugti</option>
-                                <option value="Gwadar">Gwadar</option>
-                                <option value="Harnai">Harnai</option>
-                                <option value="Jafarabad">Jafarabad</option>
-                                <option value="Jhal Magsi">Jhal Magsi</option>
-                                <option value="Kacchi">Kacchi</option>
-                                <option value="Kalat">Kalat</option>
-                                <option value="Kech">Kech</option>
-                                <option value="Kharan">Kharan</option>
-                                <option value="Khuzdar">Khuzdar</option>
-                                <option value="Killa Abdullah">Killa Abdullah</option>
-                                <option value="Killa Saifullah">Killa Saifullah</option>
-                                <option value="Kohlu">Kohlu</option>
-                                <option value="Lasbela">Lasbela</option>
-                                <option value="Lehri">Lehri</option>
-                                <option value="Loralai">Loralai</option>
-                                <option value="Mastung">Mastung</option>
-                                <option value="Musakhel">Musakhel</option>
-                                <option value="Nasirabad">Nasirabad</option>
-                                <option value="Nushki">Nushki</option>
-                                <option value="Panjgur">Panjgur</option>
-                                <option value="Pishin Valley">Pishin Valley</option>
-                                <option value="Quetta">Quetta</option>
-                                <option value="Sherani">Sherani</option>
-                                <option value="Sibi">Sibi</option>
-                                <option value="Sohbatpur">Sohbatpur</option>
-                                <option value="Washuk">Washuk</option>
-                                <option value="Zhob">Zhob</option>
-                                <option value="Ziarat">Ziarat</option>
-                            </select>
-                          </div>
-                          <div class="col-sm-6">
-                            <label class="form-label" for="dashboard-address">Address</label>
-                            <input class="form-control" type="text" id="dashboard-address" value="Some Cool Street, 22/1">
-                          </div>
-                          <div class="col-sm-6 mt-4">
-                            <label class="form-label" for="dashboard-zip">ZIP Code</label>
-                            <input class="form-control" type="text" id="dashboard-zip">
-                          </div>
-                          <div class="col-12 mt-4">
-
-                            <div class="d-sm-flex justify-content-between align-items-center">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="default-address" checked="">
-                                <label class="form-check-label" for="default-address">Set as Default Address</label>
-                              </div>
-                              <button class="btn btn-primary mt-3 mt-sm-0" type="button">Save changes</button>
+                            <div class="rounded-3 p-4 mb-4">
+                                <div class="d-flex align-items-center">
+                                  <img class="rounded" src="{{ !empty($user->photo) ? asset('storage/profile_photos/' . $user->photo) : asset('storage/profile_photos/default_profile_photo.jpg') }}" width="90" alt="Profile Photo">
+                                  <div class="ps-3">
+                                        <label for="file-input" class="btn btn-dark btn-shadow btn-sm mb-2">
+                                            <i class="bi bi-upload text-light"></i> Change Profile
+                                        </label><span id="file-selected"></span>
+                                        <div class="p mb-0 fs-ms text-muted">Recommended Size 1:1</div>
+                                        <input id="file-input" onchange="fileSelected()" type="file" hidden accept=".jpg,.png" name="photo">
+                                    </div>
+                                </div>
                             </div>
+
+                            <div class="row gx-4 gy-3">
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="userid">User ID</label>
+                                    <input class="form-control" type="text" id="userid" readonly disabled value="{{ $user->id }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="first-name">First Name</label>
+                                    <input class="form-control" type="text" id="first-name" name="first_name" value="{{ $user->first_name }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="last-name">Last Name</label>
+                                    <input class="form-control" type="text" id="last-name" name="last_name" value="{{ $user->last_name }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="email">Email address</label>
+                                    <input class="form-control" type="email" id="email" name="email" value="{{ $user->email }}">
+                                </div>
+                                <div class="col-sm-6">
+                                    <label class="form-label" for="phone">Phone No</label>
+                                    <input class="form-control" type="text" id="phone" name="phone" value="{{ $user->phone }}">
+                                </div>
+                                <div class="col-12">
+                                    <hr class="mt-2 mb-4">
+                                    <div class="d-sm-flex justify-content-between align-items-center">
+                                        <button type="submit" class="btn btn-primary mt-3 mt-sm-0">Save changes</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                           </div>
-                    </div>
-                </div>
-                    <!-- Payment methods-->
-                    <div class="tab-pane fade mt-4" id="payment" role="tabpanel">
-
-                      <div class="table-responsive fs-md mb-4">
-                        <div class="text-sm-end"><a class="btn btn-primary" href="#new-payment" data-bs-toggle="modal">Add New Payment method</a></div>
-
-                        <table class="table table-hover mb-0">
-                          <thead>
-                            <tr>
-                              <th>Your credit / debit cards</th>
-                              <th>Name on card</th>
-                              <th>Expires on</th>
-                              <th></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+                        <!-- Address-->
+                        <div class="tab-pane fade mt-4" id="Address" role="tabpanel">
+                           <div class="row">
+                              <div class="col-sm-6">
+                                 <label class="form-label" for="select-cities">City</label>
+                                 <select class="form-select form-control"  id="select-cities">
+                                    <option value="" disabled selected>Select The City</option>
+                                    <?php foreach ($Cityarray as $city) : ?>
+                                    <option value="<?php echo $city; ?>" <?php echo ($city == $user->city) ? 'selected' : ''; ?>><?php echo $city; ?></option>
+                                    <?php endforeach; ?>
+                                 </select>
+                              </div>
+                              <div class="col-sm-6">
+                                 <label class="form-label" for="dashboard-address">Address</label>
+                                 <input class="form-control" type="text" id="dashboard-address" value="{{$user->address}}">
+                              </div>
+                              <div class="col-sm-6 mt-4">
+                                 <label class="form-label" for="dashboard-zip">ZIP Code</label>
+                                 <input class="form-control" type="text" id="dashboard-zip" value="{{$user->zip_code}}">
+                              </div>
+                              <div class="col-12 mt-4">
+                                 <div class="d-sm-flex justify-content-between align-items-center">
+                                    <div class="form-check">
+                                       <input class="form-check-input" type="checkbox" id="default-address" checked="{{$user->default_address}}">
+                                       <label class="form-check-label" for="default-address">Set as Default Address</label>
+                                    </div>
+                                    <button class="btn btn-primary mt-3 mt-sm-0" type="button">Save changes</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Payment methods-->
+                        <div class="tab-pane fade mt-4" id="payment" role="tabpanel">
+                           <div class="table-responsive fs-md mb-4">
+                              <div class="text-sm-end"><a class="btn btn-primary" href="#new-payment" data-bs-toggle="modal">Add New Payment method</a></div>
+                              <table class="table table-hover mb-0">
+                                 <thead>
+                                    <tr>
+                                       <th>Your credit / debit cards</th>
+                                       <th>Name on card</th>
+                                       <th>Expires on</th>
+                                       <th></th>
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
                   </div>
-                </div>
-              </section>
+               </section>
             </div>
-          </div>
-
+         </div>
       </div>
    </div>
 </section>
 @endsection
 @section('script')
 <script>
-function fileSelected() {
-  var input = document.getElementById("file-input");
-  var files = input.files;
-  var fileSelectedText = document.getElementById("file-selected");
-  if(files.length!==0)
-  fileSelectedText.innerHTML = files.length + " file(s) selected";
-  else
-  fileSelectedText.innerHTML ="";
+   function fileSelected() {
+     var input = document.getElementById("file-input");
+     var files = input.files;
+     var fileSelectedText = document.getElementById("file-selected");
+     if(files.length!==0)
+     fileSelectedText.innerHTML = files.length + " file(s) selected";
+     else
+     fileSelectedText.innerHTML ="";
 
-}
+   }
 
 </script>
 @endsection

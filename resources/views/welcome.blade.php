@@ -14,7 +14,7 @@
         }
         a{
             text-decoration: none;
-          
+
         }
     </style>
 </head>
@@ -28,6 +28,11 @@
 <div class="col-md-3  bg-white shadow p-5 m-5 border rounded-3 d-flex justify-content-center align-items-center text-khas-primary " role="button">
 <a href="{{url('/user')}}">
 <div><h3 >User Panel</h3></div>
+</a>
+</div>
+<div class="col-md-3  bg-white shadow p-5 m-5 border rounded-3 d-flex justify-content-center align-items-center text-khas-primary " role="button">
+<a href="{{url('/rider-dashboard')}}">
+<div><h3 >Rider Panel</h3></div>
 </a>
 </div>
 </body>

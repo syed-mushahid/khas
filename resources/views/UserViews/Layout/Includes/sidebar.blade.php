@@ -1,9 +1,9 @@
 <button class="filter-btn btn-khas-secondary"><i class="bi bi-filter"></i>Filter</button>
 <aside class="col-md-3 result-filter">
-    <div class="col-12 border rounded p-3 bg-white">
+    <div class="col-12  rounded shadow-lg p-3 bg-white">
         <div class="row ">
         <span class="close-filter text-end w-100"><i class="text-danger bi bi-x-circle-fill"></i></span>
-        <div class="col-12">
+        <div class="col-12 btn btn-secondery">
 <h4><i class="bi bi-filter"></i> Filter</h4>
         </div>
         <div class="accordion m-0  p-0" id="accordionbrandExample">
