@@ -4,11 +4,12 @@ use App\Http\Controllers\AdminControllers\Dashboard;
 use App\Http\Controllers\AdminControllers\manageUsers;
 use App\Http\Controllers\UserControllers\Profile\Settings;
 use App\Http\Controllers\UserControllers\Purchase;
-use App\Http\Controllers\UserControllers\Registration\VerifyEmail;
 use App\Http\Controllers\UserControllers\Registration\ForgotPassword;
+use App\Http\Controllers\UserControllers\Registration\GoogleLogin;
 use App\Http\Controllers\UserControllers\Registration\Login;
 use App\Http\Controllers\UserControllers\Registration\Logout;
 use App\Http\Controllers\UserControllers\Registration\Singup;
+use App\Http\Controllers\UserControllers\Registration\VerifyEmail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,10 +23,10 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/user', function () {
     return view('UserViews/Home/home');
 });
 Route::get('/product-details', function () {
@@ -66,7 +67,8 @@ Route::middleware('auth')->group(function () {
         // Route::get('/profile', );
         // Route::get('/wishlist', );
         Route::get('/profile_settings', 'showProfileSettings')->name('profile_settings.show');
-        Route::POST('/profile_settings/{id}', 'updateInfo')->name('profile_settings.update');
+        Route::POST('/profile_settings', 'updateInfo')->name('profile_settings.update');
+        Route::POST('/update_address', 'updateAddress')->name('profile_settings.address');
     });
 });
 
@@ -77,9 +79,16 @@ Route::middleware('prevent-login')->group(function () {
         Route::post('/signup', 'store');
     });
     Route::controller(Login::class)->group(function () {
-    
+
         Route::get('/login', 'login')->name('login');
         Route::post('/login', 'dologin');
+
+    });
+    Route::controller(GoogleLogin::class)->group(function () {
+
+        Route::get('login/google', 'googleLogin')->name('login.google');
+        Route::get('login/google/callback', 'googleLoginCallBack')->name('login.googleCallback');
+
     });
 
     Route::controller(ForgotPassword::class)->group(function () {

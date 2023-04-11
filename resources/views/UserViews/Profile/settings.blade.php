@@ -22,11 +22,11 @@
                   <div class="mt-5">
                      <!-- Tabs-->
                      <ul class="nav nav-tabs nav-justified" role="tablist">
-                        <li class="nav-item" role="presentation"><a class="nav-link px-0 active" href="#profile" data-bs-toggle="tab"  role="tab" aria-selected="true" >
+                        <li class="nav-item" role="presentation"><a class="nav-link px-0 active" href="#profile" data-bs-toggle="tab"  role="tab" aria-selected="false" >
                            <i class="bi bi-person opacity-60 me-2"></i>Profile
                            </a>
                         </li>
-                        <li class="nav-item" role="presentation"><a class="nav-link px-0 " href="#Address" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">
+                        <li class="nav-item" role="presentation"><a class="nav-link px-0 " href="#Address" data-bs-toggle="tab" role="tab" aria-selected="true" tabindex="-1">
                            <i class="bi bi-geo-alt opacity-60 me-2"></i>Address
                            </a>
                         </li>
@@ -39,12 +39,12 @@
                      <div class="tab-content">
                         <!-- Profile-->
                         <div class="tab-pane fade active show" id="profile" role="tabpanel">
-                          <form method="POST" action="{{ route('profile_settings.update', $user->id) }}" enctype="multipart/form-data">
+                          <form method="POST" action="{{ route('profile_settings.update') }}" enctype="multipart/form-data">
                             @csrf
 
                             <div class="rounded-3 p-4 mb-4">
                                 <div class="d-flex align-items-center">
-                                  <img class="rounded" src="{{ !empty($user->photo) ? asset('storage/profile_photos/' . $user->photo) : asset('storage/profile_photos/default_profile_photo.jpg') }}" width="90" alt="Profile Photo">
+                                  <img class="rounded" src="{{ !empty($user->photo) ? $user->photo : asset('storage/profile_photos/default_profile_photo.jpg') }}" width="90" alt="Profile Photo">
                                   <div class="ps-3">
                                         <label for="file-input" class="btn btn-dark btn-shadow btn-sm mb-2">
                                             <i class="bi bi-upload text-light"></i> Change Profile
@@ -87,10 +87,12 @@
                           </div>
                         <!-- Address-->
                         <div class="tab-pane fade mt-4" id="Address" role="tabpanel">
-                           <div class="row">
+                          <form id="address-form" method="POST" action="{{route('profile_settings.address')}}">
+                         @csrf
+                            <div class="row">
                               <div class="col-sm-6">
-                                 <label class="form-label" for="select-cities">City</label>
-                                 <select class="form-select form-control"  id="select-cities">
+                                 <label class="form-label" for="cities">City</label>
+                                 <select class="form-select form-control" name="city" id="cities">
                                     <option value="" disabled selected>Select The City</option>
                                     <?php foreach ($Cityarray as $city) : ?>
                                     <option value="<?php echo $city; ?>" <?php echo ($city == $user->city) ? 'selected' : ''; ?>><?php echo $city; ?></option>
@@ -98,24 +100,26 @@
                                  </select>
                               </div>
                               <div class="col-sm-6">
-                                 <label class="form-label" for="dashboard-address">Address</label>
-                                 <input class="form-control" type="text" id="dashboard-address" value="{{$user->address}}">
+                                 <label class="form-label" for="address">Address</label>
+                                 <input class="form-control" type="text" name="address" id="address" value="{{$user->address}}">
                               </div>
                               <div class="col-sm-6 mt-4">
-                                 <label class="form-label" for="dashboard-zip">ZIP Code</label>
-                                 <input class="form-control" type="text" id="dashboard-zip" value="{{$user->zip_code}}">
+                                 <label class="form-label" for="zip_code">ZIP Code</label>
+                                 <input class="form-control" type="text" name="zip_code" id="zip_code" value="{{$user->zip_code}}">
                               </div>
                               <div class="col-12 mt-4">
                                  <div class="d-sm-flex justify-content-between align-items-center">
                                     <div class="form-check">
-                                       <input class="form-check-input" type="checkbox" id="default-address" checked="{{$user->default_address}}">
+                                       <input class="form-check-input" type="checkbox"  name="default_address"id="default-address" @if($user->default_address) checked @endif>
                                        <label class="form-check-label" for="default-address">Set as Default Address</label>
                                     </div>
-                                    <button class="btn btn-primary mt-3 mt-sm-0" type="button">Save changes</button>
+                                    <button class="btn btn-primary mt-3 mt-sm-0" >Save changes</button>
                                  </div>
                               </div>
                            </div>
+                          </form>
                         </div>
+
                         <!-- Payment methods-->
                         <div class="tab-pane fade mt-4" id="payment" role="tabpanel">
                            <div class="table-responsive fs-md mb-4">
@@ -145,6 +149,8 @@
 @endsection
 @section('script')
 <script>
+
+
    function fileSelected() {
      var input = document.getElementById("file-input");
      var files = input.files;

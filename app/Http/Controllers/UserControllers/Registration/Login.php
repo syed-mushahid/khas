@@ -4,12 +4,12 @@ namespace App\Http\Controllers\UserControllers\Registration;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
 
 
 class Login extends Controller
 {
+
     public function login()
     {
 
@@ -20,7 +20,7 @@ class Login extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required',
+            'password' => 'required|min:8',
         ]);
 
         $remember = $request->has('remember');
@@ -44,4 +44,7 @@ class Login extends Controller
             ]);
         }
     }
+
+
+
 }

@@ -36,7 +36,7 @@
                             <div class="dropdown">
                                 <div class="header-profile">
                                     <a href="javascript:void(0)">
-                                       <img class="rounded-circle" src="{{ !empty(Auth::user()->photo) ? asset('storage/profile_photos/' . Auth::user()->photo) : asset('storage/profile_photos/default_profile_photo.jpg') }}"  alt="Profile Image" width="30px" height="30px" srcset="">
+                                       <img class="rounded-circle" src="{{ !empty(Auth::user()->photo) ? Auth::user()->photo : asset('storage/profile_photos/default_profile_photo.jpg') }}"  alt="Profile Image" width="30px" height="30px" srcset="">
                                     </a>
 
                                         <button class="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
