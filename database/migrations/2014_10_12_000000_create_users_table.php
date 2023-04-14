@@ -24,12 +24,14 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->string('email')->unique();
             $table->string('default_address')->default(true);
+            $table->string('banned')->default(false);
             $table->string('verification_code')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('email_sent_timestamp')->nullable();
             $table->string('email_verification_token')->nullable();
             $table->string('password')->nullable();
             $table->string('google_id')->nullable();
+            $table->dateTime('last_login')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
