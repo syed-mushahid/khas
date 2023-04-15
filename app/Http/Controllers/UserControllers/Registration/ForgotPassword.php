@@ -36,14 +36,14 @@ class ForgotPassword extends Controller
         ]);
     }
 
-    public function setPassword(Request $request)
+    public function resetPassword(Request $request)
     {
         $email = $request->query('email');
         $token = $request->query('token');
         return view('UserViews.Registration.set_password', compact('email', 'token'));
     }
 
-    public function resetPassword(Request $request)
+    public function setPassword(Request $request)
     {
         $request->validate([
             'email' => 'required|email',

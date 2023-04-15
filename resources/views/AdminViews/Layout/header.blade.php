@@ -1,4 +1,30 @@
-  <!-- ======= Header ======= -->
+  @if (session('admin_status'))
+  <div class="alert m-0 notification-alert  rounded-0  alert-success alert-dismissible fade show" role="alert">
+      {{ session('admin_status') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  @endif
+  @if (session('admin_error'))
+  <div class="alert m-0 notification-alert  rounded-0 alert-danger alert-dismissible fade show" role="alert">
+      {{ session('admin_error') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  @endif
+
+  @if($errors->any())
+  <div class="alert m-0 notification-alert  rounded-0  alert-dismissible fade show alert-danger">
+      <ul>
+          @foreach($errors->all() as $error)
+              <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+  </div>
+@endif
+    <!-- ======= Header ======= -->
+
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
@@ -26,8 +52,8 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="https://cdn131.picsart.com/338199053065203.jpg" alt="Profile" class="rounded-circle">
             @if (auth()->guard('admin')->check())
+            <img src={{url(auth()->guard('admin')->user()->photo)}} alt="Profile" class="rounded-circle" >
 
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->guard('admin')->user()->name }}</span>
                       @endif

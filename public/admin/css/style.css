@@ -1,6 +1,5 @@
 @import url("../../theme.css");
 
-
 .form-control:focus {
     box-shadow: none;
 }
@@ -31,6 +30,33 @@ h5,
 h6 {
     font-family: "Nunito", sans-serif;
 }
+
+tr,
+th,
+td {
+    vertical-align: middle;
+}
+.notification-alert {
+    z-index: 99999;
+    position: absolute;
+    right: 30px;
+    width: fit-content;
+}
+
+/* .dt-button {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #ffffff !important;
+    border-radius: 0.25rem;
+    text-transform: none;
+}
+
+.dt-button:hover,
+.dt-button:focus {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+    color: #ffffff !important;
+} */
 
 /*--------------------------------------------------------------
   # Main
@@ -469,8 +495,8 @@ h6 {
 .header-nav ul {
     list-style: none;
 }
-.sub-menu-dropdown ul li{
-margin-left: 20px;
+.sub-menu-dropdown ul li {
+    margin-left: 20px;
 }
 .header-nav > ul {
     margin: 0;

@@ -37,7 +37,7 @@ class Settings extends Controller
             $photo = $request->file('profile_photo');
             $filename = time() . '.' . $photo->getClientOriginalExtension();
             $photo->storeAs('public/profile_photos', $filename);
-            $admin->photo = "storage/profile_photos/".$filename;
+            $admin->photo = "/storage/profile_photos/".$filename;
         }
 
         // Save the updated admin information

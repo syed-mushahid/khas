@@ -73,6 +73,7 @@ class VerifyEmail extends Controller
                     'email_verified_at' => now(),
                     'verification_code' => null,
                     'email_verification_token' => null,
+                    'last_login' => now(),
                 ]);
 
                 // Log the user in

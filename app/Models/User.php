@@ -31,6 +31,7 @@ class User extends Authenticatable
         'email_sent_timestamp',
         'email_verification_token',
         'photo',
+        'banned',
     ];
 
     /**

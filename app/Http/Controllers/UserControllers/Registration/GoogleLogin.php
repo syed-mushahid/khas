@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\UserControllers\Registration;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use App\Models\User;
 
 class GoogleLogin extends Controller
 {
@@ -19,7 +18,7 @@ class GoogleLogin extends Controller
     {
         try {
             $user = Socialite::driver('google')->user();
-        } catch (\Exception $e) {
+        } catch (\Exception$e) {
 
             return redirect('/login')->withErrors(['Unable to authenticate with Google.Try Again']);
         }
@@ -29,6 +28,8 @@ class GoogleLogin extends Controller
         if ($existingUser) {
             // Log the user in
             Auth::login($existingUser, true);
+            Auth::user()->last_login = now();
+            Auth::user()->save();
         } else {
 
 // Create a new user and log them in
@@ -38,6 +39,7 @@ class GoogleLogin extends Controller
             $newUser->google_id = $user->getId();
             $newUser->photo = $user->getAvatar();
             $newUser->email_verified_at = now();
+            $newUser->last_login = now();
             $newUser->save();
 
             Auth::login($newUser, true);

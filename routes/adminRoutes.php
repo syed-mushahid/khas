@@ -39,6 +39,9 @@ Route::middleware('admin_auth')
             Route::get('/dashboard', 'dashboard')->name('dashboard.view');
         });
         Route::controller(Users::class)->group(function () {
-             Route::get('/users_list', 'userList')->name('users.list');
+              Route::get('/users_list', 'userList')->name('users.list');
+              Route::get('/users_report', 'usersReport')->name('users.report');
+              Route::put('/update_user/{id}', 'updateUser')->name('users.update');
+              Route::POST('/reset_user_password/{id}', 'sendPasswordResetLink')->name('users.password');
         });
     });

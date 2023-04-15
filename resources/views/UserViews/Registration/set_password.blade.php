@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 col-md-10 col-12">
-                <form class="card shadow-lg rounded-3 border-0 login-form mt-5 mb-5 needs-validation" action="{{ url('reset_password') }}" method="POST" novalidate>
+                <form class="card shadow-lg rounded-3 border-0 login-form mt-5 mb-5 needs-validation" action="{{ url('set_password') }}" method="POST" novalidate>
                     @csrf
                     <input type="hidden" name="email" value="{{ $email }}">
                     <input type="hidden" name="token" value="{{ $token }}">

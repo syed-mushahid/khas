@@ -40,7 +40,7 @@ class Settings extends Controller
             $profileImage = $request->file('photo');
             $filename = "user_id_" . $id . "_" . time() . '.' . $profileImage->getClientOriginalExtension();
             $path = $profileImage->storeAs('profile_photos', $filename, 'public');
-            $user->photo = "storage/profile_photos/" . $filename;
+            $user->photo = "/storage/profile_photos/" . $filename;
 
             // Delete the old profile image if it exists
             if ($currentProfileImage) {
@@ -50,8 +50,7 @@ class Settings extends Controller
         $user->save();
 // Re-authenticate the user to update the Auth::user() data
         Auth::login($user);
-        var_dump($user);
-        die;
+
         return redirect()->route('profile_settings.show')->with('global_status', 'Account Information Updated Successfully.');
     }
 

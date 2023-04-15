@@ -30,6 +30,7 @@ class Singup extends Controller
             'email' => $validatedData['email'],
             'phone' => $validatedData['phone'],
             'password' => bcrypt($validatedData['password']),
+            'photo' => "/storage/profile_photos/default_profile_photo.jpg",
         ]);
 
         // Send the email with the verification code

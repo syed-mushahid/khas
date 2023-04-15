@@ -58,9 +58,7 @@ Route::get('/purchases', function () {
 Route::get('/sales', function () {
     return view('UserViews/Sales/sales');
 });
-Route::get('/banned_users', function () {
-    return view('AdminViews.ManageUsers.bannedUsers');
-});
+
 Route::middleware('auth')->group(function () {
 
     Route::controller(Settings::class)->group(function () {
@@ -94,8 +92,8 @@ Route::middleware('prevent-login')->group(function () {
     Route::controller(ForgotPassword::class)->group(function () {
         Route::get('/forgot_password', 'forgot_password')->name('password.forgot');
         Route::POST('/forgot_password', 'sendPasswordResetLinkEmail')->name('password.send');
-        Route::POST('/reset_password', 'resetPassword')->name('password.reset');
-        Route::get('/set_password', 'setPassword')->name('password.set');
+        Route::POST('/set_password', 'setPassword')->name('password.reset');
+        Route::get('/reset_password', 'resetPassword')->name('password.set');
     });
     Route::controller(VerifyEmail::class)->group(function () {
         Route::post('/verify_email', 'verifyEmail');
@@ -117,7 +115,7 @@ Route::controller(Purchase::class)->group(function () {
     Route::get('/admin_dashboard', [Dashboard::class, 'index'])->name('admin_dashboard');
     Route::get('/admin/login', [Login::class, 'index'])->name('admin/login');
     Route::get('/admin/add_user', [manageUsers::class, 'addUser'])->name('admin/addUser');
-    Route::get('/admin/users_list', [manageUsers::class, 'UsersList'])->name('admin/usersList');
+    // Route::get('/admin/users_list', [manageUsers::class, 'UsersList'])->name('admin/usersList');
 });
 
 Route::get('/sales_list', function () {

@@ -22,20 +22,16 @@
             </a>
           </li>
           <li>
-            <a href="{{route('admin/usersList')}}">
+            <a href="{{route('users.list')}}">
               <i class="bi bi-person-lines-fill"></i><span>User List</span>
             </a>
           </li>
-          <li>
-            <a href="#">
-              <i class="bi bi-person-fill-lock"></i><span>Banned Users</span>
-            </a>
-          </li>
-          {{-- <li>
-            <a href="#">
+
+       <li>
+            <a href="{{route('users.report')}}">
               <i class="bi bi-pie-chart-fill"></i><span>Report</span>
             </a>
-          </li> --}}
+          </li>
 
 
         </ul>

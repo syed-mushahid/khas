@@ -28,6 +28,8 @@ class Login extends Controller
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
             // Check if the user's email is verified
             if (!empty(Auth::user()->email_verified_at)) {
+                Auth::user()->last_login=now();
+                Auth::user()->save();
                 // Email is verified, redirect to the dashboard
                 return redirect()->intended('dashboard')->with('global_status', 'Welcome Back ' . Auth::user()->first_name);
             } else {
