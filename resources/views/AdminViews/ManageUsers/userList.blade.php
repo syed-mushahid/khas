@@ -20,8 +20,9 @@
       <div class="row bg-white shadow rounded-3">
         <div class="card-body">
             <h5 class="card-title">Users List</h5>
-            <!-- Default Table -->
-              <table class="datatable table table-striped">
+            <!-- Data Table -->
+            <div class="table-responsive">
+              <table id="users-table" class="datatable table table-striped responsive">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -35,39 +36,27 @@
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach ($users as $user)
+                  {{-- @foreach ($users as $user)
                   <tr>
                     <th scope="row">{{ $user->id }}</th>
-                    <td> <img src={{ $user->photo }} width="50"></td>
+                    <td> </td>
                     <td>{{ $user->first_name." ".$user->last_name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ \Carbon\Carbon::parse($user->last_login)->diffForHumans() }}</td>
 
                     <td>
-                      <span class="status-dot" style="background-color:
-                        @if(!$user->banned && !empty($user->email_verified_at))
-                          green
-                        @elseif(!$user->banned && empty($user->email_verified_at))
-                          orange
-                        @else
-                          red
-                        @endif
-                      "></span>
+
                     </td>
 
-                    <td>
-                      <a onclick='showUserDetails(@json($user))' class="btn btn-success btn-sm">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <a href="#" class="btn btn-primary btn-sm" onclick="showUserEditModal({{ $user }})"><i class="bi bi-pencil-square"></i></a>
-                    </td>
+
                   </tr>
-                @endforeach
+                @endforeach --}}
 
                 </tbody>
               </table>
-            <!-- End Default Table Example -->
+            </div>
+            <!-- End Data Table Example -->
           </div>
       </div>
     </section>
@@ -230,6 +219,79 @@
 
 @section('script')
 <script>
+
+$(document).on('click', '.show-user-details', function() {
+    var userId = $(this).data('id');
+console.log("clicked");
+$.ajax({
+  url: '/admin/get_single_user_data/' + userId,
+  method: 'GET',
+  dataType: 'json',
+  success: function(response) {
+    showUserDetails(response);
+  }
+});
+});
+
+$(document).on('click', '.show-user-edit-modal', function() {
+  var userId = $(this).data('id');
+  console.log("clicked");
+
+    $.ajax({
+        url: '/admin/get_single_user_data/'+userId,
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          console.log(response);
+            showUserEditModal(response);
+        },
+        error: function (request, status, error) {
+        alert(request.responseText);
+    }
+    });
+});
+
+$('#users-table').DataTable({
+  responsive: true,
+  dom: '<"text-center" B>lfrtip',
+    buttons: [
+        'copyHtml5',
+        'csvHtml5',
+        'excelHtml5',
+        'pdfHtml5'
+    ],
+    language: {
+        searchPlaceholder: "Search...",
+        lengthMenu: "Show _MENU_ entries per page",
+        zeroRecords: "No entries found",
+        info: "Showing _START_ to _END_ of _TOTAL_ entries",
+        infoEmpty: "Showing 0 to 0 of 0 entries",
+        infoFiltered: "(filtered from _MAX_ total entries)"
+    },
+    serverSide: true,
+    processing: true,
+    ajax: {
+        url: '/admin/get_users_list',
+        data: function(d) {
+            d.page = Math.ceil(d.start / d.length) + 1;
+
+        }
+
+
+    },
+    columns: [
+        { data: 'id' },
+        { data: 'photo' },
+        { data: 'name' },
+        { data: 'email' },
+        { data: 'phone' },
+        { data: 'last_login' },
+        { data: 'status' },
+        { data: 'action' }
+    ]
+});
+
+
 
 function ReadableTime(timestamp) {
   const date = new Date(timestamp);

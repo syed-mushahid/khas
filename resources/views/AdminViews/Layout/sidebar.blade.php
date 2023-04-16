@@ -17,7 +17,7 @@
         </a>
         <ul id="users" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="{{route('admin/addUser')}}">
+            <a href="{{route('users.add')}}">
               <i class="bi bi-person-plus-fill"></i><span>Add User</span>
             </a>
           </li>

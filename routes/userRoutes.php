@@ -114,7 +114,6 @@ Route::controller(Purchase::class)->group(function () {
 ////////Admin Routes///////////
     Route::get('/admin_dashboard', [Dashboard::class, 'index'])->name('admin_dashboard');
     Route::get('/admin/login', [Login::class, 'index'])->name('admin/login');
-    Route::get('/admin/add_user', [manageUsers::class, 'addUser'])->name('admin/addUser');
     // Route::get('/admin/users_list', [manageUsers::class, 'UsersList'])->name('admin/usersList');
 });
 

@@ -3,25 +3,6 @@
        /**
      * Initiate Datatables
      */
-       $(document).ready(function() {
-        $('table.datatable').DataTable({
-          dom: 'Bfrtip',
-          buttons: [
-            'copyHtml5',
-            'csvHtml5',
-            'excelHtml5',
-            'pdfHtml5'
-          ],
-          language: {
-            searchPlaceholder: "Search...",
-            lengthMenu: "Show _MENU_ entries per page",
-            zeroRecords: "No entries found",
-            info: "Showing _START_ to _END_ of _TOTAL_ entries",
-            infoEmpty: "Showing 0 to 0 of 0 entries",
-            infoFiltered: "(filtered from _MAX_ total entries)"
-          }
-        });
-      });
 
 
 

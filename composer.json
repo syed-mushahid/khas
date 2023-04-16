@@ -11,9 +11,11 @@
         "laravel/sanctum": "^3.0",
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.7",
-        "twbs/bootstrap": "^5.2"
+        "twbs/bootstrap": "^5.2",
+        "yajra/laravel-datatables-oracle": "^10.4"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.8",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",

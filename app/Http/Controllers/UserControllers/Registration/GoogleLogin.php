@@ -28,6 +28,13 @@ class GoogleLogin extends Controller
         if ($existingUser) {
             // Log the user in
             Auth::login($existingUser, true);
+            if (Auth::user()->banned == true) {
+                Auth::logout();
+                return redirect('/login')->withErrors([
+                    'error' => 'Your account has been banned.Contact Support',
+                ]);
+                die();
+            }
             Auth::user()->last_login = now();
             Auth::user()->save();
         } else {

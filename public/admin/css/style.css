@@ -43,12 +43,25 @@ td {
     width: fit-content;
 }
 
-/* .dt-button {
+.dataTables_wrapper .dt-buttons {
+    text-align: center;
+  }
+
+  .dataTables_wrapper .dataTables_filter {
+    text-align: right;
+  }.text-center {
+    display: flex;
+    justify-content: center;
+  }
+
+ .dt-button {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
     color: #ffffff !important;
     border-radius: 0.25rem;
     text-transform: none;
+    padding: 4px !important;
+
 }
 
 .dt-button:hover,
@@ -56,7 +69,10 @@ td {
     background-color: var(--primary) !important;
     border-color: var(--primary) !important;
     color: #ffffff !important;
-} */
+}
+
+
+
 
 /*--------------------------------------------------------------
   # Main

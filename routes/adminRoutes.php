@@ -40,6 +40,10 @@ Route::middleware('admin_auth')
         });
         Route::controller(Users::class)->group(function () {
               Route::get('/users_list', 'userList')->name('users.list');
+              Route::get('/get_users_list', 'getUsers')->name('users.getall');
+              Route::get('/get_single_user_data/{id}', 'getUserData')->name('users.getone');
+              Route::get('/add_user', 'addUser')->name('users.add');
+              Route::POST('/add_new_user', 'createUser')->name('users.create');
               Route::get('/users_report', 'usersReport')->name('users.report');
               Route::put('/update_user/{id}', 'updateUser')->name('users.update');
               Route::POST('/reset_user_password/{id}', 'sendPasswordResetLink')->name('users.password');

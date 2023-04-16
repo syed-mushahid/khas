@@ -10,8 +10,12 @@
     {{ session('global_error') }}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
-
 @endif
+<?php
+
+!empty(Auth::user()->banned) == 1 ? (Auth::logout()): null;
+
+?>
 
 
     <header class="header navbar-area">
