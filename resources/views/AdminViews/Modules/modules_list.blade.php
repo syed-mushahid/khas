@@ -40,12 +40,15 @@
                       @foreach($modules as $module)
                       <tr>
                           <th scope="row">{{ $module->id }}</th>
-                          <td>{{ $module->module_name }}</td>
+                          <td>{{ $module->module_name   }}  {!! ($module->disabled == true) ? '<span class="text-danger"> - Disabled</span>' : '' !!}</td>
                           <td>
                               <ul>
                                   @foreach($module->subModules as $subModule)
-                                  <li>{{ $subModule->sub_module_name }}</li>
-                                  @endforeach
+                                  <li>
+                                    {{ $subModule->sub_module_name }}
+                                    {!! ($subModule->disabled == true) ? '<span class="text-danger"> - Disabled</span>' : '' !!}
+                                </li>
+                                                                  @endforeach
                               </ul>
                           </td>
                           <td>

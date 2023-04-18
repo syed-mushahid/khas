@@ -36,7 +36,7 @@
                                  <div class="col-sm-6">
 
                                     <label class="" for="module_route">Module Route</label>
-                                    <input type="text" value="{{ old('module_route', $module ? $module->route : '') }}" class="form-control" placeholder="Route Name" name="module_route" id="module_route">
+                                    <input type="text" value="{{ old('module_route', $module ? $module->module_route : '') }}" class="form-control" placeholder="Route Name" name="module_route" id="module_route">
                                     <input type="hidden" name="id" id="id" value="{{ $module ? $module->id : '' }}">
                                   </div>
                                   <div class="col-sm-6">
@@ -53,7 +53,8 @@
                                  <div class="row">
                                     <div class="col-sm-5">
                                        <input type="text" name="sub_module_name[]" class="form-control " placeholder="Sub-module name">
-                                    </div>
+                                       <input type="hidden" name="sub_module_id[]" class="form-control" placeholder="Sub-module name">
+                                      </div>
                                     <div class="col-sm-5">
                                        <input type="text" name="sub_module_icon[]" class="form-control " placeholder="Icon Class" id="sub_module_icon">
                                     </div>
@@ -74,17 +75,18 @@
                                     <div class="row my-2 pt-2 border-top">
                                        <div class="col-sm-5">
                                           <input type="text" name="sub_module_name[]" value="{{ $submodule->sub_module_name }}" class="form-control" placeholder="Sub-module name">
+                                          <input type="hidden" name="sub_module_id[]" value="{{ $submodule->id }}" class="form-control" placeholder="Sub-module name">
                                        </div>
                                        <div class="col-sm-5">
                                           <input type="text" name="sub_module_icon[]" value="{{ $submodule->icon }}" class="form-control" placeholder="Icon Class" id="sub_module_icon">
                                        </div>
                                        <div class="col-sm-5">
-                                          <input type="text" name="sub_module_route[]" value="{{ $submodule->route }}" class="mt-2 form-control" placeholder="Route Name" id="sub_module_route">
+                                          <input type="text" name="sub_module_route[]" value="{{ $submodule->sub_module_route }}" class="mt-2 form-control" placeholder="Route Name" id="sub_module_route">
                                        </div>
                                        <div class="col-sm-5">
                                         <select class="form-control mt-2" name="sub_module_disabled[]" id="sub_module_disabled">
-                                          <option value="0" {{ !$submodule->disabled ? 'selected' : '' }}>Enabled</option>
-                                          <option value="1" {{ $submodule->disabled ? 'selected' : '' }}>Disabled</option>
+                                          <option value="0" {{ ($submodule->disabled==false) ? 'selected' : '' }}>Enabled</option>
+                                          <option value="1" {{ ($submodule->disabled==true) ? 'selected' : '' }}>Disabled</option>
                                        </select>
                                      </div>
                                        <div class="col-auto">
@@ -124,7 +126,7 @@
 
          // add sub-module field
          $('.add-sub-module').click(function() {
-             $('#sub-modules-container').append('<div class="row my-2 border-top pt-2"><div class="col-sm-5"><input type="text" name="sub_module_name[]" class="form-control " placeholder="Sub-module name"></div><div class="col-sm-5"><input type="text" name="sub_module_icon[]" class="form-control " placeholder="Icon Class" id="sub_module_icon"></div> <div class="col-sm-5"><input type="text" name="sub_module_route[]" class="form-control mt-2" placeholder="Route Name" id="sub_module_route"></div><div class="col-sm-5"> <select class="form-control mt-2" name="sub_module_disabled[]" id="sub_module_disabled"><option value="0">Enabled</option><option value="1">Disabled</option></select></div><div class="col-auto"><button type="button" class="btn btn-danger remove-sub-module"><i class="bi bi-x-square-fill"></i></button></div></div>');
+             $('#sub-modules-container').append('<div class="row my-2 border-top pt-2"><div class="col-sm-5"><input type="text" name="sub_module_name[]" class="form-control " placeholder="Sub-module name">   <input type="hidden" name="sub_module_id[]" class="form-control" placeholder="Sub-module name"></div><div class="col-sm-5"><input type="text" name="sub_module_icon[]" class="form-control " placeholder="Icon Class" id="sub_module_icon"></div> <div class="col-sm-5"><input type="text" name="sub_module_route[]" class="form-control mt-2" placeholder="Route Name" id="sub_module_route"></div><div class="col-sm-5"> <select class="form-control mt-2" name="sub_module_disabled[]" id="sub_module_disabled"><option value="0">Enabled</option><option value="1">Disabled</option></select></div><div class="col-auto"><button type="button" class="btn btn-danger remove-sub-module"><i class="bi bi-x-square-fill"></i></button></div></div>');
          });
 
          // remove sub-module field

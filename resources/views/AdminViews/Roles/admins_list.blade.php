@@ -1,5 +1,5 @@
 @extends('AdminViews.Layout.layout')
-@section('title','Roles List')
+@section('title','Administration List')
 @section('style')
 <style>
 
@@ -17,7 +17,7 @@
       <div class="row bg-white shadow rounded-3">
 
       <div class="card-body">
-            <h5 class="card-title">Roles List</h5>
+            <h5 class="card-title">Administration List</h5>
 
             <!-- Default Table -->
             <div class="table-responsive">
@@ -26,23 +26,25 @@
               <thead>
                   <tr>
                       <th scope="col">#</th>
-
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
                       <th scope="col">Role</th>
-                      <th scope="col">Created On</th>
-                      <th scope="col">Created By</th>
+                      <th scope="col">Last Login</th>
                       <th scope="col">Actions</th>
                   </tr>
               </thead>
               <tbody>
-                  @foreach($roles as $role)
+                  @foreach($admins as $admin)
                   <tr>
-                      <th scope="row">{{ $role->id }}</th>
-                      <td>{{ $role->role }}</td>
-                      <td>{{ \Carbon\Carbon::parse($role->created_at)->format('Y,m,d') }}</td>
-                      <td>{{ $role->admin_name }}</td>
+                      <th scope="row">{{ $admin->id }}</th>
+                      <td>{{ $admin->name }}</td>
+                      <td>{{ $admin->email }}</td>
+                      <td>{{ $admin->role_name }}</td>
+                      <td>{{ \Carbon\Carbon::parse($admin->last_login)->diffForHumans() }}</td>
                       <td>
-                          <a href="{{route('role.add',$id=$role->id)}}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
-                          <a href="#" class="btn btn-danger btn-sm delete-role" data-id="{{ $role->id }}"><i class="bi bi-trash-fill"></i></a>
+                          {{-- <a href="#" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a> --}}
+                          <a href="{{route('admin.add',$id=$admin->id)}}" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                          <a href="#" class="btn btn-danger btn-sm delete-admin" data-id="{{ $admin->id }}"><i class="bi bi-trash-fill"></i></a>
                       </td>
                   </tr>
                   @endforeach

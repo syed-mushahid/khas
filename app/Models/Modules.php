@@ -10,6 +10,7 @@ class Modules extends Model
     use HasFactory;
     protected $id='id';
     protected $table='modules';
+    protected $fillable = ['id', 'module_name', 'icon', 'module_route', 'disabled'];
 
     public function subModules()
     {

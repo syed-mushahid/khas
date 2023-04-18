@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminControllers\ManageUsers\Users;
 use App\Http\Controllers\AdminControllers\Modules\ModulesContorller;
 use App\Http\Controllers\AdminControllers\Registration\Login;
 use App\Http\Controllers\AdminControllers\Registration\Settings;
-use App\Http\Controllers\AdminControllers\Roles\Roles;
+use App\Http\Controllers\AdminControllers\Roles\RolesController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(Login::class)->group(function () {
@@ -53,25 +53,21 @@ Route::middleware('admin_auth')
             Route::post('/update_password', 'updatePassword')->name('admin.settings.update.password');
 
         });
-        Route::controller(Roles::class)->group(function(){
-            Route::GET('/add_admin', 'addAdmin')->name('admin.add');
-            Route::POST('/create_admin', 'store')->name('admin.create');
+        Route::controller(RolesController::class)->group(function(){
+            Route::GET('/add_admin/{id?}', 'addAdmin')->name('admin.add');
+            Route::POST('/create_admin/{id?}', 'store')->name('admin.create');
             Route::GET('/admin_list', 'adminList')->name('admin.list');
-            Route::GET('/add_role', 'addRole')->name('role.add');
+            Route::GET('/add_role/{id?}', 'addRole')->name('role.add');
+            Route::POST('/create_role/{id?}', 'createRole')->name('role.create');
             Route::GET('/role_list', 'roleList')->name('role.list');
-            Route::GET('/add_module/{id?}', 'addModules')->name('module.add');
-            Route::GET('/modules_list', 'modulesList')->name('module.list');
-            Route::PUT('/update_module/{id}', 'updateModule')->name('module.update');
-            Route::GET('/delete_module/{id}', 'deleteModule')->name('module.delete');
-            Route::POST('/create_module', 'createModules')->name('module.create');
 
         });
         Route::controller(ModulesContorller::class)->group(function(){
             Route::GET('/add_module/{id?}', 'addModules')->name('module.add');
             Route::GET('/modules_list', 'modulesList')->name('module.list');
-            Route::PUT('/update_module/{id}', 'updateModule')->name('module.update');
+            Route::PUT('/update_module/{id}', 'createModule')->name('module.update');
             Route::GET('/delete_module/{id}', 'deleteModule')->name('module.delete');
-            Route::POST('/create_module', 'createModules')->name('module.create');
+            Route::POST('/create_module', 'createModule')->name('module.create');
 
         });
     });

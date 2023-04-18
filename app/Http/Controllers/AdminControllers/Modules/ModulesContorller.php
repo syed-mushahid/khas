@@ -17,19 +17,19 @@ class ModulesContorller extends Controller
 
             $module = Modules::find($id);
         }
-        return view('AdminViews.Roles.add_modules', compact('module'));
+        return view('AdminViews.Modules.add_modules', compact('module'));
 
     }
     public function modulesList()
     {
         $modules = Modules::all()->sortByDesc('id');
 
-        return view('AdminViews.Roles.modules_list', compact('modules'));
+        return view('AdminViews.Modules.modules_list', compact('modules'));
     }
 
-    public function createModules(Request $request)
+    public function createModule(Request $request, $id = null)
     {
-        // Validate the request data
+        // Validate input data
         $validatedData = $request->validate([
             'module_name' => 'required|max:255',
             'module_icon' => 'nullable|max:255',
@@ -39,69 +39,50 @@ class ModulesContorller extends Controller
             'sub_module_icon.*' => 'nullable|max:255',
             'sub_module_route.*' => 'nullable|max:255',
             'sub_module_disabled.*' => 'required',
+            'sub_module_id' => 'nullable',
         ]);
 
-        // Create a new module
-        $module = new Modules;
-        $module->module_name = $validatedData['module_name'];
-        $module->icon = $validatedData['module_icon'];
-        $module->module_route = $validatedData['module_route'];
-        $module->disabled = $validatedData['module_disabled'];
-        $module->save();
+        $module = Modules::updateOrCreate(
+            ['id' => $id],
+            [
+                'module_name' => $validatedData['module_name'],
+                'icon' => $validatedData['module_icon'],
+                'module_route' => $validatedData['module_route'],
+                'disabled' => $validatedData['module_disabled'],
+            ]
+        );
 
-        // Add the sub modules to the module
-        if (isset($validatedData['sub_module_name'])) {
-            foreach ($validatedData['sub_module_name'] as $key => $value) {
-                if (!empty($value)) {
-                    $sub_module = new SubModules;
-                    $sub_module->sub_module_name = $value;
-                    $sub_module->icon = $validatedData['sub_module_icon'][$key];
-                    $sub_module->sub_module_route = $validatedData['sub_module_route'][$key];
-                    $sub_module->disabled = $validatedData['sub_module_disabled'][$key];
-                    $module->subModules()->save($sub_module);}
+        $existingSubModules = $module->subModules()->get();
+
+        // Loop through existing sub-modules and update or delete as necessary
+        foreach ($existingSubModules as $subModule) {
+            // Check if the sub-module was removed by the user
+            if (!in_array($subModule->id, $validatedData['sub_module_id'])) {
+                // Delete the sub-module if it was removed
+                $subModule->delete();
+            } else {
+                // Update the sub-module if it was not removed
+                $key = array_search($subModule->id, $validatedData['sub_module_id']);
+                $subModule->update([
+                    'sub_module_name' => $validatedData['sub_module_name'][$key],
+                    'icon' => $validatedData['sub_module_icon'][$key],
+                    'sub_module_route' => $validatedData['sub_module_route'][$key],
+                    'disabled' => $validatedData['sub_module_disabled'][$key],
+                ]);
             }
         }
-        // Redirect to the module page with a success message
-        return redirect()->route('module.list')->with('admin_status', 'Module added successfully.');
 
-    }
-    public function updateModule(Request $request, $id)
-    {
-        // Validate input data
-        $validatedData = $request->validate([
-            'module_name' => 'required|max:255',
-            'module_icon' => 'nullable|max:255',
-            'module_route' => 'nullable|max:255',
-            'sub_module_name.*' => 'nullable|max:255',
-            'sub_module_icon.*' => 'nullable|max:255',
-            'sub_module_route.*' => 'nullable|max:255',
-        ]);
-
-        $module = Modules::findOrFail($id);
-
-        // Update module data
-        $module->module_name = $validatedData['module_name'];
-        $module->icon = $validatedData['module_icon'];
-        $module->module_route = $validatedData['module_route'];
-
-        // Delete all existing sub-modules of the module
-        $module->subModules()->delete();
-
-// Create new sub-modules
-        if (isset($validatedData['sub_module_name'])) {
-            $subModulesData = [];
-            foreach ($validatedData['sub_module_name'] as $key => $value) {
-                if (!empty($value)) {
-                    $subModulesData[] = [
-                        'sub_module_name' => $value,
-                        'icon' => $validatedData['sub_module_icon'][$key],
-                        'sub_module_route' => $validatedData['sub_module_route'][$key],
-                    ];
-                }}
-            $module->subModules()->createMany($subModulesData);
+        // Loop through new sub-modules and create them
+        foreach ($validatedData['sub_module_name'] as $key => $value) {
+            if (!empty($value) && empty($validatedData['sub_module_id'][$key])) {
+                $module->subModules()->create([
+                    'sub_module_name' => $value,
+                    'icon' => $validatedData['sub_module_icon'][$key],
+                    'sub_module_route' => $validatedData['sub_module_route'][$key],
+                    'disabled' => $validatedData['sub_module_disabled'][$key],
+                ]);
+            }
         }
-
-// Save changes
         $module->save();
 
         // Redirect to module list with success message
