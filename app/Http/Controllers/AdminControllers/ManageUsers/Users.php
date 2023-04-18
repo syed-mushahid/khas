@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\NewUserAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
-use Illuminate\Support\Carbon;
+use Symfony\Component\Mailer\Exception\TransportException;
 
 class Users extends Controller
 {
@@ -57,10 +58,23 @@ class Users extends Controller
             'password' => $password,
         ];
 
-        Mail::to($request->input('email'))->send(new NewUserAccount($mailData));
+        ///Sending the Credential Email
+        try {
 
+            Mail::to($request->input('email'))->send(new NewUserAccount($mailData));
+        } catch (TransportException $e) {
+
+            $user = User::findOrFail($user->id);
+            $user->delete();
+            return redirect()->back()->withErrors([
+                'error' => 'Unable To Send Email.Make Sure the Email Exist.',
+            ]);
+            die();
+            // handle the error
+            // display a user-friendly error message, retry sending the email, etc.
+        }
         // Redirect back to the form with a success message
-        return redirect()->back()->with('global_status', 'User created successfully');
+        return redirect()->route('users.add')->with('admin_status', 'User created successfully');
     }
     public function usersReport()
     {
@@ -150,7 +164,7 @@ class Users extends Controller
     public function getUsers(Request $request)
     {
         // Get the columns to display
-        $columns = ['id', 'first_name', 'last_name', 'email', 'banned', 'email_verified_at','phone', 'last_login','photo'];
+        $columns = ['id', 'first_name', 'last_name', 'email', 'banned', 'email_verified_at', 'phone', 'last_login', 'photo'];
 
         // Start building the query
         $query = DB::table('users')->select($columns);
@@ -175,7 +189,7 @@ class Users extends Controller
             $orderDir = $request->input('order')[0]['dir'];
             $query->orderBy($orderCol, $orderDir);
         }
-       
+
         //Applying Pagination
         $perPage = $request->input('length');
         $page = $request->input('start') / $perPage + 1;
@@ -207,12 +221,12 @@ class Users extends Controller
 
             $status = '<span class="status-dot" style="background-color:' . $statusColor . '"></span>';
 
-            $photo='<img src='.$row->photo.' width="50">';
-            $lastLogin=Carbon::parse($row->last_login)->diffForHumans();
+            $photo = '<img src=' . $row->photo . ' width="50">';
+            $lastLogin = Carbon::parse($row->last_login)->diffForHumans();
             $data[] = [
                 'id' => $row->id,
                 'photo' => $photo,
-                'name' => $row->first_name." ".$row->last_name,
+                'name' => $row->first_name . " " . $row->last_name,
                 'email' => $row->email,
                 'phone' => $row->phone,
                 'status' => $status,

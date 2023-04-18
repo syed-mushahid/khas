@@ -1,4 +1,7 @@
-
+<?php
+$data = /App/Modal/Modules::all();
+var_dump($data);
+?>
   <!-- ======= Sidebar ======= -->
   <aside id="sidebar" class="sidebar">
 
@@ -416,24 +419,55 @@
   </a>
   <ul id="roles" class="nav-content collapse" data-bs-parent="#roles-parent">
     <li>
-      <a href="{{url('add_role')}}">
+      <a href="{{route('role.add')}}">
         <i class="bi bi-node-plus-fill"></i><span>Add Role</span>
       </a>
     </li>
     <li>
-      <a href="{{url('roles_list')}}">
+      <a href="{{route('role.list')}}">
         <i class="bi bi-person-lines-fill"></i><span>Roles List</span>
       </a>
     </li>
     <li>
-      <a href="{{url('assign_roles')}}">
+      <a href="{{route('admin.add')}}">
         <i class="bi bi-person-plus-fill"></i><span>Assign Roles</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{route('module.add')}}">
+        <i class="bi bi-box-seam-fill"></i><span>Add Modules</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{route('module.list')}}">
+        <i class="bi bi-list-task"></i><span>Modules List</span>
       </a>
     </li>
   </ul>
 </li>
 
 {{-- Roles Menue Ends --}}
+{{-- Modules Menu Start --}}
+
+<li class="nav-item" id="Modules-parent">
+  <a class="nav-link collapsed" data-bs-target="#Modules" data-bs-toggle="collapse" href="#">
+    <i class="bi bi-box-fill"></i><span>Modules</span><i class="bi bi-chevron-down ms-auto"></i>
+  </a>
+  <ul id="Modules" class="nav-content collapse" data-bs-parent="#Modules-parent">
+    <li>
+      <a href="{{route('module.add')}}">
+        <i class="bi bi-plus-square-fill"></i><span>Add Modules</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{route('module.list')}}">
+        <i class="bi bi-list-task"></i><span>Modules List</span>
+      </a>
+    </li>
+  </ul>
+</li>
+
+{{-- Modules Menue Ends --}}
 
 
     </ul>

@@ -3,13 +3,9 @@
 namespace App\Http\Controllers\AdminControllers\Registration;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
-use App\Mail\NewAdminAccount;
+
 
 class Login extends Controller
 {
@@ -28,6 +24,9 @@ class Login extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('admin')->attempt($credentials)) {
+
+            Auth::guard('admin')->user()->last_login = now();
+            Auth::guard('admin')->user()->save();
             // If successful, redirect to the admin dashboard or intended page
             return redirect()->intended(route('dashboard.view'));
         } else {
@@ -36,42 +35,7 @@ class Login extends Controller
         }
     }
 
-    public function store(Request $request)
-    {
-        // Validate the request data
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:admins',
-            'phone' => 'required|string|min:10|max:15',
-            'role' => 'required|string|max:255',
-        ]);
 
-        // Generate a random 8-character password
-        $password = Str::random(8);
-
-        // Create a new admin account
-        $admin = new Admin([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'phone' => $request->input('phone'),
-            'role' => $request->input('role'),
-            'password' => Hash::make($password),
-        ]);
-
-        // Save the admin account to the database
-        $admin->save();
-
-        // Send an email to the admin with registration details, login page link, and generated password
-        $mailData = [
-            'admin' => $admin,
-            'password' => $password,
-        ];
-
-        Mail::to($request->input('email'))->send(new NewAdminAccount($mailData));
-
-        // Redirect to the desired location (e.g., admin list) with a success message
-        return redirect()->route('admin.list')->with('success', 'Admin account created successfully and an email has been sent with the login details!');
-    }
 
     public function logout()
 {

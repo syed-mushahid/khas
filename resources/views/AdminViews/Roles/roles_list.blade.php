@@ -8,58 +8,49 @@
 @endsection
 
 @section('content')
-  
-    
+
+
   <main id="main" class="main">
 
 
     <section class="section dashboard">
       <div class="row bg-white shadow rounded-3">
-      
+
       <div class="card-body">
             <h5 class="card-title">Roles List</h5>
-          
+
             <!-- Default Table -->
-            <table class="table">
+            <div class="table-responsive">
+              <table id="moduless-table" class="datatable table table-striped responsive">
+
               <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Role Name</th>
-                  <th scope="col">Actions</th>
-                </tr>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">Last Login</th>
+                      <th scope="col">Actions</th>
+                  </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Brandon Jacob</td>
-                  <td> <a href="#" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a> <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a> <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i> </a></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Bridie Kessler</td>
-                  <td> <a href="#" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a> <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a> <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i> </a></td>
-          
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Ashleigh Langosh</td>
-                  <td> <a href="#" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a> <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a> <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i> </a></td>
-          
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Angus Grady</td>
-                  <td> <a href="#" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a> <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a> <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i> </a></td>
-          
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>Raheem Lehner</td>
-                  <td> <a href="#" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a> <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a> <a href="#" class="btn btn-danger btn-sm"><i class="bi bi-trash-fill"></i> </a></td>
-          
-                </tr>
+                  @foreach($admins as $admin)
+                  <tr>
+                      <th scope="row">{{ $admin->id }}</th>
+                      <td>{{ $admin->name }}</td>
+                      <td>{{ $admin->email }}</td>
+                      <td>{{ $admin->role }}</td>
+                      <td>{{ \Carbon\Carbon::parse($admin->last_login)->diffForHumans() }}</td>
+                      <td>
+                          <a href="#" class="btn btn-success btn-sm"><i class="bi bi-eye"></i></a>
+                          <a href="#" class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></a>
+                          <a href="#" class="btn btn-danger btn-sm delete-admin" data-id="{{ $admin->id }}"><i class="bi bi-trash-fill"></i></a>
+                      </td>
+                  </tr>
+                  @endforeach
               </tbody>
-            </table>
+          </table>
+
             <!-- End Default Table Example -->
           </div>
 
@@ -73,6 +64,10 @@
 @section('script')
 
 <script>
-
+ $(document).ready(function() {
+        $('.datatable').DataTable({
+          "pageLength": 20
+        });
+      });
 </script>
 @endsection

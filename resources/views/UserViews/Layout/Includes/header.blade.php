@@ -48,7 +48,7 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                           <li><a class="dropdown-item" href="{{url('dashboard')}}">Dashboard</a></li>
-                                          <li><a class="dropdown-item" href="{{url('profile')}}">Profile</a></li>
+                                          <li><a class="dropdown-item" href="{{route('profile.show',['id' =>  Auth::user()->id])}}">Profile</a></li>
                                           <li><a class="dropdown-item" href="{{url('profile_settings')}}">Settings</a></li>
                                           <li><a class="dropdown-item" href="{{url('logout')}}">Logout</a></li>
                                         </ul>

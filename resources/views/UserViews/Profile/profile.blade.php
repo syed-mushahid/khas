@@ -1,5 +1,5 @@
 @extends('UserViews/Layout.layout')
-@section('title',' ')
+@section('title',$user->first_name.' '.$user->last_name.' - Profile')
 @section('style')
 <style>
 .profile-pic{
@@ -29,13 +29,14 @@
 -
 
                <div class="position-relative rounded-circle overflow-hidden mx-auto mx-md-0 mb-3" style="width: 120px; height: 120px;">
-                     <img alt="Syed Mushahid" light="0" src="https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg" decoding="async" data-nimg="fill" sizes="100vw"  class="profile-pic">
+                     <img alt="Profile Image" light="0" src={{$user->photo}} decoding="async" data-nimg="fill" sizes="100vw"  class="profile-pic">
 
                </div>
 <div class="w-100 text-center">
 
-               <h2 class="h4 text-center  mb-1">Syed Mushahid <i style="font-size: 10px;" class="text-success bi bi-circle-fill"></i></h2>
-               <p class="text-center   mb-2 pb-1"><b> Joined On : </b><span class="text-muted">12 Jan 2022<span></p>
+               <h2 class="h4 text-center  mb-1">{{$user->first_name.' '.$user->last_name}}<i style="font-size: 10px;" class="text-success bi bi-circle-fill"></i></h2>
+               <p class="text-center   mb-2 pb-1"><b> Joined On : </b><span class="text-muted">{{$user->created_at->format('F j, Y');
+              }}<span></p>
                </div>
                   <div class="d-flex justify-content-center w-100  align-items-center border-bottom pb-4 mb-4">
                   <span class="star-rating">

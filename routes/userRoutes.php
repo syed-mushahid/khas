@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminControllers\Dashboard;
 use App\Http\Controllers\AdminControllers\manageUsers;
 use App\Http\Controllers\UserControllers\Profile\Settings;
+use App\Http\Controllers\UserControllers\Profile\UserProfile;
 use App\Http\Controllers\UserControllers\Purchase;
 use App\Http\Controllers\UserControllers\Registration\ForgotPassword;
 use App\Http\Controllers\UserControllers\Registration\GoogleLogin;
@@ -62,12 +63,16 @@ Route::get('/sales', function () {
 Route::middleware('auth')->group(function () {
 
     Route::controller(Settings::class)->group(function () {
-        // Route::get('/profile', );
-        // Route::get('/wishlist', );
+        Route::get('/profile', 'showProfile')->name('profile_settings.show');
         Route::get('/profile_settings', 'showProfileSettings')->name('profile_settings.show');
         Route::POST('/profile_settings', 'updateInfo')->name('profile_settings.update');
         Route::POST('/update_address', 'updateAddress')->name('profile_settings.address');
     });
+});
+
+Route::controller(UserProfile::class)->group(function () {
+    Route::get('/profile/{id}', 'showProfile')->name('profile.show');
+
 });
 
 Route::middleware('prevent-login')->group(function () {
@@ -190,15 +195,9 @@ Route::get('/completed_returns', function () {
 Route::get('/returns_report', function () {
     return view('AdminViews.Returns.returns_report');
 });
-Route::get('/add_role', function () {
-    return view('AdminViews.Roles.add_role');
-});
-Route::get('/roles_list', function () {
-    return view('AdminViews.Roles.roles_list');
-});
-Route::get('/assign_roles', function () {
-    return view('AdminViews.Roles.assign_roles');
-});
+
+
+
 Route::get('/pending_sales', function () {
     return view('AdminViews.Sales.pending_sales');
 });

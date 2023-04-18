@@ -15,42 +15,40 @@
                <form action="{{ route('users.create') }}" method="POST">
                   @csrf
                   <div class="row  mb-3">
-                     <div class="col-md-6">
-                        <label for="inputText"  class="col-sm-12 col-form-label">First Name</label>
-                        <div class="col-sm-12">
-                           <input type="text"name="first_name" class="form-control">
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <label for="inputText"  class="col-sm-12 col-form-label">Last Name</label>
-                        <div class="col-sm-12">
-                           <input type="text" name="last_name" class="form-control">
-                        </div>
-                     </div>
-
+                      <div class="col-md-6">
+                          <label for="inputText"  class="col-sm-12 col-form-label">First Name</label>
+                          <div class="col-sm-12">
+                              <input type="text" name="first_name" class="form-control" value="{{ old('first_name') }}">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <label for="inputText"  class="col-sm-12 col-form-label">Last Name</label>
+                          <div class="col-sm-12">
+                              <input type="text" name="last_name" class="form-control" value="{{ old('last_name') }}">
+                          </div>
+                      </div>
                   </div>
                   <div class="row  mb-3">
-                     <div class="col-md-6">
-                        <label for="inputText" class="col-sm-12 col-form-label">Phone</label>
-                        <div class="col-sm-12">
-                           <input type="number" name="phone" class="form-control">
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <label for="inputEmail" class="col-sm-12 col-form-label">Email</label>
-                        <div class="col-sm-12">
-                           <input type="email" name="email" class="form-control">
-                        </div>
-                     </div>
+                      <div class="col-md-6">
+                          <label for="inputText" class="col-sm-12 col-form-label">Phone</label>
+                          <div class="col-sm-12">
+                              <input type="number" name="phone" class="form-control" value="{{ old('phone') }}">
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <label for="inputEmail" class="col-sm-12 col-form-label">Email</label>
+                          <div class="col-sm-12">
+                              <input type="email" name="email" class="form-control" value="{{ old('email') }}">
+                          </div>
+                      </div>
                   </div>
-
                   <div class="row mb-3">
-
-                     <div class="col-sm-12 text-center">
-                        <button type="submit" class="btn btn-khas-primary">Add</button>
-                     </div>
+                      <div class="col-sm-12 text-center">
+                          <button type="submit" class="btn btn-khas-primary">Add</button>
+                      </div>
                   </div>
-               </form>
+              </form>
+
                <!-- End General Form Elements -->
             </div>
          </div>

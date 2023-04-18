@@ -63,7 +63,7 @@
                         <div class="col-12">
                           <label for="yourEmail" class="form-label">Email</label>
                           <div class="input-group has-validation">
-                            <input required type="email" name="email" class="form-control" id="yourEmail" required>
+                            <input required type="email" name="email" value="{{old('email')}}" class="form-control" id="yourEmail" required>
                             <div class="invalid-feedback">Please enter your Email.</div>
                           </div>
                         </div>

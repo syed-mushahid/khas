@@ -6,9 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\UserControllers\Registration\VerifyEmail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\EmailService;
 
 class Singup extends Controller
 {
+    protected $emailService;
+
+    public function __construct(EmailService $emailService)
+    {
+        $this->emailService = $emailService;
+    }
     public function signup()
     {
 
@@ -35,8 +42,7 @@ class Singup extends Controller
 
         // Send the email with the verification code
 
-        $verifyEmail = new VerifyEmail();
-        $verifyEmail->sendEmailVerificationMail($user->email);
+        $this->emailService->sendEmailVerificationMail($user->email);
         // Redirect to the email verification page
         return redirect()->route('verification.send')->with('status', 'We have sent a verification code to your email address. Please enter it below to verify your account.');
     }

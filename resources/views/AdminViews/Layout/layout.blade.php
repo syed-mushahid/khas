@@ -41,8 +41,33 @@
     @include('AdminViews.Layout.header')
 
             @include('AdminViews.Layout.sidebar')
+<div class="notification-wrapper">
+            @if (session('admin_status'))
+            <div class="alert m-0 notification-alert  rounded-0  alert-success alert-dismissible fade show" role="alert">
+                {{ session('admin_status') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @if (session('admin_error'))
+            <div class="alert m-0 notification-alert  rounded-0 alert-danger alert-dismissible fade show" role="alert">
+                {{ session('admin_error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
 
+            @endif
 
+            @if($errors->any())
+            <div class="alert m-0 notification-alert  rounded-0  alert-dismissible fade show alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+            </div>
+          @endif
+        </div>
             @yield('content')
 
     @include('AdminViews.Layout.footer')
