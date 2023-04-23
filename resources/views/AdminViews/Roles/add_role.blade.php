@@ -40,9 +40,9 @@
                     <tr>
                         <td>{{$loop->index+1}}</td>
                         <td>
-                            {{$sub_module->sub_module_name}}
+                            {{$sub_module->module_name}}
+                            {{-- <input type="hidden" name="module_id[]" value="{{$module->id}}"> --}}
                             <input type="hidden" name="module_id[]" value="{{$module->id}}">
-                            <input type="hidden" name="sub_module_id[]" value="{{$sub_module->id}}">
                         </td>
 
                         <td>

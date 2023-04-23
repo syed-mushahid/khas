@@ -25,7 +25,7 @@ class SidebarProvider extends ServiceProvider
     public function boot()
     {
         view()->composer('AdminViews.Layout.sidebar', function ($view) {
-            $modules = Modules::all();
+            $modules = Modules::whereNull('parent_id')->get();
             $view->with('modules', $modules);
         });
 

@@ -30,6 +30,8 @@
 <!-- DataTables Buttons CSS -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.3.2/css/buttons.dataTables.min.css"/>
 
+<!-- Toastr CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <!-- Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
@@ -99,8 +101,31 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Main JS File -->
 
+<!-- Toastr JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
   <script src="{{asset('admin/js/main.js')}}"></script>
   @yield('script')
 </body>
+@if(session('success'))
+<script>
+  toastr.success('{{ session('success') }}');
+</script>
+@endif
+@if(session('error'))
+<script>
+  toastr.error('{{ session('error') }}');
+</script>
+@endif
+@if(session('info'))
+<script>
+  toastr.info('{{ session('info') }}');
+</script>
+@endif
+@if(session('warning'))
+<script>
+  toastr.warning('{{ session('warning') }}');
+</script>
+@endif
 
 </html>

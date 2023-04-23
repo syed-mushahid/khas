@@ -69,8 +69,8 @@
                   </div>
                   <div class="row mb-3">
                       <div class="col-sm-12 text-center">
-                          <button type="reset" class="btn btn-khas-primary">Reset</button>
-                          <button type="submit" class="btn btn-khas-primary">Save</button>
+                          <button type="reset" class="btn btn-khas-primary mx-2">Reset</button>
+                          <button type="submit" class="btn btn-khas-primary mx-2">Save</button>
                       </div>
                   </div>
               </form>

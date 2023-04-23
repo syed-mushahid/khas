@@ -32,7 +32,7 @@ class RolesController extends Controller
 
     public function addRole($id = null)
     {
-        $modules = Modules::all();
+        $modules = Modules::whereNull('parent_id')->get();
         $role = null;
         if (!empty($id)) {
             $role = Roles::find($id);
@@ -73,21 +73,25 @@ class RolesController extends Controller
         ]);
 
         // Generate a random 8-character password
-        $password = Str::random(8);
 
         // Try to find an admin with the given email
-        $admin = Admin::where('email', $request->input('email'))->first();
+        $admin = Admin::find($id);
 
-// If the admin doesn't exist, create a new one
+        $password = Str::random(8);
+        // If the admin doesn't exist, create a new one
         if (!$admin) {
             $admin = new Admin;
+            $admin->password = Hash::make($password);
         }
 
+        else{
+            $admin->password=$admin->password;
+        }
 // Update the admin's attributes
         $admin->name = $request->input('name');
+        $admin->email = $request->input('email');
         $admin->phone = $request->input('phone');
         $admin->role = $request->input('role');
-        $admin->password = Hash::make($password);
 
 // Save the admin
         $admin->save();
@@ -98,6 +102,7 @@ class RolesController extends Controller
             'password' => $password,
         ];
 
+        if(empty($id)){
         try {
 
             Mail::to($request->input('email'))->send(new NewAdminAccount($mailData));
@@ -109,7 +114,7 @@ class RolesController extends Controller
                 'error' => 'Unable To Send Email.Make Sure the Email Exist.',
             ]);
             die();
-        }
+        }}
         // Redirect to the desired location (e.g., admin list) with a success message
         return redirect()->route('admin.list')->with('admin_status', 'Admin account created successfully and an email has been sent with the login details!');
     }

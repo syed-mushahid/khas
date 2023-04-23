@@ -5,8 +5,9 @@
   <aside id="sidebar" class="sidebar">
 
     <ul class="sidebar-nav" id="sidebar-nav">
+      @each('AdminViews.Layout.sidebar_menu', $modules, 'module')
 
-      @foreach($modules as $module)
+      {{-- @foreach($modules as $module)
 
       @if($module->disabled==false)
       @if(count($module->subModules) <= 0)
@@ -25,19 +26,20 @@
                @foreach($module->subModules as $submodule)
 
 
-               @if($submodule->disabled==false && permission($submodule->id))
-                <li>
-                  <a href="{{!empty($submodule->sub_module_route && Route::has($submodule->sub_module_route))?route($submodule->sub_module_route):'#'}}">
-                    <i class="{{$submodule->icon}}"></i><span>{{$submodule->sub_module_name}}</span>
+               @if($submodule->disabled==false)
+               {{-- @if($submodule->disabled==false ) --}}
+                {{-- <li>
+                  <a href="{{!empty($submodule->module_route && Route::has($submodule->module_route))?route($submodule->module_route):'#'}}">
+                    <i class="{{$submodule->icon}}"></i><span>{{$submodule->module_name}}</span>
                   </a>
-                </li>
-                @endif
+                </li> --}}
+                {{-- @endif
 @endforeach
               </ul>
             @endif
 
             @endif
-      @endforeach
+      @endforeach --}}
 
 {{-- Roles Menu Start --}}
 

@@ -23,78 +23,75 @@
                            @endisset
                            <div class="modal-body text-start">
                               <div class="row ">
-                                <div class="col-sm-6">
-                                   <label class="" for="module_name">Module Name</label>
-
-                                   <input type="text" name="module_name" id="module_name" value="{{ old('module_name', $module ? $module->module_name : '') }}" class="form-control" placeholder="Module Name">
-                                 </div>
-                                 <div class="col-sm-6">
-
-                                    <label class="" for="module_icon">Module Icon</label>
-                                    <input type="text" value="{{ old('module_icon', $module ? $module->icon : '') }}" class="form-control" placeholder="Bootstrap Icon Class" name="module_icon" id="icon">
-                                 </div>
-                                 <div class="col-sm-6">
-
-                                    <label class="" for="module_route">Module Route</label>
-                                    <input type="text" value="{{ old('module_route', $module ? $module->module_route : '') }}" class="form-control" placeholder="Route Name" name="module_route" id="module_route">
-                                    <input type="hidden" name="id" id="id" value="{{ $module ? $module->id : '' }}">
+                                 <div class="col-sm-5 ">
+                                    <label class="" for="parent_module">Parent Module</label>
+                                    <select class="form-control" name="parent_id" id="parent_module">
+                                      <option value="">No Parent</option>
+                                      @foreach($modules as $mod)
+                                        <option {{$module&& $module->id == $mod->id?"disabled":''}} value="{{ $mod->id }}" {{ isset($module) && $module->parent_id == $mod->id ? 'selected' : '' }}>{{ $mod->module_name }}</option>
+                                      @endforeach
+                                    </select>
                                   </div>
-                                  <div class="col-sm-6">
+
+
+                                  {{-- <div class="col-sm-5">
                                     <label for="module_disabled">Module Enabled</label>
                                     <select class="form-control" name="module_disabled" id="module_disabled">
                                        <option value="0" {{ isset($module) && !$module->disabled ? 'selected' : '' }}>Enabled</option>
                                        <option value="1" {{ isset($module) && $module->disabled ? 'selected' : '' }}>Disabled</option>
                                     </select>
-                                 </div>
+                                 </div> --}}
                               </div>
-                              <!-- sub-module fields -->
-                              <div id="sub-modules-container" class="mt-3">
-                                <h3 class="text-center">Sub Modules</h3>
+                              <!-- Module fields -->
+                              <div id="Modules-container" class="mt-3">
+                                 {{-- {{dd($module)}} --}}
+
                                  <div class="row">
                                     <div class="col-sm-5">
-                                       <input type="text" name="sub_module_name[]" class="form-control " placeholder="Sub-module name">
-                                       <input type="hidden" name="sub_module_id[]" class="form-control" placeholder="Sub-module name">
+                                       <input type="text" name="module_name[]" class="form-control " value="{{$module?$module->module_name:old('module_name')}}"  placeholder="Module name">
+                                       <input type="hidden" name="module_id[]" class="form-control" value="{{$module?$module->id:old('id')}}"  placeholder="Module name">
                                       </div>
                                     <div class="col-sm-5">
-                                       <input type="text" name="sub_module_icon[]" class="form-control " placeholder="Icon Class" id="sub_module_icon">
+                                       <input type="text" name="icon[]" class="form-control " value="{{$module?$module->icon:old('icon')}}" placeholder="Icon Class" id="icon">
                                     </div>
                                     <div class="col-sm-5">
-                                       <input type="text" name="sub_module_route[]" class="mt-2 form-control " placeholder="Route Name" id="sub_module_route">
+                                       <input type="text" name="module_route[]" class="mt-2 form-control " value="{{$module?$module->module_route:old('module_route')}}"placeholder="Route Name" id="module_route">
                                     </div>
                                     <div class="col-sm-5">
-                                      <select class="form-control mt-2" name="sub_module_disabled[]" id="sub_module_disabled">
-                                         <option value="0">Enabled</option>
-                                         <option value="1">Disabled</option>
+                                      <select class="form-control mt-2" name="module_disabled[]" id="module_disabled">
+                                       <option value="0" {{ ($module && $module->disabled==false) ? 'selected' : '' }}>Enabled</option>
+                                       <option value="1" {{ ($module && $module->disabled==true) ? 'selected' : '' }}>Disabled</option>
+
                                       </select>
                                    </div>
                                     <div class="col-auto">
-                                       <button type="button" class="btn btn-success add-sub-module"><i class="bi bi-plus-square-fill"></i></button>
+                                       <button type="button" class="btn btn-success add-Module"><i class="bi bi-plus-square-fill"></i></button>
                                     </div>
-                                    @if ($module)
+                                    {{-- @if ($module)
                                     @foreach ($module->subModules as $submodule)
                                     <div class="row my-2 pt-2 border-top">
                                        <div class="col-sm-5">
-                                          <input type="text" name="sub_module_name[]" value="{{ $submodule->sub_module_name }}" class="form-control" placeholder="Sub-module name">
-                                          <input type="hidden" name="sub_module_id[]" value="{{ $submodule->id }}" class="form-control" placeholder="Sub-module name">
+                                          <input type="text" name="module_name[]" value="{{ $submodule->module_name }}" class="form-control" placeholder="Module name">
+                                          <input type="hidden" name="module_id[]" value="{{ $submodule->id }}" class="form-control" placeholder="Module name">
                                        </div>
                                        <div class="col-sm-5">
-                                          <input type="text" name="sub_module_icon[]" value="{{ $submodule->icon }}" class="form-control" placeholder="Icon Class" id="sub_module_icon">
+                                          <input type="text" name="icon[]" value="{{ $submodule->icon }}" class="form-control" placeholder="Icon Class" id="icon">
                                        </div>
                                        <div class="col-sm-5">
-                                          <input type="text" name="sub_module_route[]" value="{{ $submodule->sub_module_route }}" class="mt-2 form-control" placeholder="Route Name" id="sub_module_route">
+                                          <input type="text" name="module_route[]" value="{{ $submodule->module_route }}" class="mt-2 form-control" placeholder="Route Name" id="module_route">
                                        </div>
                                        <div class="col-sm-5">
-                                        <select class="form-control mt-2" name="sub_module_disabled[]" id="sub_module_disabled">
+                                        <select class="form-control mt-2" name="module_disabled[]" id="module_disabled">
                                           <option value="0" {{ ($submodule->disabled==false) ? 'selected' : '' }}>Enabled</option>
                                           <option value="1" {{ ($submodule->disabled==true) ? 'selected' : '' }}>Disabled</option>
                                        </select>
                                      </div>
                                        <div class="col-auto">
-                                          <button type="button" class="btn btn-danger remove-sub-module"><i class="bi bi-x-square-fill"></i></button>
+                                          <button type="button" class="btn btn-danger remove-Module"><i class="bi bi-x-square-fill"></i></button>
                                        </div>
                                     </div>
                                     @endforeach
-                                    @endif
+                                    @endif --}}
                                  </div>
                               </div>
                               <div class="my-3 mx-auto text-center">
@@ -114,23 +111,15 @@
 @section('script')
 <script>
    $(document).ready(function() {
-           // // add sub-module field
-           // $('.add-sub-module').click(function() {
-           //     $('#sub-modules-container').append('<div class="row mt-3"><div class="col"><input type="text" name="sub_module_name[]" class="form-control" placeholder="Sub-module name"></div><div class="col-auto"><button type="button" class="btn btn-success add-sub-module">Add</button><button type="button" class="btn btn-danger remove-sub-module">Remove</button></div></div>');
-           // });
 
-           // // remove sub-module field
-           // $('#sub-modules-container').on('click', '.remove-sub-module', function() {
-           //     $(this).closest('.row').remove();
-           // });
 
-         // add sub-module field
-         $('.add-sub-module').click(function() {
-             $('#sub-modules-container').append('<div class="row my-2 border-top pt-2"><div class="col-sm-5"><input type="text" name="sub_module_name[]" class="form-control " placeholder="Sub-module name">   <input type="hidden" name="sub_module_id[]" class="form-control" placeholder="Sub-module name"></div><div class="col-sm-5"><input type="text" name="sub_module_icon[]" class="form-control " placeholder="Icon Class" id="sub_module_icon"></div> <div class="col-sm-5"><input type="text" name="sub_module_route[]" class="form-control mt-2" placeholder="Route Name" id="sub_module_route"></div><div class="col-sm-5"> <select class="form-control mt-2" name="sub_module_disabled[]" id="sub_module_disabled"><option value="0">Enabled</option><option value="1">Disabled</option></select></div><div class="col-auto"><button type="button" class="btn btn-danger remove-sub-module"><i class="bi bi-x-square-fill"></i></button></div></div>');
+         // add Module field
+         $('.add-Module').click(function() {
+             $('#Modules-container').append('<div class="row my-2 border-top pt-2"><div class="col-sm-5"><input type="text" name="module_name[]" class="form-control " placeholder="Module name">   <input type="hidden" name="module_id[]" class="form-control" placeholder="Module name"></div><div class="col-sm-5"><input type="text" name="icon[]" class="form-control " placeholder="Icon Class" id="icon"></div> <div class="col-sm-5"><input type="text" name="module_route[]" class="form-control mt-2" placeholder="Route Name" id="module_route"></div><div class="col-sm-5"> <select class="form-control mt-2" name="module_disabled[]" id="module_disabled"><option value="0">Enabled</option><option value="1">Disabled</option></select></div><div class="col-auto"><button type="button" class="btn btn-danger remove-Module"><i class="bi bi-x-square-fill"></i></button></div></div>');
          });
 
-         // remove sub-module field
-         $('#sub-modules-container').on('click', '.remove-sub-module', function() {
+         // remove Module field
+         $('#Modules-container').on('click', '.remove-Module', function() {
              $(this).closest('.row').remove();
          });
 
@@ -141,10 +130,6 @@
 
 
          });
-
-
-
-
 
 </script>
 @endsection

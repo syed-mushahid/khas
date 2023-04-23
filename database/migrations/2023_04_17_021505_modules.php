@@ -13,15 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('modules', function (Blueprint $table) {
-            $table->id();
-            $table->string('module_name');
-            $table->string('module_route')->nullable();
-            $table->string('icon')->nullable();
-            $table->string('disabled')->default(false);
-            $table->timestamps();
-        });
 
+            Schema::create('modules', function (Blueprint $table) {
+                $table->id();
+                $table->string('module_name');
+                $table->string('module_route')->nullable();
+                $table->string('icon')->nullable();
+                $table->boolean('disabled')->default(false);
+                $table->unsignedBigInteger('parent_id')->nullable();
+                $table->foreign('parent_id')->references('id')->on('modules');
+                $table->timestamps();
+            });
+        
     }
 
     /**
