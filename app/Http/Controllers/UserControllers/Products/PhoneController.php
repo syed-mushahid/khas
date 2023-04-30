@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\UserControllers\Products;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brands;
 use App\Models\Phone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,11 +15,12 @@ class PhoneController extends Controller
     public function addPhone($id = null)
     {
 
+        $brands=Brands::all();
         $phone = null;
         if (!empty($id)) {
             $phone = Phone::find($id);
         }
-        return view('UserViews.Product.addproduct', compact('phone'));
+        return view('UserViews.Product.addproduct', compact('phone','brands'));
 
     }
 

@@ -45,8 +45,15 @@
                <div class="row">
                 <div class="mb-3 col-sm-6 pb-2">
                   <label class="form-label" for="brand">Phone Brand</label>
-                  <input class="form-control" type="text" name="brand" id="brand" value="{{ isset($phone) ? $phone->brand : old('brand') }}">
+                  <select class="form-select" name="brand" id="brand">
+                    <option selected disabled>Select Brand</option>
+                    @foreach($brands as $brand)
+                        <option value="{{ $brand->id }}" {{ (isset($phone) && $phone->brand == $brand->id) || old('brand') == $brand->id ? 'selected' : '' }}>{{ $brand->name }}</option>
+                    @endforeach
+                </select>
+
                 </div>
+
                 <div class="mb-3 col-sm-6 pb-2">
                   <label class="form-label" for="model">Model Name</label>
                   <input class="form-control" type="text" name="model" id="model" value="{{ isset($phone) ? $phone->model : old('model') }}">
