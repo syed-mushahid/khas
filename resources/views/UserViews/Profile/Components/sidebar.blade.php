@@ -7,15 +7,15 @@
             <h3 class="fs-base mb-0">{{Auth::user()->first_name}}</h3>
             <span class="text-accent fs-sm">{{Auth::user()->email}}</span><br>
             <span class="text-accent fs-sm"><b>Balance : </b>Rs 12,343</span><br>
-            <a href="{{url('add-product')}}"><button class="btn btn-primary w-100 mt-3">Sell Phone</button></a>
+            <a href="{{route('phones.add')}}"><button class="btn btn-primary w-100 mt-3">Sell Phone</button></a>
         </div>
         </div><a class="btn btn-primary d-lg-none mb-2 mt-3 mt-md-0" href="#account-menu" data-bs-toggle="collapse" aria-expanded="false"><i class="bi bi-list me-2"></i>Menue</a>
       </div>
       <div class="d-lg-block" id="account-menu">
           <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{url('dashboard')}}"><i class="bi bi-grid-fill opacity-60 me-2"></i>Dashboard</a></div>
           <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{url('wallet')}}"><i class="bi bi-cash-stack opacity-60 me-2"></i>Wallet</a></div>
-          <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{url('add-product')}}"><i class="bi bi-plus-square opacity-60 me-2"></i>Add New Product</a></div>
-          <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{url('manage-products')}}"><i class="bi bi-box-seam opacity-60 me-2"></i>Manage Products</a></div>
+          <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('phones.add')}}"><i class="bi bi-plus-square opacity-60 me-2"></i>Add New Product</a></div>
+          <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{route('phones.list')}}"><i class="bi bi-box-seam opacity-60 me-2"></i>Manage Products</a></div>
           <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{url('purchases')}}"><i class="bi bi-shop-window opacity-60 me-2"></i>Purchases</a></div>
           <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{url('sales')}}"><i class="bi bi-receipt opacity-60 me-2"></i>Sales</a></div>
           <div class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="{{url('wishlist')}}"><i class="bi bi-heart opacity-60 me-2"></i>Wishlist</a></div>

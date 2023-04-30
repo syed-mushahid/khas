@@ -199,6 +199,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\SidebarProvider::class,
+        App\Providers\HeaderDataProvider::class,
 
     ],
 

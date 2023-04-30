@@ -1,5 +1,5 @@
 @extends('AdminViews.Layout.layout')
-@section('title','Categories list')
+@section('title','Brands list')
 @section('style')
 <style>
 
@@ -19,26 +19,34 @@
 
       <div class="card-body">
         <div class="row m-3 ">
-              <h5 class="card-title col">Category List</h5>
+              <h5 class="card-title col">Brand List</h5>
               <div class="col text-end">
 
-              <a href="{{ route('category.add') }}" class=" btn btn-primary">Add New Category</a>
+              <a href="{{ route('brand.add') }}" class=" btn btn-primary">Add New Brand</a>
               </div>
               </div>
             <!-- Default Table -->
-            <table id="category_table" class="mt-3 datatable table table-striped responsive">
+            <table id="brand_table" class="mt-3 datatable table table-striped responsive">
                 <thead>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Parent ID</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($categories as $category)
-                        @include('AdminViews.Product.manage_categories.subcategory_row', ['category' => $category, 'level' => 0])
-                    @endforeach
+                    @foreach($brands as $brand)
+                    <tr>
+                    <td>{{ $brand->id }}</td>
+                    <td>
+                        {{ $brand->name }}
+                    </td>
+                    <td>
+                      <a href="{{ route('brand.add', $brand->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                      <button type="button" data-id="{{ $brand->id }}" onclick="deleteBrand(this)" class="btn btn-sm btn-danger">Delete</button>
+
+                  </td>
+                    </tr>                    @endforeach
                 </tbody>
             <!-- End Default Table Example -->
             </table>
@@ -59,13 +67,13 @@
          });
        });
 
-       function deleteCategory(btn) {
-    if (confirm("Are you sure you want to delete this category?")) {
+       function deleteBrand(btn) {
+    if (confirm("Are you sure you want to delete this brand?")) {
         var id = btn.dataset.id;
 
         var csrf_token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-        fetch('/admin/delete_category/' + id, {
+        fetch('/admin/delete_brand/' + id, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,7 +95,7 @@
         })
         .catch(error => {
             console.error(error);
-            toastr.error("An error occurred while deleting the category."); // Display an animated error notification
+            toastr.error("An error occurred while deleting the brand."); // Display an animated error notification
         });
     }
 }

@@ -33,8 +33,16 @@
 <!-- Toastr CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+<!-- Include Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+
   <!-- Main CSS File -->
   <link href="{{asset('admin/css/style.css')}}" rel="stylesheet">
+  <style>
+
+
+  </style>
   @yield('style')
 </head>
 
@@ -104,7 +112,15 @@
 <!-- Toastr JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
+<!-- Include Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   <script src="{{asset('admin/js/main.js')}}"></script>
+  <script>
+     $(document).ready(function() {
+        $('select').select2();
+    });
+  </script>
   @yield('script')
 </body>
 @if(session('success'))

@@ -23,7 +23,7 @@
                            @endisset
                            <div class="modal-body text-start">
                               <div class="row ">
-                                 <div class="col-sm-5 ">
+                                 <div class="col-sm-5">
                                     <label class="" for="parent_module">Parent Module</label>
                                     <select class="form-control" name="parent_id" id="parent_module">
                                       <option value="">No Parent</option>
@@ -57,8 +57,9 @@
                                     <div class="col-sm-5">
                                        <input type="text" name="module_route[]" class="mt-2 form-control " value="{{$module?$module->module_route:old('module_route')}}"placeholder="Route Name" id="module_route">
                                     </div>
-                                    <div class="col-sm-5">
-                                      <select class="form-control mt-2" name="module_disabled[]" id="module_disabled">
+                                    <div class="col-sm-5 mt-2">
+
+                                      <select class="form-control " name="module_disabled[]" id="module_disabled">
                                        <option value="0" {{ ($module && $module->disabled==false) ? 'selected' : '' }}>Enabled</option>
                                        <option value="1" {{ ($module && $module->disabled==true) ? 'selected' : '' }}>Disabled</option>
 

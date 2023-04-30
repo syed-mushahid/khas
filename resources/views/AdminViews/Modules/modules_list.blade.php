@@ -16,8 +16,10 @@
     <section class="section dashboard">
       <div class="row bg-white shadow rounded-3">
         <div class="container p-3">
-            <div class="row my-3 ">
-              <div class="col-12 text-end">
+            <div class="row m-3 ">
+              <h5 class="card-title col">Modules List</h5>
+              <div class="col text-end">
+
                 <a href="{{route('module.add')}}" class="btn btn-primary">
                   Add New Module
               </a>

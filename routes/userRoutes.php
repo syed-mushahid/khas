@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminControllers\Dashboard;
 use App\Http\Controllers\AdminControllers\manageUsers;
+use App\Http\Controllers\UserControllers\Products\PhoneController;
 use App\Http\Controllers\UserControllers\Profile\Settings;
 use App\Http\Controllers\UserControllers\Profile\UserProfile;
 use App\Http\Controllers\UserControllers\Purchase;
@@ -30,12 +31,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('UserViews/Home/home');
 });
-Route::get('/product-details', function () {
-    return view('UserViews/Product/product-details');
-});
-Route::get('/add-product', function () {
-    return view('UserViews/Product/addproduct');
-});
+
 
 Route::get('/compare', function () {
     return view('UserViews/Compare/compare');
@@ -47,9 +43,7 @@ Route::get('/support', function () {
     return view('UserViews/Support/support');
 });
 
-Route::get('/manage-products', function () {
-    return view('UserViews/Product/manage-products');
-});
+
 Route::get('/dashboard', function () {
     return view('UserViews/Dashboard/dashboard');
 });
@@ -60,6 +54,13 @@ Route::get('/sales', function () {
     return view('UserViews/Sales/sales');
 });
 
+
+/////Page not found
+Route::get('/page_not_found', function () {
+    return view('UserViews/Error404');
+})->name('not_found');
+
+
 Route::middleware('auth')->group(function () {
 
     Route::controller(Settings::class)->group(function () {
@@ -67,6 +68,15 @@ Route::middleware('auth')->group(function () {
         Route::get('/profile_settings', 'showProfileSettings')->name('profile_settings.show');
         Route::POST('/profile_settings', 'updateInfo')->name('profile_settings.update');
         Route::POST('/update_address', 'updateAddress')->name('profile_settings.address');
+    });
+    Route::controller(PhoneController::class)->group(function () {
+        Route::get('/add-phone', 'addPhone')->name('phones.add');
+        Route::get('/update-phone/{id}', 'addPhone')->name('phones.update');
+        Route::POST('/create-phone', 'createPhone')->name('phones.create');
+        Route::GET('/manage-phones', 'phoneList')->name('phones.list');
+        Route::GET('/delete-phone/{id}', 'deletePhone')->name('phones.delete');
+        Route::GET('/phone-details/{id}', 'phoneDetails')->name('phones.show');
+
     });
 });
 

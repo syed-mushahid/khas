@@ -67,8 +67,6 @@
                             </ul>
                         @endif
 
-
-
                         </div>
                     </div>
                 </div>
@@ -94,12 +92,15 @@
                             <div id="navbar-search" class="navbar-search search-style-5">
                                 <div class="search-select">
                                     <div class="select-position">
-                                        <select id="select1">
-                                            <option selected>--Brand--</option>
-                                            <option value="1">Apple</option>
-                                            <option value="2">One Plus</option>
-                                            <option value="3">Nokia</option>
-                                            <option value="4">Oppo</option>
+                                        <select id="select1" class="select2-search">
+                                            <option selected disabled>--Brand--</option>
+                                            @forelse ($brands as $brand)
+                                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+
+                                            @empty
+                                            <option disabled>--No Brands Available--</option>
+
+                                           @endforelse
 
                                         </select>
                                     </div>
@@ -160,119 +161,24 @@
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
-                                        <a href="{{url("/dashboard")}}" class="active" aria-label="Toggle navigation"><i class="bi bi-house-heart"></i>&nbsp; Home</a>
+                                        <a href="{{url("/")}}" class="active" aria-label="Toggle navigation"><i class="bi bi-house-heart"></i>&nbsp; Home</a>
                                     </li>
+                                    @foreach($categories as $category)
                                     <li class="nav-item">
                                         <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
                                             data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Brands</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-2">
-                                            <li class="nav-item"><a href="#">Apple</a></li>
-                                            <li class="nav-item"><a href="#">Oppo</a></li>
-                                            <li class="nav-item"><a href="#">Samaung</a></li>
-                                            <li class="nav-item"><a href="#">Nokia</a></li>
-                                            <li class="nav-item"><a href="#">Infinix</a></li>
+                                            aria-expanded="false" aria-label="Toggle navigation"><i class="{{$category->icon}}"></i> {{$category->name}}</a>
+                                    @if(count($category->subcategories)>0)
+                                            <ul class="sub-menu collapse" id="submenu-1-2">
+                                                @foreach($category->subcategories as $sub)
+                                            <li class="nav-item"><a href="#"><i class="{{$sub->icon}}"></i> {{$sub->name}}</a></li>
+@endforeach
 
                                         </ul>
+                                        @endif
                                     </li>
 
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Price</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="#">Lessthan RS/5000</a>
-                                            </li>
-                                            <li class="nav-item"><a href="#">RS/5000 - RS/10,000</a></li>
-                                            <li class="nav-item"><a href="#">RS/10,000 - RS/15,000</a></li>
-                                            <li class="nav-item"><a href="#">RS/15,000 - RS/20,000</a></li>
-                                            <li class="nav-item"><a href="#">RS/20,000 - RS/30,000</a></li>
-                                            <li class="nav-item"><a href="#">Morethan RS/30,000</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-3" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Ram</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-3">
-                                            <li class="nav-item"><a href="#">Lessthan 1GB</a></li>
-                                            <li class="nav-item"><a href="#">1GB - 3GB</a></li>
-                                            <li class="nav-item"><a href="#">3GB - 4GB</a></li>
-                                            <li class="nav-item"><a href="#">4GB - 6GB</a></li>
-                                            <li class="nav-item"><a href="#">Morethan 6GB</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Storage</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="#">8GB</a>
-                                            </li>
-                                            <li class="nav-item"><a href="#">16GB</a></li>
-                                            <li class="nav-item"><a href="#">32GB</a></li>
-                                            <li class="nav-item"><a href="#">64GB</a></li>
-                                            <li class="nav-item"><a href="#">128GB or More</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Camera</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="#">Lessthan 8MP</a>
-                                            </li>
-                                            <li class="nav-item"><a href="#">8MP - 12MP</a></li>
-                                            <li class="nav-item"><a href="#">12MP - 20MP</a></li>
-                                            <li class="nav-item"><a href="#">20MP - 34MP</a></li>
-                                            <li class="nav-item"><a href="#">Morethan 34MP</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Battery</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="#">1000mAh</a>
-                                            </li>
-                                            <li class="nav-item"><a href="#">1000mAh - 2000mAh</a></li>
-                                            <li class="nav-item"><a href="#">2000mAh - 3000mAh</a></li>
-                                            <li class="nav-item"><a href="#">3000mAh - 4000mAh</a></li>
-                                            <li class="nav-item"><a href="#">Morethan 4000mAh</a></li>
-                                        </ul>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Display</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="#">Lessthan 480p</a>
-                                            </li>
-                                            <li class="nav-item"><a href="#">480p</a></li>
-                                            <li class="nav-item"><a href="#">720p</a></li>
-                                            <li class="nav-item"><a href="#">1080p</a></li>
-                                            <li class="nav-item"><a href="#">Morethan 1080p</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-4" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Operating System</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-4">
-                                            <li class="nav-item"><a href="#">Android</a>
-                                            </li>
-                                            <li class="nav-item"><a href="#">IOS</a></li>
-                                            <li class="nav-item"><a href="#">Windows</a></li>
-                                            <li class="nav-item"><a href="#">Others</a></li>
-
-                                        </ul>
-                                    </li>
-
-
-
-
-
+                                    @endforeach
                                 </ul>
 
                             </div> <!-- navbar collapse -->
