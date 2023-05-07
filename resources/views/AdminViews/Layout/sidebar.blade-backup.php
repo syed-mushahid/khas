@@ -29,11 +29,11 @@
                   </a>
                 </li>
                 @endif
-@endforeach
+<!-- @endforeach
               </ul>
             @endif
             @endif
-      @endforeach
+      @endforeach -->
       {{-- <li class="nav-item">
         <a class="nav-link " href="{{route('admin_dashboard')}}">
           <i class="bi bi-grid"></i>

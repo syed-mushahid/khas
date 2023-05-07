@@ -33,7 +33,7 @@
                          </div>
                       </div>
                    </div>
-                  
+
                    <div class="col-md-6">
                     <div class="single-form form-default">
                        <label>City</label>
@@ -51,7 +51,7 @@
                          </div>
                       </div>
                    </div>
-                  
+
                    <div class="col-md-6">
                       <div class="single-form form-default">
                          <label>Post Code</label>
@@ -60,7 +60,7 @@
                          </div>
                       </div>
                    </div>
-                 
+
                    <div class="col-md-6">
                       <div class="single-form form-default">
                          <label>Provice</label>
@@ -112,7 +112,7 @@
                                <input type="radio" name="shipping" id="shipping-4">
                                <label for="shipping-4">
                                   <img width="100px"src="https://trax.pk/wp-content/uploads/2021/07/Black-Logo.svg" alt="Trax">
-                              
+
                                   <p>Trax</p>
                                   <span class="price">RS/280</span>
                                </label>
@@ -127,43 +127,28 @@
                     <div class="col-12">
                        <div class="checkout-payment-form">
                            <h3>Payment Information</h3>
-                          <div class="single-form form-default">
-                             <label>Cardholder Name</label>
-                             <div class="form-input form">
-                                <input type="text" placeholder="Cardholder Name">
-                             </div>
-                          </div>
-                          <div class="single-form form-default">
-                             <label>Card Number</label>
-                             <div class="form-input form">
-                                <input id="credit-input" type="text" placeholder="0000 0000 0000 0000">
-                               
-                             </div>
-                          </div>
-                          <div class="payment-card-info">
-                             <div class="single-form form-default mm-yy">
-                                <label>Expiration</label>
-                                <div class="expiration d-flex">
-                                   <div class="form-input form">
-                                      <input type="text" placeholder="MM">
-                                   </div>
-                                   <div class="form-input form">
-                                      <input type="text" placeholder="YYYY">
-                                   </div>
-                                </div>
-                             </div>
-                             <div class="single-form form-default">
-                                <label>CVC/CVV <span><i class="mdi mdi-alert-circle"></i></span></label>
-                                <div class="form-input form">
-                                   <input type="text" placeholder="***">
-                                </div>
-                             </div>
-                          </div>
-                          
+                           <form action="{{route('pay.now')}}" method="post" id="payment-form">
+                              @csrf
+                               <div class="form-row">
+                                 <label for="card-element">
+                                   Credit or debit card
+                                 </label>
+                                 <div id="card-element">
+                                   <!-- A Stripe Element will be inserted here. -->
+                                 </div>
+
+                                 <!-- Used to display Element errors. -->
+                                 <div id="card-errors" role="alert"></div>
+                               </div>
+
+                               <button>Submit Payment</button>
+                             </form>
+
+
                        </div>
                     </div>
                  </div>
-            
+
             </div>
          </div>
          <div class="col-lg-4">
@@ -208,7 +193,7 @@
                      <a href="javascript:void(0)" class="col-12 btn btn-khas-primary">Checkout</a>
                   </div>
                </div>
-              
+
             </div>
          </div>
       </div>
@@ -216,5 +201,55 @@
 </section>
 @endsection
 @section('script')
-<script></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    // Create a Stripe client.
+    var stripe = Stripe('{{ env("STRIPE_KEY") }}');
+    const elements = stripe.elements();
+// Custom styling can be passed to options when creating an Element.
+const style = {
+  base: {
+    // Add your base input styles here. For example:
+    fontSize: '16px',
+    color: '#32325d',
+  },
+};
+
+// Create an instance of the card Element.
+const card = elements.create('card', {style});
+
+// Add an instance of the card Element into the `card-element` <div>.
+card.mount('#card-element');
+
+// Create a token or display an error when the form is submitted.
+const form = document.getElementById('payment-form');
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const {token, error} = await stripe.createToken(card);
+
+  if (error) {
+    // Inform the customer that there was an error.
+    const errorElement = document.getElementById('card-errors');
+    errorElement.textContent = error.message;
+  } else {
+    // Send the token to your server.
+    stripeTokenHandler(token);
+  }
+});
+
+const stripeTokenHandler = (token) => {
+  // Insert the token ID into the form so it gets submitted to the server
+  const form = document.getElementById('payment-form');
+  const hiddenInput = document.createElement('input');
+  hiddenInput.setAttribute('type', 'hidden');
+  hiddenInput.setAttribute('name', 'stripeToken');
+  hiddenInput.setAttribute('value', token.id);
+  form.appendChild(hiddenInput);
+
+  // Submit the form
+  form.submit();
+}
+</script>
+
 @endsection

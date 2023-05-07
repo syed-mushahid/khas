@@ -52,4 +52,18 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class);
+    }
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function cartItems()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

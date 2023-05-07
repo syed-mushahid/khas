@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\AdminControllers\Dashboard;
-use App\Http\Controllers\AdminControllers\manageUsers;
+use App\Http\Controllers\UserControllers\Products\CartController;
+use App\Http\Controllers\UserControllers\Products\FavoriteController;
+use App\Http\Controllers\UserControllers\HomePage\Home;
+use App\Http\Controllers\UserControllers\Payment\PaymentController;
 use App\Http\Controllers\UserControllers\Products\PhoneController;
 use App\Http\Controllers\UserControllers\Profile\Settings;
 use App\Http\Controllers\UserControllers\Profile\UserProfile;
@@ -28,10 +31,6 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', function () {
-    return view('UserViews/Home/home');
-});
-
 
 Route::get('/compare', function () {
     return view('UserViews/Compare/compare');
@@ -43,7 +42,6 @@ Route::get('/support', function () {
     return view('UserViews/Support/support');
 });
 
-
 Route::get('/dashboard', function () {
     return view('UserViews/Dashboard/dashboard');
 });
@@ -54,12 +52,10 @@ Route::get('/sales', function () {
     return view('UserViews/Sales/sales');
 });
 
-
 /////Page not found
 Route::get('/page_not_found', function () {
     return view('UserViews/Error404');
 })->name('not_found');
-
 
 Route::middleware('auth')->group(function () {
 
@@ -78,10 +74,34 @@ Route::middleware('auth')->group(function () {
         Route::GET('/phone-details/{id}', 'phoneDetails')->name('phones.show');
 
     });
+
+    Route::controller(FavoriteController::class)->group(function () {
+        Route::get('/favorites', 'index')->name('favorites.index');
+        Route::post('/favorite/add/{phone}', 'store')->name('favorites.add');
+        Route::delete('/favorite/remove/{favorite}', 'destroy')->name('favorites.remove');
+    });
+    Route::controller(CartController::class)->group(function () {
+        Route::get('/cart', 'index')->name('cart.index');
+        Route::post('/cart/add', 'store')->name('cart.add');
+        Route::get('/cart/remove/{id}', 'destroy')->name('cart.remove');
+    });
 });
 
+Route::controller(PhoneController::class)->group(function () {
+
+    Route::GET('/phone-details/{id}', 'phoneDetails')->name('phones.show');
+
+});
 Route::controller(UserProfile::class)->group(function () {
     Route::get('/profile/{id}', 'showProfile')->name('profile.show');
+
+});
+Route::controller(Home::class)->group(function () {
+    Route::get('/', 'index')->name('home.show');
+
+});
+Route::controller(PaymentController::class)->group(function () {
+    Route::POST('/charge', 'charge')->name('pay.now');
 
 });
 
@@ -123,8 +143,7 @@ Route::controller(Logout::class)->group(function () {
 });
 Route::controller(Purchase::class)->group(function () {
 
-    Route::get('/cart', 'cart');
-    Route::get('/checkout', 'checkout');
+    Route::get('/checkout', 'checkout')->name('checkout.show');
 
 ////////Admin Routes///////////
     Route::get('/admin_dashboard', [Dashboard::class, 'index'])->name('admin_dashboard');
@@ -205,8 +224,6 @@ Route::get('/completed_returns', function () {
 Route::get('/returns_report', function () {
     return view('AdminViews.Returns.returns_report');
 });
-
-
 
 Route::get('/pending_sales', function () {
     return view('AdminViews.Sales.pending_sales');

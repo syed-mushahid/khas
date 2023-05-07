@@ -48,6 +48,27 @@ class Phone extends Model
         'main_image',
         'additional_images',
     ];
-}
 
-?>
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function get_brand()
+    {
+        return $this->belongsTo(Brands::class, 'brand');
+    }
+    public function getFormattedPriceAttribute()
+    {
+        return number_format($this->price, 0);
+    }
+    public function favorites()
+    {
+        return $this->hasMany(Favorite::class);
+    }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+}

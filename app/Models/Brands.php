@@ -11,4 +11,9 @@ class Brands extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function phones()
+    {
+        return $this->hasMany(Phone::class, 'brand');
+    }
 }

@@ -26,7 +26,7 @@ class PhoneController extends Controller
 
     public function phoneList()
     {
-        $phones = Phone::where('user_id', Auth::id())->get();
+        $phones = Auth::user()->phones()->latest()->get();
 
         return view('UserViews.Product.manage-products', compact('phones'));
     }

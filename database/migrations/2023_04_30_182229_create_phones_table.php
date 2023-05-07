@@ -15,11 +15,13 @@ return new class extends Migration
     {
         Schema::create('phones', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
-            $table->string('brand');
+            $table->unsignedBigInteger('brand');
+            $table->foreign('brand')->references('id')->on('brands');
             $table->string('model');
-            $table->decimal('price', 10, 2);
+            $table->unsignedBigInteger('price');
             $table->string('color');
             $table->string('status')->default('Available');
             $table->integer('storage_capacity');

@@ -13,7 +13,7 @@
 @endif
 <?php
 
-!empty(Auth::user()->banned) == 1 ? (Auth::logout()): null;
+!empty($authUser->banned) == 1 ? (Auth::logout()): null;
 
 ?>
 
@@ -36,19 +36,19 @@
                     <div class="col-lg-6 col-md-6 col-12">
                         <div class="topbar-right d-flex justify-content-end align-items-center">
 
-                            @if (auth()->check())
+                            @if ($authUser)
                             <div class="dropdown">
                                 <div class="header-profile">
                                     <a href="javascript:void(0)">
-                                       <img class="rounded-circle" src="{{ !empty(Auth::user()->photo) ? Auth::user()->photo : asset('storage/profile_photos/default_profile_photo.jpg') }}"  alt="Profile Image" width="30px" height="30px" srcset="">
+                                       <img class="rounded-circle" src="{{ $authUser ? $authUser->photo : asset('storage/profile_photos/default_profile_photo.jpg') }}"  alt="Profile Image" width="30px" height="30px" srcset="">
                                     </a>
 
                                         <button class="btn text-white dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            {{ Auth::user()->first_name }}
+                                            {{ $authUser->first_name }}
                                         </button>
                                         <ul class="dropdown-menu">
                                           <li><a class="dropdown-item" href="{{url('dashboard')}}">Dashboard</a></li>
-                                          <li><a class="dropdown-item" href="{{route('profile.show',['id' =>  Auth::user()->id])}}">Profile</a></li>
+                                          <li><a class="dropdown-item" href="{{route('profile.show',['id' =>  $authUser->id])}}">Profile</a></li>
                                           <li><a class="dropdown-item" href="{{url('profile_settings')}}">Settings</a></li>
                                           <li><a class="dropdown-item" href="{{url('logout')}}">Logout</a></li>
                                         </ul>
@@ -120,16 +120,19 @@
                         <div class="middle-right-area col-12">
 
                             <div class="navbar-cart col-12 d-flex justify-content-end">
-                                <div class="wishlist">
-                                    <a href="{{url('wishlist')}}">
+                                <div class="wishlist" data-bs-toggle="modal" data-bs-target="#favModal">
+                                    <a href="#">
                                         <i class="bi bi-suit-heart"></i>
-                                        <span class="total-items bg-khas-secondery">0</span>
+                                        <span class="total-items bg-khas-secondery">{{$authUser?count($authUser->favorites):'0'}}</span>
                                     </a>
                                 </div>
+
+
+
                                 <div class="cart-items">
-                                    <a href="{{url('/cart')}}" class="main-btn">
+                                    <a href="{{route('cart.index')}}" class="main-btn">
                                         <i class="bi bi-cart3"></i>
-                                        <span class="total-items bg-khas-secondery">2</span>
+                                        <span class="total-items bg-khas-secondery">{{$authUser?count($authUser->cartItems):'0'}}</span>
                                     </a>
 
 

@@ -38,9 +38,10 @@
                     <div class="d-block d-sm-flex align-items-start text-center text-sm-start"><a class="d-block flex-shrink-0 mx-auto me-sm-4" href="{{url('product-details')}}" style="width: 7rem;"><img width="100%"src="{{$phone->main_image}}" alt="Product"></a>
                       <div class="pt-2">
                         <h3 class="product-title fs-base mb-2"><a href="{{route('phones.show',$id=$phone->id)}}">{{$phone->title}}</a></h3>
-                        <div class="fs-sm"><span class="text-muted me-2">Posted on:</span>{{$phone->created_at}}</div>
+                        <div class="fs-sm"><span class="text-muted me-2">Posted on:</span>{{dateDiff($phone->created_at)}}</div>
                         <div class="fs-sm"><span class="text-muted me-2">Status:</span>{{$phone->status}}</div>
-                        <div class="fs-lg text-accent pt-2">RS {{$phone->price}}</div>
+                        <div class="fs-lg text-accent pt-2">RS {{ $phone->formatted_price }}
+                        </div>
                       </div>
                     </div>
                     <div class="pt-2 ps-sm-3 mx-auto mx-sm-0  manage-product-btns text-end">

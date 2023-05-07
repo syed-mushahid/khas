@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    {{-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-69Ep6ajVe8yYracoJUpg0wdsAawMY3aXqkRHqayhBTo=';"> --}}
+
     <title>@yield('title')</title>
 
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
@@ -69,6 +72,66 @@
       <h5>Khas</h5>
     </div>
     </div> --}}
+
+
+    !-- Fav Modal -->
+    <div class="modal fade" id="favModal" tabindex="-1" aria-labelledby="favModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="favModalLabel">Favourite Phones</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              @if(auth()->check())
+              @foreach(Auth::user()->favorites as $fav)
+
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>
+      Product
+    </th>
+    <th>
+      Added on
+    </th>
+    <th>
+      Action
+    </th>
+  </tr>
+</thead>
+<tbody>
+<tr>
+ <td>
+<div class="d-flex align-items-center">
+
+  <img src="{{$fav->phone->main_image}}" width="50px"/>
+<p class="mx-2 my-auto">{{$fav->phone->title}}</p>
+<div>
+ </td>
+ <td>
+
+  {{dateDiff($fav->created_at)}}
+ </td>
+ <td>
+  <a href="{{route('phones.show',$id=$fav->phone_id)}}"class="btn btn-sm btn-success text-light"><i class="bi bi-eye"></i></a>
+  <a class="btn btn-sm btn-danger remove-fav text-light" data-fav-id="{{$fav->id}}"><i class="bi bi-trash3-fill"></i></a>
+ </td>
+</tr>
+</tbody>
+</table>
+              @endforeach
+              @endif
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
     <div class="modal" id="exampleModal" tabindex="-1">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -102,6 +165,8 @@
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 });
+
+
 
   $(document).ready(function() {
         $('select').select2();
