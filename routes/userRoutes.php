@@ -1,20 +1,21 @@
 <?php
 
-use App\Http\Controllers\AdminControllers\Dashboard;
-use App\Http\Controllers\UserControllers\Products\CartController;
-use App\Http\Controllers\UserControllers\Products\FavoriteController;
 use App\Http\Controllers\UserControllers\HomePage\Home;
 use App\Http\Controllers\UserControllers\Payment\PaymentController;
+use App\Http\Controllers\UserControllers\Products\CartController;
+use App\Http\Controllers\UserControllers\Products\FavoriteController;
 use App\Http\Controllers\UserControllers\Products\PhoneController;
 use App\Http\Controllers\UserControllers\Profile\Settings;
 use App\Http\Controllers\UserControllers\Profile\UserProfile;
-use App\Http\Controllers\UserControllers\Purchase;
+use App\Http\Controllers\UserControllers\Purchase\CheckoutController;
+use App\Http\Controllers\UserControllers\Purchase\PurchaseController;
 use App\Http\Controllers\UserControllers\Registration\ForgotPassword;
 use App\Http\Controllers\UserControllers\Registration\GoogleLogin;
 use App\Http\Controllers\UserControllers\Registration\Login;
 use App\Http\Controllers\UserControllers\Registration\Logout;
 use App\Http\Controllers\UserControllers\Registration\Singup;
 use App\Http\Controllers\UserControllers\Registration\VerifyEmail;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,18 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
+////Migration Route
+Route::get('/migrate', function() {
+    Artisan::call('migrate', ['--force' => true]);
+    return "Migrations completed";
+});
+
+//////DB Seed Route
+Route::get('/seed', function() {
+    Artisan::call('db:seed', ['--force' => true]);
+    return "Seeding completed";
+});
+
 Route::get('/compare', function () {
     return view('UserViews/Compare/compare');
 });
@@ -45,9 +58,7 @@ Route::get('/support', function () {
 Route::get('/dashboard', function () {
     return view('UserViews/Dashboard/dashboard');
 });
-Route::get('/purchases', function () {
-    return view('UserViews/Purchase/purchases');
-});
+
 Route::get('/sales', function () {
     return view('UserViews/Sales/sales');
 });
@@ -56,6 +67,9 @@ Route::get('/sales', function () {
 Route::get('/page_not_found', function () {
     return view('UserViews/Error404');
 })->name('not_found');
+Route::get('/thank-you', function () {
+    return view('UserViews/PaymentSuccess');
+})->name('thankyou');
 
 Route::middleware('auth')->group(function () {
 
@@ -84,6 +98,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/cart', 'index')->name('cart.index');
         Route::post('/cart/add', 'store')->name('cart.add');
         Route::get('/cart/remove/{id}', 'destroy')->name('cart.remove');
+    });
+
+    Route::controller(CheckoutController::class)->group(function () {
+
+        Route::get('/checkout', 'index')->name('checkout.show');
+
+    });
+    Route::controller(PurchaseController::class)->group(function () {
+
+        Route::get('/purchases', 'index')->name('purchases.show');
+
     });
 });
 
@@ -140,15 +165,6 @@ Route::middleware('prevent-login')->group(function () {
 });
 Route::controller(Logout::class)->group(function () {
     Route::get('/logout', 'logout')->name('logout');
-});
-Route::controller(Purchase::class)->group(function () {
-
-    Route::get('/checkout', 'checkout')->name('checkout.show');
-
-////////Admin Routes///////////
-    Route::get('/admin_dashboard', [Dashboard::class, 'index'])->name('admin_dashboard');
-    Route::get('/admin/login', [Login::class, 'index'])->name('admin/login');
-    // Route::get('/admin/users_list', [manageUsers::class, 'UsersList'])->name('admin/usersList');
 });
 
 Route::get('/sales_list', function () {

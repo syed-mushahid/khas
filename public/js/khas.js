@@ -66,8 +66,29 @@ $(document).ready(function () {
             },
         });
     });
-});
+    $(".checkoutBtn").on("click", function () {
+        var phoneId = $(this).data("phone-id");
 
+        $.ajax({
+            url: "/cart/add",
+            method: "POST",
+            data: {
+                _token: $('meta[name="csrf-token"]').attr("content"),
+                phone_id: phoneId,
+                // quantity: 1 // Uncomment and modify as needed
+            },
+            success: function (response) {
+                // toastr.success(response.message);
+
+                document.location.href = "/checkout";
+            },
+            error: function (xhr, status, error) {
+                toastr.error(xhr.responseJSON.message);
+                // Show an error message or handle the error as needed
+            },
+        });
+    });
+});
 
 // Add this to your JavaScript code
 // $('button.removeItem').on('click', function() {
@@ -94,7 +115,6 @@ $(document).ready(function () {
 //         }
 //     });
 // });
-
 
 $(document).ready(function () {
     var search = document.getElementById("search");

@@ -10,8 +10,9 @@ class Home extends Controller
     public function index()
     {
 
-        $phones = Phone::latest()->take(10)->get();
+        $phones = Phone::orderBy('status', 'asc')->latest()->paginate(10);
         return view('UserViews.Home.home', compact('phones'));
+
 
     }
 }

@@ -21,9 +21,9 @@ class CartController extends Controller
 // Calculate the sum of all quantity and price rows
         foreach ($items as $item) {
             $totalQuantity += $item->quantity;
-           $totalPrice += $item->quantity * $item->phones->price;
+            $totalPrice += $item->quantity * $item->phones->price;
         }
-        $totalPrice=number_format($totalPrice);
+        $totalPrice = number_format($totalPrice);
         return view('UserViews.Product.cart', compact('items', 'totalQuantity', 'totalPrice'));
     }
 
@@ -35,7 +35,11 @@ class CartController extends Controller
         ]);
 
         $user = Auth::user();
+        $phone = Phone::find($request->phone_id);
+        if ($phone->status != "Available") {
 
+            return response()->json(['message' => 'Item is not available.'], 404);
+        }
         // Check if the item already exists in the cart
         $cartItem = Cart::where('user_id', $user->id)
             ->where('phone_id', $request->phone_id)
@@ -87,12 +91,12 @@ class CartController extends Controller
 
         if (!$cartItem) {
             // return response()->json(['status' => 'error', 'message' => 'Item not found in your cart.'], 404);
-      return redirect()->back()->with('error',"Item not found in cart");
+            return redirect()->back()->with('error', "Item not found in cart");
 
-    }
+        }
 
-    $cartItem->delete();
-    return redirect()->back()->with('success',"Item removed from cart.");
+        $cartItem->delete();
+        return redirect()->back()->with('success', "Item removed from cart.");
 
         // return response()->json(['status' => 'success', 'message' => 'Item removed from the cart successfully!'], 200);
     }

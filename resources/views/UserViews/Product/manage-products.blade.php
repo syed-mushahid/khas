@@ -46,8 +46,10 @@
                     </div>
                     <div class="pt-2 ps-sm-3 mx-auto mx-sm-0  manage-product-btns text-end">
                       <a href="{{route('phones.show',$id=$phone->id)}}"><button class="btn btn-outline-success btn-sm w-50 my-2" type="button"><i class="bi bi-eye me-2"></i>View</button></a>
+@if($phone->status!="Sold")
                       <a href="{{route('phones.update',$id=$phone->id)}}" class="btn btn-outline-success btn-sm w-50 my-2" type="button"><i class="bi bi-pen me-2"></i>Edit</a>
                       <button class="btn btn-outline-danger btn-sm w-50 my-2" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" data-phone-id="{{ $phone->id }}"><i class="bi bi-trash me-2"></i>Delete</button>
+@endif
                     </div>
                   </div>
 
@@ -78,7 +80,7 @@ document.querySelectorAll('[data-bs-target="#exampleModal"]').forEach(button => 
     });
 });
 document.querySelector('.confirm-deleted').addEventListener('click', function() {
-    window.location.href = `/delete-product/${phoneId}`;
+    window.location.href = `/delete-phone/${phoneId}`;
 });
 
 </script>

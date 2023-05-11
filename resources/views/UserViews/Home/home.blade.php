@@ -107,18 +107,26 @@
                      </h4>
                      {{-- <span class="strike-text">$20.99</span> --}}
                   </div>
-                  <div class="d-flex flex-column mt-4"><button class="btn btn-khas-primary btn-sm"
-                     type="button"><a style="color: white" href  = "{{route('phones.show',$id=$phone->id)}}">Details</a></button>
+                  <div class="d-flex flex-column mt-4"><a  href="{{route('phones.show',$id=$phone->id)}}" class="btn btn-khas-primary btn-sm"
+                     type="button">Details</a>
+@if($phone->status==="Available")
                      <button class="btn btn-outline-khas-primary btn-sm mt-2 add-to-favorites"
     data-phone-id="{{ $phone->id }}"
     type="button">Add to favorites</button>
+@else
+<h4 class="text-danger m-auto mt-3">SOLD</h4>
+
+    @endif
+
+
 </div>
                </div>
             </div>
 @endforeach
-
+<!-- Render pagination links -->
+{{ $phones->links('vendor.pagination.bootstrap-5') }}
          </div>
-         <button class="btn text-khas-primary "><i class="bi bi-arrow-clockwise"></i> Load More</button>
+
       </div>
    </div>
 </section>

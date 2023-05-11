@@ -15,12 +15,12 @@ class PhoneController extends Controller
     public function addPhone($id = null)
     {
 
-        $brands=Brands::all();
+        $brands = Brands::all();
         $phone = null;
         if (!empty($id)) {
             $phone = Phone::find($id);
         }
-        return view('UserViews.Product.addproduct', compact('phone','brands'));
+        return view('UserViews.Product.addproduct', compact('phone', 'brands'));
 
     }
 
@@ -34,9 +34,13 @@ class PhoneController extends Controller
     public function deletePhone($id)
     {
         $phone = Phone::findOrFail($id);
-        $phone->delete();
+        if ($phone->status != "Sold") {
 
-        return redirect()->route('phones.list')->with('success', 'Phone has been successfully deleted.');
+            $phone->delete();
+            return redirect()->route('phones.list')->with('success', 'Phone has been successfully deleted.');
+        }
+
+        return redirect()->route('phones.list')->with('error', 'You can not delete this phone.');
     }
 
     public function phoneDetails($id)

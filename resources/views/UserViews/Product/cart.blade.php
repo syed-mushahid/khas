@@ -16,6 +16,9 @@
                   <table class="table">
                      <thead>
                         <tr>
+                            <th>
+P ID
+                            </th>
                            <th>
                               Product
                            </th>
@@ -34,7 +37,8 @@
                         @forelse($items as $item)
                         @if($item->phones) {{-- Check if phone exists --}}
                         <tr class="py-5">
-                           <td>
+                        <td class="text-center"><b>{{$item->phones->id}}</b></td>
+                            <td>
                               <a class="d-flex align-items-center" href="{{route('phones.show', $id=$item->phone_id)}}">
                                  <img src="{{$item->phones->main_image}}" class="me-3 rounded-2"width="60px"/>
                                  <h4>{{$item->phones->title}}</h4>

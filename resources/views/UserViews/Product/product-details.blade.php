@@ -106,18 +106,25 @@
             <div class="bottom-content">
                <div class="row align-items-end">
                   <div class="col-md-4 text-center">
-                     <button class="btn btn-outline-khas-primary addToCart" data-phone-id="{{$phone->id}}" style="width: 100%;"><i class="bi bi-cart3"></i> Add to Cart</button>
-                  </div>
+                    @if($phone->status!="Available")
+                    <button class="btn btn-outline-danger " disabled style="width: 100%;"><i class="bi bi-slash-circle"></i> SOLD</button>
+                    @else
+
+                     <button class="btn btn-outline-primary addToCart" data-phone-id="{{$phone->id}}" style="width: 100%;"><i class="bi bi-cart3"></i> Add to Cart</button>
+                    @endif
+                    </div>
                   <div class="col-md-4 text-center">
                      <button class="btn btn-outline-khas-primary"><i class="bi bi-arrow-left-right"></i> Add to Compare</button>
                   </div>
                   <div class="col-md-4 text-center">
                      <button class="btn btn-outline-khas-primary add-to-favorites" data-phone-id="{{$phone->id}}"><i class="bi bi-suit-heart"></i> Add to Wishlist</button>
                   </div>
+                  @if($phone->status==="Available")
                   <div class="col-12 text-center my-4">
-                     <a href="{{url('/checkout')}}"> <button class="btn col-12 btn-khas-primary"><i class="bi bi-bag-fill"></i> Buy Now</button>
-                     </a>
+                     <button class="btn col-12 btn-khas-primary checkoutBtn" data-phone-id="{{$phone->id}}"><i class="bi bi-bag-fill"></i> Buy Now</button>
+
                   </div>
+                  @endif
                </div>
             </div>
          </div>

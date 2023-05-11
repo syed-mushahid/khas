@@ -55,15 +55,22 @@ class User extends Authenticatable
 
     public function phones()
     {
-        return $this->hasMany(Phone::class);
+        return $this->hasMany(Phone::class)->latest();
     }
+
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->hasMany(Favorite::class)->latest();
     }
 
     public function cartItems()
     {
-        return $this->hasMany(Cart::class);
+        return $this->hasMany(Cart::class)->latest();
     }
+
+    public function purchase()
+    {
+        return $this->hasMany(Purchase::class)->latest();
+    }
+
 }
