@@ -62,77 +62,56 @@
       <div class="row justify-content-center">
          @include('UserViews.Layout.Includes.sidebar')
          <div class="col-md-9 ">
+            <div class="d-flex col-12 justify-content-between mx-0 mb-3">
+               <div class="col-sm-5 mx-0">
 
-            @foreach($phones as $phone)
-            <div class="row mb-3  p-4 shadow-lg bg-white rounded">
+            <label>Sort by Date</label>
 
-               <div class="col-md-3 mt-1"><img role="button" class="img-fluid img-responsive rounded product-image"
-                  src="{{$phone->main_image}}">
-               </div>
-               <div class="col-md-6 mt-1">
-                  <div class="d-flex align-items-center">
-                     <h3><a href="{{route('phones.show',$id=$phone->id)}}">{{$phone->title}}</a></h3>
-                     {{-- <small style="padding:2px;font-size:10px" class="border text-muted ms-2 rounded">Ad</small> --}}
+            <select id="sort-date" class="form-control">
+               <option value="" disabled selected>Sort by date...</option>
+               <option value="newest">Newest</option>
+               <option value="oldest">Oldest</option>
+           </select>
+          </div>  <div class="col-sm-5 mx-0">
 
-                  </div>
-                  <small class="text-muted font-italic "> {{ dateDiff($phone->created_at)}}</small>
-                  <div class="d-flex flex-row">
+<label>Sort by price</label>
+           <select id="sort-price" class="form-control">
+               <option value="" selected disabled>Sort by price...</option>
+               <option value="highest">Highest first</option>
+               <option value="lowest">Lowest first</option>
+           </select>
+            </div>
 
-                     <div class="ratings mr-2"><span><b>Seller Rattings : </b></span><i class="fa fa-star"></i><i
-                        class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                     <span>
-                     (6)</span>
-                  </div>
-                  <div class="mt-1 mb-1 spec-1">
-                     <span class="badge ms-1 rounded-pill text-muted border">{{$phone->condition}}
+            </div>
+           <div id="loading-spinner"   style="display: none;">
 
-                  </span>
-                     <span class="badge ms-1 rounded-pill text-muted border">{{$phone->get_brand->name}}
+            <div class="d-flex justify-content-center align-items-center flex-wrap mt-5">
+            <div class="battery">
+                <div class="liquid"></div>
+              </div>
+              </div>
+              <div>
+                  <br>
+              <p class="w-100 text-center">Just a moment, we're tuning up the perfect devices...</p>
+            </div>
+     </div>
+     <div id="no-result" style="display:none">
 
-                  </span>
-                     <span class="badge ms-1 rounded-pill text-muted border">{{$phone->model}}
-
-                  </span>
-                  <span class="badge ms-1 rounded-pill text-muted border">{{$phone->storage_capacity}}GB ROM</span>
-                  <span class="badge ms-1 rounded-pill text-muted border">{{$phone->ram}}GB RAM</span>
-
-                  </div>
-                  <p class="text-justify text-truncate para mb-0">{{$phone->description}}<br><br>
-                  </p>
-               </div>
-               <div class="align-items-center align-content-center col-md-3 border-left mt-1">
-                  <div class="d-flex flex-row justify-content-center align-items-center">
-                     <h4 class="mr-1">RS {{ $phone->formatted_price }}
-
-                     </h4>
-                     {{-- <span class="strike-text">$20.99</span> --}}
-                  </div>
-                  <div class="d-flex flex-column mt-4"><a  href="{{route('phones.show',$id=$phone->id)}}" class="btn btn-khas-primary btn-sm"
-                     type="button">Details</a>
-@if($phone->status==="Available")
-                     <button class="btn btn-outline-khas-primary btn-sm mt-2 add-to-favorites"
-    data-phone-id="{{ $phone->id }}"
-    type="button">Add to favorites</button>
-@else
-<h4 class="text-danger m-auto mt-3">SOLD</h4>
-
-    @endif
-
+   <h3 class="text-center my-5">Oops! We couldn't find any devices matching your search.</h3>
 
 </div>
-               </div>
-            </div>
-@endforeach
-<!-- Render pagination links -->
-{{ $phones->links('vendor.pagination.bootstrap-5') }}
-         </div>
+           <div id="phone-list">
 
+            @include('UserViews.Home.phonelist', ['phones' => $phones])
+         </div>
+         </div>
       </div>
    </div>
 </section>
 @endsection
 @section('script')
 <script>
+
    $(".filter-btn").click(function (){
       $('.result-filter').slideDown("slow");;
    })

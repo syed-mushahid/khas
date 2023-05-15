@@ -63,7 +63,7 @@
 
         </main>
     @include('UserViews/Layout/Includes/footer')
-    {{-- <div class="loading-animation-wrapper">
+   <div class="loading-animation-wrapper">
     <div class="battery">
         <div class="liquid"></div>
       </div>
@@ -71,7 +71,7 @@
           <br>
       <h5>Khas</h5>
     </div>
-    </div> --}}
+    </div>
 
 
     !-- Fav Modal -->

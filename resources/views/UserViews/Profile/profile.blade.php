@@ -61,9 +61,9 @@
                <!-- Nav tabs-->
                <div class="mb-md-0 mb-4 pb-1" style="overflow-x: auto;">
                   <ul class="nav nav-tabs nav-fill flex-nowrap text-nowrap mb-0" role="tablist">
-                     <li class="nav-item" role="presentation"><a class="nav-link active" href="#avilable" data-bs-toggle="tab" role="tab" aria-selected="true">Available (6)</a></li>
-                     <li class="nav-item" role="presentation"><a class="nav-link" href="#sold" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Sold  (3)</a></li>
-                     <li class="nav-item" role="presentation"><a class="nav-link" href="#purchased" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Purchased  (3)</a></li>
+                     <li class="nav-item" role="presentation"><a class="nav-link active" href="#avilable" data-bs-toggle="tab" role="tab" aria-selected="true">Available</a></li>
+                     <li class="nav-item" role="presentation"><a class="nav-link" href="#sold" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Sold </a></li>
+                     <li class="nav-item" role="presentation"><a class="nav-link" href="#purchased" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Purchased</a></li>
                      <li class="nav-item" role="presentation"><a class="nav-link" href="#reviews" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Reviews</a></li>
                   </ul>
                </div>
@@ -75,140 +75,35 @@
                <div class="tab-pane fade active show" id="avilable" role="tabpanel">
                   <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3">
                      <!-- Product-->
+
+                  @forelse($user->phones as $phone)
+                  @if($phone->status=="Available")
                      <div class="col mb-3 ">
                         <article class="card h-100 border-0 bg-white shadow rounded-3">
                             <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-success btn-sm position-absolute shadow" style="top: 10px; right: 10px;">New</span>
+                                <a class="d-block" href="{{route('phones.show',$id=$phone->id)}}"><img width="100%" height="100%" src="{{$phone->main_image}}" alt="{{$phone->title}}" /></a>
+                                <span class="btn btn-success btn-sm position-absolute shadow" style="top: 10px; right: 10px;">{{$phone->condition}}</span>
                             </div>
                             <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
+                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{route('phones.show',$id=$phone->id)}}">{{$phone->title}}</a></h3>
                                 <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
+                                    <h4 class="w-100 text-center">RS {{$phone->formatted_price}}</h4>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm add-to-favorites" data-phone-id={{$phone->id}}><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm addToCart" data-phone-id={{$phone->id}}><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
+                                <a href="{{route('phones.show',$id=$phone->id)}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
+                                <button class="btn btn-primary col-12 checkoutBtn" data-phone-id={{$phone->id}}><i class="bi bi-bag-check"></i> Buy Now</button>
                             </div>
                         </article>
                     </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-success btn-sm position-absolute shadow" style="top: 10px; right: 10px;">New</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-
-
+                    @endif
+@empty
+<span class="w-100 text-center text-muted">No Phones available to show</span>
+@endforelse
                   </div>
 
                </div>
@@ -217,72 +112,34 @@
                   <!-- sold grid-->
                   <div class="row ">
 
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
+                    @forelse($user->phones as $phone)
+                  @if($phone->status=="Sold")
+                     <div class="col mb-3 ">
+                        <article class="card h-100 border-0 bg-white shadow rounded-3">
                             <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
+                                <a class="d-block" href="{{route('phones.show',$id=$phone->id)}}"><img width="100%" height="100%" src="{{$phone->main_image}}" alt="{{$phone->title}}" /></a>
+                                <span class="btn btn-success btn-sm position-absolute shadow" style="top: 10px; right: 10px;">{{$phone->condition}}</span>
                             </div>
                             <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
+                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{route('phones.show',$id=$phone->id)}}">{{$phone->title}}</a></h3>
                                 <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
+                                    <h4 class="w-100 text-center">RS {{$phone->formatted_price}}</h4>
                                 </div>
                             </div>
                             <div class="card-footer">
                                 <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm add-to-favorites" data-phone-id={{$phone->id}}><i class="bi bi-heart"></i>Add to Fav</button>
+                                    <button class="btn btn-outline-khas-secondery btn-sm addToCart" data-phone-id={{$phone->id}}><i class="bi bi-cart"></i>Add to Cart</button>
                                 </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
+                                <a href="{{route('phones.show',$id=$phone->id)}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
+                                <button class="btn btn-primary col-12 checkoutBtn" data-phone-id={{$phone->id}}><i class="bi bi-bag-check"></i> Buy Now</button>
                             </div>
                         </article>
                     </div>
-                    <div class="col mb-3">
-                     <article class="card h-100 border-0 shadow">
-                         <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                             <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                             <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                         </div>
-                         <div class="card-body">
-                             <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                             <div class="d-flex align-items-center flex-wrap">
-                                 <h4 class="w-100 text-center">RS 20,000</h4>
-                             </div>
-                         </div>
-                         <div class="card-footer">
-                             <div class="d-flex justify-content-between my-3">
-                                 <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                 <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                             </div>
-                             <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                             <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                         </div>
-                     </article>
-                 </div>
-                 <div class="col mb-3">
-                  <article class="card h-100 border-0 shadow">
-                      <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                          <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                          <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                      </div>
-                      <div class="card-body">
-                          <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                          <div class="d-flex align-items-center flex-wrap">
-                              <h4 class="w-100 text-center">RS 20,000</h4>
-                          </div>
-                      </div>
-                      <div class="card-footer">
-                          <div class="d-flex justify-content-between my-3">
-                              <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                              <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                          </div>
-                          <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                          <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                      </div>
-                  </article>
-              </div>
+                    @endif
+@empty
+<span class="w-100 text-center text-muted">No Phones available to show</span>
+@endforelse
 
                   </div>
                </div>
@@ -291,72 +148,35 @@
                   <!-- purchased products grid-->
                   <div class="row row-cols-md-3 row-cols-sm-2 row-cols-1 gy-sm-4 gy-3">
 
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
-                     <div class="col mb-3">
-                        <article class="card h-100 border-0 shadow">
-                            <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
-                                <a class="d-block" href="{{url('product-details')}}"><img width="100%" height="100%" src="https://i0.wp.com/mobilemall.com.pk/wp-content/uploads/2022/07/Realme-3-price-in-Pakistan.jpeg" alt="Realme 3" /></a>
-                                <span class="btn btn-warning btn-sm position-absolute shadow" style="top: 10px; right: 10px;">Used</span>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{url('product-details')}}">Realme 3 Pro 6GB</a></h3>
-                                <div class="d-flex align-items-center flex-wrap">
-                                    <h4 class="w-100 text-center">RS 20,000</h4>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="d-flex justify-content-between my-3">
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-heart"></i>Add to Fav</button>
-                                    <button class="btn btn-outline-khas-secondery btn-sm"><i class="bi bi-cart"></i>Add to Cart</button>
-                                </div>
-                                <a href="{{url("product-details")}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
-                                <a href="{{url("checkout")}}"><button class="btn btn-primary col-12"><i class="bi bi-bag-check"></i> Buy Now</button></a>
-                            </div>
-                        </article>
-                    </div>
+                    @forelse($user->purchase as $purchase)
+                    @foreach($purchase->items as $phone)
+                    <div class="col mb-3 ">
+                          <article class="card h-100 border-0 bg-white shadow rounded-3">
+                              <div class="card-img-top position-relative overflow-hidden" style="max-height: 14em;">
+                                  <a class="d-block" href="{{route('phones.show',$id=$phone->id)}}"><img width="100%" height="100%" src="{{$phone->main_image}}" alt="{{$phone->title}}" /></a>
+                                  <span class="btn btn-success btn-sm position-absolute shadow" style="top: 10px; right: 10px;">{{$phone->condition}}</span>
+                              </div>
+                              <div class="card-body">
+                                  <h3 class="product-title mb-2 fs-base"><a class="d-block text-truncate" href="{{route('phones.show',$id=$phone->id)}}">{{$phone->title}}</a></h3>
+                                  <div class="d-flex align-items-center flex-wrap">
+                                      <h4 class="w-100 text-center">RS {{$phone->formatted_price}}</h4>
+                                  </div>
+                              </div>
+                              <div class="card-footer">
+                                  <div class="d-flex justify-content-between my-3">
+                                      <button class="btn btn-outline-khas-secondery btn-sm add-to-favorites" data-phone-id={{$phone->id}}><i class="bi bi-heart"></i>Add to Fav</button>
+                                      <button class="btn btn-outline-khas-secondery btn-sm addToCart" data-phone-id={{$phone->id}}><i class="bi bi-cart"></i>Add to Cart</button>
+                                  </div>
+                                  <a href="{{route('phones.show',$id=$phone->id)}}"> <button class="btn btn-primary col-12 mb-3"><i class="bi bi-eye"></i> View Details</button></a>
+                                  <button class="btn btn-primary col-12 checkoutBtn" data-phone-id={{$phone->id}}><i class="bi bi-bag-check"></i> Buy Now</button>
+                              </div>
+                          </article>
+                      </div>
+
+ @endforeach
+                      @empty
+  <span class="w-100 text-center text-muted">No Phones available to show</span>
+  @endforelse
                   </div>
                </div>
                <!-- reviews-->

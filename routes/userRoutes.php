@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserControllers\HomePage\Home;
 use App\Http\Controllers\UserControllers\Payment\PaymentController;
 use App\Http\Controllers\UserControllers\Products\CartController;
+use App\Http\Controllers\UserControllers\Products\CompareController;
 use App\Http\Controllers\UserControllers\Products\FavoriteController;
 use App\Http\Controllers\UserControllers\Products\PhoneController;
 use App\Http\Controllers\UserControllers\Profile\Settings;
@@ -34,20 +35,18 @@ use Illuminate\Support\Facades\Route;
 // });
 
 ////Migration Route
-Route::get('/migrate', function() {
+Route::get('/migrate', function () {
     Artisan::call('migrate', ['--force' => true]);
     return "Migrations completed";
 });
 
 //////DB Seed Route
-Route::get('/seed', function() {
+Route::get('/seed', function () {
     Artisan::call('db:seed', ['--force' => true]);
     return "Seeding completed";
 });
 
-Route::get('/compare', function () {
-    return view('UserViews/Compare/compare');
-});
+
 Route::get('/wallet', function () {
     return view('UserViews/Wallet/wallet');
 });
@@ -110,6 +109,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/purchases', 'index')->name('purchases.show');
 
     });
+    Route::controller(CompareController::class)->group(function () {
+
+        Route::post('/compare/add', 'add')->name('compare.add');
+        Route::get('/compare/remove/{id}', 'remove')->name('compare.remove');
+        Route::get('/compare', 'index')->name('compare.index');
+
+    });
 });
 
 Route::controller(PhoneController::class)->group(function () {
@@ -129,7 +135,9 @@ Route::controller(PaymentController::class)->group(function () {
     Route::POST('/charge', 'charge')->name('pay.now');
 
 });
-
+Route::get('/session', function () {
+    return session('compare');
+});
 Route::middleware('prevent-login')->group(function () {
 
     Route::controller(Singup::class)->group(function () {

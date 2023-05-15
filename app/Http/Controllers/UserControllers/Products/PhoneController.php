@@ -47,7 +47,15 @@ class PhoneController extends Controller
     {
 
         $phone = Phone::find($id);
-        return view('UserViews.Product.product-details', compact('phone'));
+        $selectedPhonePrice = $phone->price;
+
+        $relatedPhones = Phone::where('id', '!=', $id)
+            ->orderByRaw('ABS(CAST(price AS SIGNED)- ?)', [$selectedPhonePrice])
+            ->inRandomOrder()
+            ->limit(3)
+            ->get();
+
+        return view('UserViews.Product.product-details', compact('phone','relatedPhones'));
     }
     public function createPhone(Request $request)
     {

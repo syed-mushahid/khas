@@ -90,31 +90,75 @@ $(document).ready(function () {
     });
 });
 
-// Add this to your JavaScript code
-// $('button.removeItem').on('click', function() {
-//     var itemId = $(this).data('item-id');
-//     var button = $(this);
+///////Home page phones sort///
+$(document).ready(function () {
+    $("#sort-date, #sort-price").change(function () {
+        getPhones();
+    });
 
-//     $.ajax({
-//         url: '/cart/remove/' + itemId,
-//         type: 'DELETE',
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         },
-//         success: function(response) {
-//             if (response.status === 'success') {
-//                 alert(response.message);
-//                 // Remove the item from the view with animation
-//                 button.closest('tr').fadeOut(400, function() {
-//                     $(this).remove();
-//                 });
-//             }
-//         },
-//         error: function(xhr, textStatus, errorThrown) {
-//             alert(xhr.responseJSON.message);
-//         }
-//     });
-// });
+    $("#search").keyup(function () {
+        getPhones();
+    });
+});
+
+function getPhones() {
+    $("#loading-spinner").show();
+    $("#phone-list").hide();
+    $("#no-result").hide();
+    var sort_date = $("#sort-date").val();
+    var sort_price = $("#sort-price").val();
+    var search = $("#search").val();
+    $.ajax({
+        url: "/",
+        type: "GET",
+        data: { sort_date: sort_date, sort_price: sort_price, search: search },
+        success: function (response) {
+            $("#phone-list").html(response.html);
+            if (response.isEmpty) {
+                $("#no-result").show();
+            } else {
+                $("#no-result").hide();
+            }
+        },
+        complete: function () {
+            // Hide the loading spinner
+            $("#loading-spinner").hide();
+            $("#phone-list").show();
+        },
+    });
+}
+
+/////Add To compare//
+
+$(".add-to-compare").on("click", function (e) {
+    e.preventDefault();
+
+    var phoneId = $(this).data("phone-id");
+
+    $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url: "/compare/add",
+        type: "POST",
+        data: { phone_id: phoneId },
+        success: function (response) {
+            toastr.success(response.message);
+        },
+        error: function (xhr, status, error) {
+            toastr.error(xhr.responseJSON.message);
+            // Show an error message or handle the error as needed
+        },
+        complete: function (data) {
+            console.log(data);
+        },
+    });
+});
+
+
+////Remove from compare
+
+
 
 $(document).ready(function () {
     var search = document.getElementById("search");

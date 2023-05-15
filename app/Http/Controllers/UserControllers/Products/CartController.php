@@ -35,6 +35,10 @@ class CartController extends Controller
         ]);
 
         $user = Auth::user();
+        if(!$user){
+
+            return redirect()->route('login');
+        }
         $phone = Phone::find($request->phone_id);
         if ($phone->status != "Available") {
 

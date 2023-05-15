@@ -19,6 +19,10 @@ class FavoriteController extends Controller
     public function store($id)
     {
         $user = auth()->user();
+        if(!$user){
+
+            return redirect()->route('login');
+        }
         $phone = Phone::find($id);
 
         if ($phone) {

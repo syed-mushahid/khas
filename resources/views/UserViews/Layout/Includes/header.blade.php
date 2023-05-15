@@ -90,27 +90,29 @@
                         <div class="main-menu-search">
                             <!-- navbar search start -->
                             <div id="navbar-search" class="navbar-search search-style-5">
-                                <div class="search-select">
-                                    <div class="select-position">
-                                        <select id="select1" class="select2-search">
-                                            <option selected disabled>--Brand--</option>
-                                            @forelse ($brands as $brand)
-                                            <option value="{{$brand->id}}">{{$brand->name}}</option>
-
-                                            @empty
-                                            <option disabled>--No Brands Available--</option>
-
-                                           @endforelse
-
-                                        </select>
+                                <form action="{{ url('/') }}" method="GET" class="w-100 d-flex">
+                                    {{-- <div class="search-select">
+                                        <div class="select-position">
+                                            <select id="select1" name="brand" class="select2-search">
+                                                <option value="" disabled>--Brand--</option>
+                                                @forelse ($brands as $brand)
+                                                    <option value="{{$brand->id}}" {{ request('brand') == $brand->id ? 'selected' : '' }}>{{$brand->name}}</option>
+                                                @empty
+                                                    <option disabled>--No Brands Available--</option>
+                                                @endforelse
+                                            </select>
+                                        </div>
+                                    </div> --}}
+                                    <div class="search-input">
+                                        <input type="text" id="search" name="search" placeholder="Search" value="{{ request('search') }}">
                                     </div>
-                                </div>
-                                <div class="search-input">
-                                    <input type="text" id="search" placeholder="Search">
-                                </div>
-                                <div class="search-btn">
-                                    <button id="nav-search-btn" class=" btn btn-khas-primary"><i class="bi bi-search"></i></button>
-                                </div>
+                                    <div class="search-btn">
+                                        <button id="nav-search-btn" class=" btn btn-khas-primary"><i class="bi bi-search"></i></button>
+                                    </div>
+                                </form>
+
+
+
                             </div>
                             <!-- navbar search Ends -->
                         </div>
@@ -120,6 +122,12 @@
                         <div class="middle-right-area col-12">
 
                             <div class="navbar-cart col-12 d-flex justify-content-end">
+                                <div class="wishlist">
+                                    <a href="{{route('compare.index')}}">
+                                        <i class="bi bi-arrow-left-right"></i>
+                                        <span class="total-items bg-khas-secondery">{{ count(session('compare', [])) }}</span>
+                                    </a>
+                                </div>
                                 <div class="wishlist" data-bs-toggle="modal" data-bs-target="#favModal">
                                     <a href="#">
                                         <i class="bi bi-suit-heart"></i>
